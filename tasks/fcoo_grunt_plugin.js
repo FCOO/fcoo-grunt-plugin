@@ -15,7 +15,6 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('fcoo_grunt_plugin', 'Grunt plugin used to check and build FCOO packages and applications', function() {
 		  grunt.log.writeln('Så kan jeg gå hjem');
-
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       punctuation: '.',
