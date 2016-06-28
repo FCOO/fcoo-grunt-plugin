@@ -14,7 +14,8 @@ module.exports = function(grunt) {
   // creation: http://gruntjs.com/creating-tasks
 
   grunt.registerMultiTask('fcoo_grunt_plugin', 'Grunt plugin used to check and build FCOO packages and applications', function() {
-		  grunt.log.writeln('Så kan jeg gå hjem');
+		grunt.log.writeln('Saa kan jeg gaa hjem'); 
+/*
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       punctuation: '.',
@@ -46,6 +47,7 @@ module.exports = function(grunt) {
       // Print a success message.
       grunt.log.writeln('File "' + f.dest + '" created.');
     });
-  });
+*/
+	});
 
 };
