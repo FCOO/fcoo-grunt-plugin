@@ -24,8 +24,8 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test",
-    "preinstall": "npm install grunt-auto-install@^0.3.0"
+    "test": "grunt test"
+
   },
   "devDependencies": {
     "getobject": "~0.1.0",
