@@ -647,57 +647,33 @@ concat_options_css
 	//**************************************************************************************
 	//Load grunt-packages
 	//**************************************************************************************
+	function loadPackage( name ){
+		grunt.loadTasks(__dirname + '/../node_modules/'+name+'/tasks');
+	};
 
-	//require('load-grunt-tasks')(grunt);
-	grunt.loadTasks('node_modules/grunt-contrib-concat/tasks');
-	grunt.loadTasks('node_modules/grunt-contrib-copy/tasks');
-	grunt.loadTasks('node_modules/grunt-contrib-rename/tasks');
-	grunt.loadTasks('node_modules/grunt-text-replace/tasks');
-	grunt.loadTasks('node_modules/grunt-contrib-clean/tasks');
-	grunt.loadTasks('node_modules/grunt-continue/tasks');
+	loadPackage('grunt-contrib-concat');
+	loadPackage('grunt-contrib-copy');
+	loadPackage('grunt-contrib-rename');
+	loadPackage('grunt-text-replace');
+	loadPackage('grunt-contrib-clean');
+	loadPackage('grunt-continue');
 
-	grunt.loadTasks('node_modules/grunt-contrib-uglify/tasks');
-	grunt.loadTasks('node_modules/grunt-contrib-jshint/tasks');
+	loadPackage('grunt-contrib-uglify');
+	loadPackage('grunt-contrib-jshint');
 
-	grunt.loadTasks('node_modules/grunt-sass/tasks');
-	grunt.loadTasks('node_modules/grunt-contrib-cssmin/tasks');
-	grunt.loadTasks('node_modules/main-bower-files/tasks');
-	grunt.loadTasks('node_modules/grunt-bower-concat/tasks');
+	loadPackage('grunt-sass');
+	loadPackage('grunt-contrib-cssmin');
+	loadPackage('main-bower-files');
+	loadPackage('grunt-bower-concat');
 
-	grunt.loadTasks('node_modules/grunt-exec/tasks');
+	loadPackage('grunt-exec');
 
-	grunt.loadTasks('node_modules/grunt-prompt/tasks');
+	loadPackage('grunt-prompt');
 
-	grunt.loadTasks('node_modules/grunt-gitinfo/tasks');
-	grunt.loadTasks('node_modules/grunt-auto-install/tasks');
-
+	loadPackage('grunt-gitinfo');
+	loadPackage('grunt-auto-install');
 
 
-/*
-
-	//Load grunt-packages
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-rename');
-	grunt.loadNpmTasks('grunt-text-replace');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-continue');
-
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-
-	grunt.loadNpmTasks('grunt-sass');
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('main-bower-files');
-	grunt.loadNpmTasks('grunt-bower-concat');
-
-	grunt.loadNpmTasks('grunt-exec');
-
-	grunt.loadNpmTasks('grunt-prompt');
-
-	grunt.loadNpmTasks('grunt-gitinfo');
-	grunt.loadNpmTasks('grunt-auto-install');
-*/
 	//Run the gitinfo-task to get username
 	grunt.task.run('gitinfo');
 
