@@ -24,9 +24,10 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+		"preinstall": "npm install grunt-auto-install@^0.3.0"
   },
-  "dependencies": {
+  "devDependencies": {
     "getobject": "~0.1.0",
     "grunt-auto-install": "^0.3.0",
     "grunt-bower-concat": "~1.0.0",
@@ -52,12 +53,6 @@
     "shelljs": "^0.6.0",
     "strip-json-comments": "~2.0.1",
     "wordwrap": "^1.0.0"
-  },
-  "devDependencies": {
-    "grunt-contrib-jshint": "^0.9.2",
-    "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-nodeunit": "^0.3.3",
-    "grunt": "~0.4.5"
   },
   "keywords": [
     "gruntplugin"
