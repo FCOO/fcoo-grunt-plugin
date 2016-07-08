@@ -1,7 +1,7 @@
 {
   "name": "grunt-fcoo-grunt-plugin",
   "description": "Grunt plugin used to check and build FCOO packages and applications",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "homepage": "https://github.com/FCOO/fcoo-grunt-plugin",
   "author": {
     "name": "Niels Holt",
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "test": "grunt test",
-		"preinstall": "npm install grunt-auto-install@^0.3.0"
+    "preinstall": "npm install grunt-auto-install@^0.3.0"
   },
   "devDependencies": {
     "getobject": "~0.1.0",
