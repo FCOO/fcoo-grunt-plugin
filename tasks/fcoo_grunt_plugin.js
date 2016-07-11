@@ -225,7 +225,7 @@ module.exports = function(grunt) {
 	eachDependencies( packageFunc, options )
 	Visit each dependencies and dependencies of dependencies and ... in bower.json
 	bwr: json-object (= the contents of the current bower.json)
-	packageFunc: function( packageName, bwr, options, firstlevel ) - function to process the bwr
+	packageFunc: function( packageName, bwr, options, firstlevel, dotBowerJson ) - function to process the bwr
 
 
 	_eachDependencies( bwr, packageFunc, options, packageList, firstLevel )
@@ -647,32 +647,18 @@ concat_options_css
 	//**************************************************************************************
 	//Load grunt-packages
 	//**************************************************************************************
-//	var test = readJSONFile('
-	function loadPackage( name ){
-		grunt.loadTasks(__dirname + '/../node_modules/'+name+'/tasks');
-	};
+	var pluginPackageJs = readJSONFile('node_modules/grunt-fcoo-grunt-plugin/package.json'),
+			pluginDependencies = pluginPackageJs.dependencies,
+			packageName,
+			dirName;
 
-	loadPackage('grunt-contrib-concat');
-	loadPackage('grunt-contrib-copy');
-	loadPackage('grunt-contrib-rename');
-	loadPackage('grunt-text-replace');
-	loadPackage('grunt-contrib-clean');
-	loadPackage('grunt-continue');
+	for (packageName in pluginDependencies)
+		if ( pluginDependencies.hasOwnProperty(packageName) ){
+			dirName = __dirname + '/../node_modules/'+packageName+'/tasks';
+			if ( grunt.file.isDir(dirName) )
+			  grunt.loadTasks(dirName)
+		}
 
-	loadPackage('grunt-contrib-uglify');
-	loadPackage('grunt-contrib-jshint');
-
-	loadPackage('grunt-sass');
-	loadPackage('grunt-contrib-cssmin');
-	loadPackage('main-bower-files');
-	loadPackage('grunt-bower-concat');
-
-	loadPackage('grunt-exec');
-
-	loadPackage('grunt-prompt');
-
-	loadPackage('grunt-gitinfo');
-	loadPackage('grunt-auto-install');
 
 
 	//Run the gitinfo-task to get username
@@ -721,67 +707,76 @@ concat_options_css
 
 
 	//*********************************************************
-	//CREATE THE "GITHUB-CLI" TAST
+	//CREATE THE "PUSH-CLI" TAST (alias "GITHUB-CLI")
 	//*********************************************************
-	grunt.registerTask('github-cli', function(){
+	grunt.registerTask('github-cli', ['push-cli']);
+	if (isApplication)
+		grunt.registerTask('push-cli', function(){
+			grunt.fail.fatal('The tast "push-cli" (and alias "github-cli") is not avaiable for applications')
+		});
+	else
+		grunt.registerTask('push-cli', function(){
+	    // Get all options
+		  var nopt = require("nopt"),
+					knownOpts = {
+						"build" : Boolean,
+						"none"	: Boolean,
+	          "patch" : Boolean,
+		        "minor" : Boolean,
+			      "major" : Boolean,
+				    "amend" : Boolean,
+					  "commit": [String, null],
+						"tag"		: [String, null]
+					},
+					options = nopt(knownOpts);
 
-    // Get all options
-    var nopt = require("nopt"),
-				knownOpts = {
-					"build" : Boolean,
-					"none"	: Boolean,
-          "patch" : Boolean,
-          "minor" : Boolean,
-          "major" : Boolean,
-          "amend" : Boolean,
-          "commit": [String, null],
-          "tag"		: [String, null]
-				},
-				options = nopt(knownOpts);
+			//build
+			grunt.config('build', options.build );
 
-		//build
-		grunt.config('build', options.build );
+			//newVersion
+			grunt.config('newVersion',
+					options.none ? 'none' :
+					options.patch ? 'patch' :
+					options.minor ? 'minor' :
+					options.major ? 'major' :
+					'patch'
+			);
 
-		//newVersion
-		grunt.config('newVersion',
-				options.none ? 'none' :
-				options.patch ? 'patch' :
-				options.minor ? 'minor' :
-				options.major ? 'major' :
-				'patch'
-		);
+			//commit = 'commit' or 'amend'
+			grunt.config('commit', 'commit');
+			grunt.config('commitMessage', options.commit || '');
+			if (options.amend){
+				//Check if 'git commit --amend' is allowed
+				if (grunt.config('gitinfo').local.branch.current.SHA == grunt.config('gitinfo').remoteSHA)
+					//Can't amend because current commit is already push
+					grunt.fail.fatal('The last local commit has been push to remote => only "new" commit is possible.');
+				else
+					grunt.config('commit', 'amend');
+			}
+			grunt.config('tagMessage', options.tag || '');
 
-		//commit = 'commit' or 'amend'
-		grunt.config('commit', 'commit');
-		grunt.config('commitMessage', options.commit || '');
-		if (options.amend){
-			//Check if 'git commit --amend' is allowed
-			if (grunt.config('gitinfo').local.branch.current.SHA == grunt.config('gitinfo').remoteSHA)
-				//Can't amend because current commit is already push
-			  grunt.fail.fatal('The last local commit has been push to remote => only "new" commit is possible.');
-			else
-				grunt.config('commit', 'amend');
-		}
-		grunt.config('tagMessage', options.tag || '');
-
-
-		grunt.task.run('_github_action_list');
-		grunt.config('continue', true);
-		grunt.task.run('_github_run_tasks');
-
-	});
+			grunt.task.run('_github_action_list');
+			grunt.config('continue', true);
+			grunt.task.run('_github_run_tasks');
+		});
 
 	//*********************************************************
-	//CREATE THE "GITHUB" TAST
+	//CREATE THE "PUSH" TAST (alias "GITHUB") but only for PACKAGE
 	//*********************************************************
-	grunt.registerTask('github', function(){
-		grunt.task.run('prompt:github_build_version');
-		grunt.task.run('_github_commit');
-		grunt.task.run('_github_commit_and_tag_message');
-		grunt.task.run('_github_action_list');
-		grunt.task.run('_github_confirm');
-		grunt.task.run('_github_run_tasks');
-	});
+	grunt.registerTask('github', ['push']);
+	if (isApplication)
+		grunt.registerTask('push', function(){
+			grunt.fail.fatal('The tast "push" (and alias "github") is not avaiable for applications')
+		});
+	else
+		grunt.registerTask('push', function(){
+			grunt.task.run('prompt:github_build_version');
+			grunt.task.run('_github_commit');
+			grunt.task.run('_github_commit_and_tag_message');
+			grunt.task.run('_github_action_list');
+			grunt.task.run('_github_confirm');
+			grunt.task.run('_github_run_tasks');
+		});
 
 	//*********************************************************
 	//Internal tasks used by task "GITHUB" and "GITHUB-CLI"
@@ -1148,7 +1143,7 @@ concat_options_css
 	grunt.registerTask('_bower_update_and_create_in_temp', bowerTasks);
 
 	//*********************************************************
-	//CREATE THE "DEV" AND "PROD" TAST
+	//CREATE THE "DEV" AND "BUILD" TAST (alias "PROD")
 	//*********************************************************
 
 	//Create the task _create_dev_links
@@ -1200,8 +1195,8 @@ concat_options_css
 	//********************************************************************
 
 
-	var tasks				= [],
-			isProdTasks = true,
+	var tasks					= [],
+			isBuildTasks	= true,
 			isDevTasks;
 
 
@@ -1211,13 +1206,13 @@ concat_options_css
 
 	for (var i=0; i<2; i++ ){
 		tasks = [];
-		isDevTasks = !isProdTasks;
+		isDevTasks = !isBuildTasks;
 
 
-		tasks.push( isProdTasks ? '_set_process_env_PROD' : '_set_process_env_DEV');
+		tasks.push( isBuildTasks ? '_set_process_env_PROD' : '_set_process_env_DEV');
 
 		//Run "before-commands" (if any)
-		tasks.push( isProdTasks ? '_before_prod' : '_before_dev');
+		tasks.push( isBuildTasks ? '_before_prod' : '_before_dev');
 
 		//ALWAYS CLEAN /temp, AND /temp_dist AND Update bower-components AND CHECK SYNTAX
 		tasks.push(
@@ -1228,12 +1223,12 @@ concat_options_css
 
 
 		//If it is a application or prod => save bower.json to _ORIGINAL_bower.json and save bower.json with the new full overrides
-//		if (isApplication || isProdTasks){
+//		if (isApplication || isBuildTasks){
 //		  tasks.push('json_generator:bower_json_to_ORIGINAL'); //MANGLER - skal det ske her?
 //		}
 
 		//BUILD JS (AND CSS) FROM SRC
-		if (isProdTasks){
+		if (isBuildTasks){
 			tasks.push(
 				'clean:dist',
 				'copy:src_to_temp'	//Copy all ** from src to temp
@@ -1263,7 +1258,7 @@ concat_options_css
 				tasks.push(	'clean:temp' );											//clean /temp
 
 
-		} //end of if (isProdTasks){...
+		} //end of if (isBuildTasks){...
 
 
 		//BUILD BOWER COMPONENTS
@@ -1273,7 +1268,7 @@ concat_options_css
 
 
 		//MODIFY (RENAME AND/OR MOVE) FILES IN DEV OR IN TEMP_DIST BEFORE THEY ARE MOVED TO DIST
-		if (isApplication && isProdTasks){
+		if (isApplication && isBuildTasks){
 			//Minify or copy bower_components.js and/or bower_components.css to bower_components.min.js/css
 			tasks.push( minimizeBowerComponentsJS		? 'uglify:temp_dist_bower_js'		: 'copy:temp_dist_bower_js_to_bower_min_js'		);
 			tasks.push( minimizeBowerComponentsCSS	? 'cssmin:temp_dist_bower_css'	: 'copy:temp_dist_bower_css_to_bower_min_css' );
@@ -1304,7 +1299,7 @@ concat_options_css
 			);
 		}
 
-		if (isPackage && isProdTasks){
+		if (isPackage && isBuildTasks){
 			//Rename all src.* to "name".*
 			if (haveJavaScript)
 				tasks.push('rename:srcjs_to_namejs');
@@ -1316,7 +1311,7 @@ concat_options_css
 			tasks.push( 'copy:temp_dist_to_demo' );	//Copy all files from temp_dist to demo
 		}
 
-		if (isProdTasks){
+		if (isBuildTasks){
 			tasks.push( 'copy:temp_dist_to_dist' );	//Copy all files from temp_dist to dist
 		}
 
@@ -1328,14 +1323,14 @@ concat_options_css
 		}
 
 		//Copies alle files in src\_dist_files to demo, dev, or dist, excl. '_*.*'
-		if (isProdTasks)
+		if (isBuildTasks)
 			tasks.push( 'copy:src__dist_files_to_dist' );		//Copies alle files in src\_dist_files to dist, excl. '_*.*'
 		else
 			tasks.push( isApplication ? 'copy:src__dist_files_to_dev': 'copy:src__dist_files_to_demo' );		//Copies alle files in src\_dist_files to dev or demo, excl. '_*.*'
 
 
 		//If it is a application or prod => restore bower.json from _ORIGINAL_bower.json
-//		if (isApplication || isProdTasks)
+//		if (isApplication || isBuildTasks)
 //		  tasks.push('_restore_bower_json');
 
 		if (cleanUp)
@@ -1343,14 +1338,15 @@ concat_options_css
 
 
 		//Run "after-commands" (if any)
-		tasks.push( isProdTasks ? '_after_prod' : '_after_dev');
+		tasks.push( isBuildTasks ? '_after_prod' : '_after_dev');
 
 
 		//Register tasks
-		grunt.registerTask(isProdTasks ? 'prod' : 'dev'	,	tasks);
+		grunt.registerTask(isBuildTasks ? 'build' : 'dev'	,	tasks);
 
-		isProdTasks = !isProdTasks;
+		isBuildTasks = !isBuildTasks;
 	}
+	grunt.registerTask('prod', ['build']);
 
 
 	//*********************************************************
@@ -1358,11 +1354,12 @@ concat_options_css
 	//*********************************************************
 
 	function _addPackage( pname, bowerJson, options, firstLevel, dotBowerJson ){
-		options.list.push({
-			name		: bowerJson.name			|| dotBowerJson.name			|| pname,
-			homepage: bowerJson.homepage	|| dotBowerJson.homepage	|| '',
-			version	: bowerJson.version		|| dotBowerJson.version		|| ''
-		});
+		if (!firstLevel)
+		  options.list.push({
+				name		: bowerJson.name			|| dotBowerJson.name			|| pname,
+				homepage: bowerJson.homepage	|| dotBowerJson.homepage	|| '',
+				version	: bowerJson.version		|| dotBowerJson.version		|| ''
+			});
 	}
 
 	grunt.registerTask('_create_application_md', function(){
@@ -1378,7 +1375,7 @@ concat_options_css
 		});
 
 		for (var i=0; i<options.list.length; i++ )
-			grunt.log.writeln(options.list[i].name, options.list[i].version);
+			grunt.log.writeln(options.list[i].name, options.list[i].version, options.list[i].homepage);
 	});
 
 
