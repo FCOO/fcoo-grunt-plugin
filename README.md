@@ -209,23 +209,24 @@ Contains inclusion of the grunt-plugin and the different options to define the t
 		fcoo_grunt_plugin: {
 			options: {
 
-	"isApplication" : false,  //true for stand-alone applications. false for packages/plugins
-	"haveJavaScript": true,	//true if the packages have js-files
-	"haveStyleSheet": true,	//true if the packages have css and/or scss-files
-	"haveGhPages"   : true,	//true if there is a branch "gh-pages" used for demos
+	"isApplication" : false, //true for stand-alone applications. false for packages/plugins
+	"haveJavaScript": true,  //true if the application/packages have js-files
+	"haveStyleSheet": true,  //true if the application/packages have css and/or scss-files
+	"haveGhPages"   : true,  //Only for packages: true if there is a branch "gh-pages" used for demos
 
 	"minimizeBowerComponentsJS" : true, //Only for application: Minifies the bower components js-file	
-	"minimizeBowerComponentsCSS": true, //Only for application: Minifies the bower components css-file		
+	"minimizeBowerComponentsCSS": true, //Only for application: Minifies the bower components css-file	
 
-	"beforeProdCmd": "",  //Cmd to be run at the start of prod-task. Multi cmd can be separated by "&"
-	"beforeDevCmd" : "",	//Cmd to be run at the start of dev-task. Multi cmd can be separated by "&"
-	"afterProdCmd" : "",	//Cmd to be run at the end of prod-task. Multi cmd can be separated by "&"
-	"afterDevCmd"   : "",	//Cmd to be run at the end of dev-task. Multi cmd can be separated by "&"
+	"beforeProdCmd": "", //Cmd to be run at the start of prod-task. Multi cmd can be seperated by "&"
+	"beforeDevCmd" : "", //Cmd to be run at the start of dev-task
+	"afterProdCmd" : "", //Cmd to be run at the end of prod-task
+	"afterDevCmd"  : "", //Cmd to be run at the end of dev-task
 
-	"exitOnJSHintError"  : true,  //if false any error in JSHint will not exit the task
-	"cleanUp"            : true,	//In debug: set to false
-	"bowerCheckExistence": true,	//true=all bower components must be present. false=allows missing files (only in debug)
+	"exitOnJSHintError"  : true, //if false any error in JSHint will not exit the task
+	"cleanUp"            : true, //In debug: set to false
+	"bowerCheckExistence": true, //true=all bower components must be pressent. false=allows missing files (only in debug)
 	"bowerDebugging"     : false
+
 
 			}
 		}
