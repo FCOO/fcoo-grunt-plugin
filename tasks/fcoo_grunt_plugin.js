@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 	var stripJsonComments	= require('strip-json-comments');
 	var semver						= require('semver');
 	var getobject					= require('getobject');
-	
+
 	//*******************************************************
 	//Capture the log.header function to remove the 'Running tast SOMETHING" message
 	grunt.log.header = function(txt){
@@ -100,8 +100,8 @@ module.exports = function(grunt) {
 	}
 	//*******************************************************
 
-	
-	
+
+
 	//**************************************************************************************
 	//Get options
 	var options = grunt.config.get('fcoo_grunt_plugin').default,
@@ -112,8 +112,8 @@ module.exports = function(grunt) {
 				"haveStyleSheet"							: true,		//true if the application/packages have css and/or scss-files
 				"haveGhPages"									: true,		//Only for packages: true if there is a branch "gh-pages" used for demos
 
-				"minimizeBowerComponentsJS"		: true,		//Only for application: Minifies the bower components js-file		
-				"minimizeBowerComponentsCSS"	: true,		//Only for application: Minifies the bower components css-file		
+				"minimizeBowerComponentsJS"		: true,		//Only for application: Minifies the bower components js-file
+				"minimizeBowerComponentsCSS"	: true,		//Only for application: Minifies the bower components css-file
 
 				"beforeProdCmd"								: "",			//Cmd to be run at the start of prod-task. Multi cmd can be seperated by "&"
 				"beforeDevCmd"								: "",			//Cmd to be run at the start of dev-task
@@ -128,8 +128,8 @@ module.exports = function(grunt) {
 			avaliableTasks = []; //Tasts avaliable
 
 	//Updates options with missing options from defaultOptions
-	for (var id in defaultOptions) 
-		if (defaultOptions.hasOwnProperty(id) && !options.hasOwnProperty(id)) 
+	for (var id in defaultOptions)
+		if (defaultOptions.hasOwnProperty(id) && !options.hasOwnProperty(id))
 			options[id] = defaultOptions[id];
 
 	//Setting avaliable tasks and fixed options - used to fix older settings
@@ -647,6 +647,7 @@ concat_options_css
 	//**************************************************************************************
 	//Load grunt-packages
 	//**************************************************************************************
+//	var test = readJSONFile('
 	function loadPackage( name ){
 		grunt.loadTasks(__dirname + '/../node_modules/'+name+'/tasks');
 	};
@@ -689,7 +690,7 @@ concat_options_css
 				  return true;
 			return false;
 		}
-		
+
 		writelnYellow('*************************************************************************');
 		writelnYellow('Run one of the following commands:');
 		if (tastAvaliable('check'))
