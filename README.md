@@ -313,6 +313,7 @@ To stop it run
 
 ### Edit
 To publish a new version of the plugin do the following
+
 1.	Editing the tast-file `tasks/fcoo_grunt_plugin.js`
 2.	Commit the changes to `git`
 3.	Run `>npm version [patch | minor | major]`

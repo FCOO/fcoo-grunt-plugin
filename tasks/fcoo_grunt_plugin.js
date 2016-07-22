@@ -654,7 +654,8 @@ concat_options_css
 
 	for (packageName in pluginDependencies)
 		if ( pluginDependencies.hasOwnProperty(packageName) ){
-			dirName = __dirname + '/../node_modules/'+packageName+'/tasks';
+			//dirName = __dirname + '/../node_modules/'+packageName+'/tasks';
+			dirName = __dirname + '/../../'+packageName+'/tasks';
 			if ( grunt.file.isDir(dirName) )
 			  grunt.loadTasks(dirName)
 		}
