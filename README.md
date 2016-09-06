@@ -5,6 +5,8 @@
 [github]: https://github.com
 [grunt_setup.json]: #grunt_setupjson
 [grunt-bower-concat]: https://www.npmjs.com/package/grunt-bower-concat
+[eslint]: http://eslint.org/
+[uglify]: https://github.com/gruntjs/grunt-contrib-uglify
 
 # grunt-fcoo-grunt-plugin
 
@@ -17,6 +19,7 @@ Used in the development environment described in [fcoo-web-dev][] and normally i
 2. [Packages tasks](#package-task): List of and specifications for available tasks for *Packages*
 2. [Application tasks](#application-task): List of and specifications for available tasks for *Applications*
 2. [`gruntfile.js`](#gruntfile.js): Descriptions of the options for  `grunt-fcoo-grunt-plugin`
+3. [Tools](#tools): Descriptions and documentation for third-party tools (ESLint, UglifyJS, browserslist etc.)
 3. [Main files, dependencies overrides and resolutions](#dependencies): Note on difference between the `overrides` in `bower.json` and `options` in [grunt-bower-concat][]
 4. [Miscellaneous](#miscellaneous)
 
@@ -45,15 +48,15 @@ To execute a command just run
 <a name="package-task"></a>
 ---
 ## Package tasks
-- `grunt check` - Check the syntax of all `.js` and `.scss` files in `\src`
-- `grunt dev` - Building a development version in `\demo` or `\dev` 
+- `grunt check` - Check the syntax of all `.js` files in `\app\scripts` and all `.scss` files in `\app\styles`
+- `grunt dev` - Building a development version in `\demo` 
 - `grunt build` - Building a production version in `\dist`. Same as`grunt prod`
 - `grunt push` - Create a complete new release and push it to GitHub. Same as `grunt github`
 - `grunt push-cli {OPTIONS}` - Same as `grunt push` but with options instead of prompt. Same as `grunt github-cli {OPTIONS}`
 
 ### `>grunt check`
-- Check the syntax of all `.js` files in `\src` using [JSHint](#jshint)
-- Check the syntax of all `.scss` in `\src`
+- Check the syntax of all `.js` files in `\app\scripts` using [ESLint](eslint)
+- Check the syntax of all `.scss` files in `\app\styles`
 
 ### `>grunt dev`
 Building a development version in `\demo`
@@ -65,7 +68,7 @@ Building a development version in `\demo`
 To test your package just browse
 `\demo\index.html`
 
-- Check syntax of `.js` and `.scss` files in `\src`
+- Check syntax of `\app\scripts\*.js` and `\app\styles\*.scss` files
 - Merge all `overrides` from dependences into `bower.json` temporary
 - Update all bower components
 - Concat all `.js` and `.css` files in bower components into `\demo\bower_components.js` and `\demo\bower_components.css`
@@ -76,7 +79,7 @@ To test your package just browse
 ### `>grunt build`
 Building a production version in `\dist`
 
-- Check syntax of `.js` and `.scss` files in `\src`
+- Check syntax of `\app\scripts\*.js` and `\app\styles\*.scss` files
 - Concat and minify all `.js` files in `\src` into one file `\dist\[PACKAGENAME].js` and `\dist\[PACKAGENAME].min.js`
 - Compile, concat and minify all `.scss` files in `\src` into one file `\dist\PACKAGENAME.css` and `\dist\PACKAGENAME.min.css`
 - Copy all images and font files in `\src` to `\dist\images` and `\dist\fonts`
@@ -142,47 +145,54 @@ Same as `grunt push` but with options
 ---
 ## Application tasks
 Where there are the following task:
-- `grunt check` - Check the syntax of all `.js` and `.scss` files in `\src`
-- `grunt dev` - Building a development version in `\demo` or `\dev` 
+- `grunt check` - Check the syntax of all `.js` files in `\app\scripts` and all `.scss` files in `\app\styles`
+- `grunt dev` - Building a development version in `\dev` 
 - `grunt build` - Building a production version in `\dist`
 
 ### `>grunt check`
-- Check the syntax of all `.js` files in `\src` using [JSHint](#jshint)
-- Check the syntax of all `.scss` in `\src`
+- Check the syntax of all `.js` files in `\app\scripts` using [ESLint](eslint)
+- Check the syntax of all `.scss` files in `\app\styles`
 
 ### `>grunt dev`
 Building a development version in `\dev`
 
-**You only need to run `grunt dev` when you**
-- add or delete a source file from `\src`
-- install/uninstall a bower-component
-- changes `src\_body.html` or `src\_head.html`
-
 To test your application just browse
 `\dev\index.html`
 
-- Check syntax of `.js` and `.scss` files in `\src`
+#### NOTE!! - You only need to run `grunt dev` when you
+
+- add or delete a source file to/from `\app\scripts` or `\app\styles` 
+- (un)install a bower-component
+- changes `\app\_index-dev.html.tmpl`
+
+#### Tasks
+- Check syntax of `\app\scripts\*.js` and `\app\styles\*.scss` files
 - Merge all `overrides` from dependences into `bower.json` temporary
 - Update all bower components
-- Concat all `.js` and `.css` files in bower components into `\demo\bower_components.js` and `\demo\bower_components.css`
-- Copy all images and font files used by bower components to `\demo\images` and `\demo\fonts`   
-- Copy all files in `\src\_dist_files` `\dev`
+- Copy all images and font files used by bower components to `\dev\images` and `\dev\fonts`   
+- Copy all files in `\app` to `\dev` (ext. `\scripts` and `\styles`)
 - Restore original `bower.json`
-- Create `\dev\index.html` from `\src\_index_TEMPLATE-DEV.html`, `\src\_head.html`, and `\src\_body.html`
-- Insert<br>`<script src="..src/PATH_AND_FILENAME.js"></script>` and<br>`<link href="..src/PATH_AND_FILENAME.css" rel="stylesheet">`<br>into `dev\index.html`for all js- and css/scss-files in `\src`
+- Create `\dev\index.html` from `\app\_index-dev.html.tmpl`
+- Insert direct `<links>` or `<script>` for all js- and css/scss-files in `\app\scripts\`, `\app\styles\`, and `\bower_components\`
 
 ### `>grunt build`
 Building a production version in `\dist`
 
-- Check syntax of `.js` and `.scss` files in `\src`
+- Check syntax of `\app\scripts\*.js` and `\app\styles\*.scss` files
 - Update all bower components   
-- Concat and minify all `.js` files in bower components **AND** in `\src` into one file `\dist\[[APPLICATIONNAME]_[TIMESTAMP].js` and `\dist\[[APPLICATIONNAME]_[TIMESTAMP].min.js`      
-- Compile all `.scss` files in `\src` and concat and minify them with all the `.css` files in bower components **AND** in `\src` into one file `\dist\[[APPLICATIONNAME]_[TIMESTAMP].css` and `\dist\[[APPLICATIONNAME]_[TIMESTAMP].min.css`
-- Create `\dist\index.html` from `\src\_index_TEMPLATE.html`, `\src\_head.html`, and `\src\_body.html`
-- Create `\dist\index-dev.html` as `\dist\index-dev.html` but with the non-minified versions of js- and css-files
+- Concat and minify all `.js` files in bower components **AND** in `\app\scripts` into one file `[[APPLICATIONNAME]_[TIMESTAMP].js` and `[[APPLICATIONNAME]_[TIMESTAMP].min.js`      
+- Compile all `.scss` files in `\app\styles` and concat them with all the `.css` files in bower components **AND** in `\app\styles` into one file `[[APPLICATIONNAME]_[TIMESTAMP].css`
+- Check, modify, and optimize stylesheets `[[APPLICATIONNAME]_[TIMESTAMP].css`
+    - Embed URLs as base64 data URIs inside the stylesheets ([grunt-css-url-embed](https://www.npmjs.com/package/grunt-css-url-embed))
+    - Optimize and minimize using [cssnano](http://cssnano.co/) 
+- Minify `[[APPLICATIONNAME]_[TIMESTAMP].js` using [UglifyJS](uglify).<br>Default Compress options are used but individual compress options can be set in `\.uglifyrc` 
+- Create `\dist\index.html` from `\app\_index.html.tmpl`
 - Copy all images and font files used by bower components to `\dist\images` and `\dist\fonts`   
-- Copy all images and font files in `\src` to `\dist\images` and `\dist\fonts`
-- Copy all files in `\src\_dist_files` to `\dist`
+- Copy all images and font files in `\app\styles` to `\dist\images` and `\dist\fonts`
+- Create all favicons using the options in `options.application` (see [`gruntfile.js`](#gruntfile.js))
+- Replace text in all `*.html`, `*.js`, and `*.css` files where `{APPLICATION_[ID]}` is replaced with the value from `options.application.[id]`. Eq. `options.application.color:"#123456"` => `{APPLICATION_COLOR}` is replaced with `#123456` (see [`gruntfile.js`](#gruntfile.js))
+- Copy all files in `\app` to `\dist` (ext. `\scripts` and `\styles`)
+- Create different log-files in `\dist\log`
 
 
 ##### Example (application='*fcoo-app*')
@@ -190,11 +200,12 @@ Building a production version in `\dist`
 	  images/
 	  fonts/
 	  index.html
-	  index-dev.html
 	  fcoo-app_2015-12-24-13_22_50.js
 	  fcoo-app_2015-12-24-13_22_50.min.js
+      fcoo-app_2015-12-24-13_22_50.min.js.map
 	  fcoo-app_2015-12-24-13_22_50.css
 	  fcoo-app_2015-12-24-13_22_50.min.css
+      fcoo-app_2015-12-24-13_22_50.min.css.map
 
 
 
@@ -206,34 +217,68 @@ Building a production version in `\dist`
 Contains inclusion of the grunt-plugin and the different options to define the type of application, extra commands etc.
 
 	grunt.initConfig({
-		fcoo_grunt_plugin: {
-			options: {
+	  fcoo_grunt_plugin: {
+	    options: {
+	     "application"   : {   //application = false or null for packages/plugins
+	       "id"             : 0,  //application id. Default=0
+	       "name"           : "", //application name. Default="FCOO.dk"
+	       "color"          : "", //background-color of favicons. Default="" => blue color of FCOO's logo. Must have format "#123456"
+	       "faviconColor"   : ""  //Color of the favicon. Default = "" => automatic set to highest contrast to "color" between 'white' and 'blue color of FCOO's logo'
+	       "faviconFileName": "", //Full path to alternative favicon. Will overwrite "color" and "faviconColor". NB: Almost never used
+	                              //..Individual id:value can be added for specific application
+	      },
+	      "haveJavaScript": true,  //true if the application/packages have js-files
+	      "haveStyleSheet": true,  //true if the application/packages have css and/or scss-files
+	      "haveGhPages"   : false, //Only for packages: true if there is a branch "gh-pages" used for demos
 
-	"isApplication" : false, //true for stand-alone applications. false for packages/plugins
-	"haveJavaScript": true,  //true if the application/packages have js-files
-	"haveStyleSheet": true,  //true if the application/packages have css and/or scss-files
-	"haveGhPages"   : true,  //Only for packages: true if there is a branch "gh-pages" used for demos
+	      "beforeProdCmd": "",     //Cmd to be run at the start of prod-task. Multi cmd can be seperated by "&"
+	      "beforeDevCmd" : "",     //Cmd to be run at the start of dev-task
+	      "afterProdCmd" : "",     //Cmd to be run at the end of prod-task
+	      "afterDevCmd"  : "",     //Cmd to be run at the end of dev-task
 
-	"minimizeBowerComponentsJS" : true, //Only for application: Minifies the bower components js-file	
-	"minimizeBowerComponentsCSS": true, //Only for application: Minifies the bower components css-file	
-
-	"beforeProdCmd": "", //Cmd to be run at the start of prod-task. Multi cmd can be seperated by "&"
-	"beforeDevCmd" : "", //Cmd to be run at the start of dev-task
-	"afterProdCmd" : "", //Cmd to be run at the end of prod-task
-	"afterDevCmd"  : "", //Cmd to be run at the end of dev-task
-
-	"exitOnJSHintError"  : true, //if false any error in JSHint will not exit the task
-	"cleanUp"            : true, //In debug: set to false
-	"bowerCheckExistence": true, //true=all bower components must be pressent. false=allows missing files (only in debug)
-	"bowerDebugging"     : false
+	      "DEBUG"        : false   //if true different debugging is on and the tempoary files are not deleted
 
 
-			}
-		}
+	    }
+	  }
 	});//end of grunt.initConfig({...
 
 
+<a name="tools"></a>
 
+---
+## Tools
+
+###ESLint
+[ESLint][eslint] is used to check the JavaScript code.
+
+[Configuring ESLint](http://eslint.org/docs/user-guide/configuring) is set in file `/.eslintrc`
+
+As default we use the [recommended rules](http://eslint.org/docs/rules/) by setting [`"eslint:recommended"`](http://eslint.org/docs/user-guide/configuring#using-eslintrecommended) and adjusting the recommended rules by setting options in `rules` section in `/.eslintrc`
+
+To change a rule setting (ee [Configuring Rules](http://eslint.org/docs/user-guide/configuring#configuring-rules)), set the rule ID to
+
+- `"off"` or `0` - turn the rule off
+- `"warn"` or `1` - turn the rule on as a warning (doesn’t affect exit code)
+- `"error"` or `2` - turn the rule on as an error (exit code is 1 when triggered)
+
+###UglifyJS
+
+[UglifyJS][uglify] is used to optimize and minimize the combined JavaScript-code in [Application tasks](#application-task) `grunt build`
+
+The Compressor Options used are the [Default Compressor Options](https://github.com/mishoo/UglifyJS2#compressor-options) except 
+
+- `drop_debugger` -- remove debugger; statements
+- `drop_console` -- default false. Pass true to discard calls to console.* functions.
+
+That are `true` when `fcoo_grunt_plugin.DEBUG: false` in `gruntfile.js` and vice versa
+
+In `.uglifyrc` you can change the compressior options individual 
+
+###browserslist 
+[browserslist](https://github.com/ai/browserslist) is a syntax used to descript witch browsers and witch version(s). It is used when checking the syntax of Style Sheets in [Application tasks](#application-task) `grunt build`
+
+The file `.browserslistrc` contains current *browserslist*
 
 
 <a name="dependencies"></a>

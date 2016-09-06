@@ -1,65 +1,137 @@
 {
-  "name": "grunt-fcoo-grunt-plugin",
-  "description": "Grunt plugin used to check and build FCOO packages and applications",
-  "version": "0.4.1",
-  "homepage": "https://github.com/FCOO/fcoo-grunt-plugin",
+  "_args": [
+    [
+      {
+        "raw": "grunt-fcoo-grunt-plugin@^0.4.0",
+        "scope": null,
+        "escapedName": "grunt-fcoo-grunt-plugin",
+        "name": "grunt-fcoo-grunt-plugin",
+        "rawSpec": "^0.4.0",
+        "spec": ">=0.4.0 <0.5.0",
+        "type": "range"
+      },
+      "C:\\web-dev\\TEST-gruntfile.js-APPLICATION"
+    ]
+  ],
+  "_from": "grunt-fcoo-grunt-plugin@>=0.4.0 <0.5.0",
+  "_id": "grunt-fcoo-grunt-plugin@0.4.1",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/grunt-fcoo-grunt-plugin",
+  "_nodeVersion": "4.4.7",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/grunt-fcoo-grunt-plugin-0.4.1.tgz_1469194566261_0.598658496979624"
+  },
+  "_npmUser": {
+    "name": "nielsholt",
+    "email": "niels@steenbuchholt.dk"
+  },
+  "_npmVersion": "3.10.5",
+  "_phantomChildren": {
+    "abbrev": "1.0.9"
+  },
+  "_requested": {
+    "raw": "grunt-fcoo-grunt-plugin@^0.4.0",
+    "scope": null,
+    "escapedName": "grunt-fcoo-grunt-plugin",
+    "name": "grunt-fcoo-grunt-plugin",
+    "rawSpec": "^0.4.0",
+    "spec": ">=0.4.0 <0.5.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-0.4.1.tgz",
+  "_shasum": "593a57fc4b95a0774c3d5ea51d98fcf47ffa8842",
+  "_shrinkwrap": null,
+  "_spec": "grunt-fcoo-grunt-plugin@^0.4.0",
+  "_where": "C:\\web-dev\\TEST-gruntfile.js-APPLICATION",
   "author": {
     "name": "Niels Holt",
     "email": "nho@fcoo.dk"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/FCOO/fcoo-grunt-plugin.git"
-  },
   "bugs": {
     "url": "https://github.com/FCOO/fcoo-grunt-plugin/issues"
   },
+  "dependencies": {
+    "getobject"             : "^0.1.0",
+    "grunt-auto-install"    : "^0.3.0",
+    "grunt-bower-concat"    : "^1.0.0",
+    "grunt-bower"           : "^0.21.2",
+    "grunt-bower-install"   : "^1.6.0",
+    "grunt-continue"        : "^0.1.0",
+    "grunt-contrib-clean"   : "^1.0.0",
+    "grunt-contrib-concat"  : "^1.0.0",
+    "grunt-contrib-copy"    : "^1.0.0",
+    "grunt-curl"            : "^2.2.0",
+    "grunt-image"           : "^2.2.0",
+    "grunt-svg-modify"      : "^0.0.7",
+    "grunt-contrib-rename"  : "^0.0.3",
+    "grunt-contrib-uglify"  : "^2.0.0",
+    "grunt-exec"            : "^0.4.6",
+    "grunt-gitinfo"         : "^0.1.7",
+    "grunt-jsonmin"         : "^0.2.4",
+    "grunt-prompt"          : "^1.3.3",
+    "grunt-sass"            : "^1.1.0",
+    "grunt-text-replace"    : "^0.4.0",
+    "load-grunt-tasks"      : "^3.4.0",
+    "nopt"                  : "^3.0.6",
+    "semver"                : "^5.1.0",
+    "shelljs"               : "^0.6.0",
+    "strip-json-comments"   : "^2.0.1",
+    "wordwrap"              : "^1.0.0",
+    "grunt-postcss"         : "^0.8.0",
+    "grunt-css-url-embed"   : "^1.6.1",
+    "doiuse"                : "^2.4.1",
+    "cssnano"               : "^3.7.3",
+    "grunt-critical"        : "^0.2.1",
+    "main-bower-files"      : "^2.13.1",
+    "grunt-eslint"          : "^19.0.0",
+    "grunt-real-favicon"    : "^0.1.7",
+    "load-grunt-config"     : "^0.19.2"
+
+
+
+  },
+  "description": "Grunt plugin used to check and build FCOO packages and applications",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "593a57fc4b95a0774c3d5ea51d98fcf47ffa8842",
+    "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-0.4.1.tgz"
+  },
+  "engines": {
+    "node"  : ">= 0.10.0",
+    "npm"   : ">= 3.10.7"
+  },
+  "gitHead": "0fd5763c4b0bb16cab1c604996a75ea44bab55ca",
+  "homepage": "https://github.com/FCOO/fcoo-grunt-plugin",
+  "keywords": [
+    "gruntplugin"
+  ],
   "licenses": [
     {
       "type": "MIT",
       "url": "https://github.com/FCOO/fcoo-grunt-plugin/blob/master/LICENSE-MIT"
     }
   ],
-  "engines": {
-    "node": ">= 0.8.0"
+  "maintainers": [
+    {
+      "name": "nielsholt",
+      "email": "niels@steenbuchholt.dk"
+    }
+  ],
+  "name": "grunt-fcoo-grunt-plugin",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FCOO/fcoo-grunt-plugin.git"
   },
   "scripts": {
     "test": "grunt test"
   },
-  "dependencies": {
-    "getobject": "~0.1.0",
-    "grunt-auto-install": "^0.3.0",
-    "grunt-bower-concat": "~1.0.0",
-    "grunt-continue": "^0.1.0",
-    "grunt-contrib-clean": "~1.0.0",
-    "grunt-contrib-concat": "~1.0.0",
-    "grunt-contrib-copy": "~1.0.0",
-    "grunt-contrib-cssmin": "~1.0.0",
-    "grunt-contrib-jshint": "~1.0.0",
-    "grunt-contrib-rename": "~0.0.3",
-    "grunt-contrib-uglify": "~1.0.0",
-    "grunt-exec": "~0.4.6",
-    "grunt-gitinfo": "^0.1.7",
-    "grunt-json-generator": "^0.1.0",
-    "grunt-jsonmin": "~0.2.4",
-    "grunt-prompt": "~1.3.3",
-    "grunt-sass": "~1.1.0",
-    "grunt-text-replace": "~0.4.0",
-    "load-grunt-tasks": "~3.4.0",
-    "main-bower-files": "~2.11.1",
-    "nopt": "^3.0.6",
-    "semver": "~5.1.0",
-    "shelljs": "^0.6.0",
-    "strip-json-comments": "~2.0.1",
-    "wordwrap": "^1.0.0"
-  },
-  "keywords": [
-    "gruntplugin"
-  ],
-  "readme": "# grunt-fcoo-grunt-plugin\r\n\r\n> Grunt plugin used to check and build FCOO packages and applications\r\n\r\n## Getting Started\r\nThis plugin requires Grunt `~0.4.5`\r\n\r\nIf you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:\r\n\r\n```shell\r\nnpm install grunt-fcoo-grunt-plugin --save-dev\r\n```\r\n\r\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\r\n\r\n```js\r\ngrunt.loadNpmTasks('grunt-fcoo-grunt-plugin');\r\n```\r\n\r\n## The \"fcoo_grunt_plugin\" task\r\n\r\n### Overview\r\nIn your project's Gruntfile, add a section named `fcoo_grunt_plugin` to the data object passed into `grunt.initConfig()`.\r\n\r\n```js\r\ngrunt.initConfig({\r\n  fcoo_grunt_plugin: {\r\n    options: {\r\n      // Task-specific options go here.\r\n    },\r\n    your_target: {\r\n      // Target-specific file lists and/or options go here.\r\n    },\r\n  },\r\n});\r\n```\r\n\r\n### Options\r\n\r\n#### options.separator\r\nType: `String`\r\nDefault value: `',  '`\r\n\r\nA string value that is used to do something with whatever.\r\n\r\n#### options.punctuation\r\nType: `String`\r\nDefault value: `'.'`\r\n\r\nA string value that is used to do something else with whatever else.\r\n\r\n### Usage Examples\r\n\r\n#### Default Options\r\nIn this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`\r\n\r\n```js\r\ngrunt.initConfig({\r\n  fcoo_grunt_plugin: {\r\n    options: {},\r\n    files: {\r\n      'dest/default_options': ['src/testing', 'src/123'],\r\n    },\r\n  },\r\n});\r\n```\r\n\r\n#### Custom Options\r\nIn this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`\r\n\r\n```js\r\ngrunt.initConfig({\r\n  fcoo_grunt_plugin: {\r\n    options: {\r\n      separator: ': ',\r\n      punctuation: ' !!!',\r\n    },\r\n    files: {\r\n      'dest/default_options': ['src/testing', 'src/123'],\r\n    },\r\n  },\r\n});\r\n```\r\n\r\n## Contributing\r\nIn lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).\r\n\r\n## Release History\r\n_(Nothing yet)_\r\n",
-  "readmeFilename": "README.md",
-  "gitHead": "0fd5763c4b0bb16cab1c604996a75ea44bab55ca",
-  "_id": "grunt-fcoo-grunt-plugin@0.2.0",
-  "_shasum": "514d1f59b5eaaa5b612a6d0d7bcafdee5175c6db",
-  "_from": "grunt-fcoo-grunt-plugin@0.2.0"
+  "version": "0.4.1"
 }
