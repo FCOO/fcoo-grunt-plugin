@@ -56,44 +56,41 @@
     "url": "https://github.com/FCOO/fcoo-grunt-plugin/issues"
   },
   "dependencies": {
-    "getobject"             : "^0.1.0",
-    "grunt-auto-install"    : "^0.3.0",
-    "grunt-bower-concat"    : "^1.0.0",
-    "grunt-bower"           : "^0.21.2",
-    "grunt-bower-install"   : "^1.6.0",
-    "grunt-continue"        : "^0.1.0",
-    "grunt-contrib-clean"   : "^1.0.0",
-    "grunt-contrib-concat"  : "^1.0.0",
-    "grunt-contrib-copy"    : "^1.0.0",
-    "grunt-curl"            : "^2.2.0",
-    "grunt-image"           : "^2.2.0",
-    "grunt-svg-modify"      : "^0.0.7",
-    "grunt-contrib-rename"  : "^0.0.3",
-    "grunt-contrib-uglify"  : "^2.0.0",
-    "grunt-exec"            : "^0.4.6",
-    "grunt-gitinfo"         : "^0.1.7",
-    "grunt-jsonmin"         : "^0.2.4",
-    "grunt-prompt"          : "^1.3.3",
-    "grunt-sass"            : "^1.1.0",
-    "grunt-text-replace"    : "^0.4.0",
-    "load-grunt-tasks"      : "^3.4.0",
-    "nopt"                  : "^3.0.6",
-    "semver"                : "^5.1.0",
-    "shelljs"               : "^0.6.0",
-    "strip-json-comments"   : "^2.0.1",
-    "wordwrap"              : "^1.0.0",
-    "grunt-postcss"         : "^0.8.0",
-    "grunt-css-url-embed"   : "^1.6.1",
-    "doiuse"                : "^2.4.1",
-    "cssnano"               : "^3.7.3",
-    "grunt-critical"        : "^0.2.1",
-    "main-bower-files"      : "^2.13.1",
-    "grunt-eslint"          : "^19.0.0",
-    "grunt-real-favicon"    : "^0.1.7",
-    "load-grunt-config"     : "^0.19.2"
-
-
-
+    "getobject": "^0.1.0",
+    "grunt-auto-install": "^0.3.0",
+    "grunt-bower-concat": "^1.0.0",
+    "grunt-bower": "^0.21.2",
+    "grunt-bower-install": "^1.6.0",
+    "grunt-continue": "^0.1.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-curl": "^2.2.0",
+    "grunt-image": "^2.2.0",
+    "grunt-svg-modify": "^0.0.7",
+    "grunt-contrib-rename": "^0.0.3",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-exec": "^0.4.6",
+    "grunt-gitinfo": "^0.1.7",
+    "grunt-jsonmin": "^0.2.4",
+    "grunt-prompt": "^1.3.3",
+    "grunt-sass": "^1.1.0",
+    "grunt-text-replace": "^0.4.0",
+    "load-grunt-tasks": "^3.4.0",
+    "nopt": "^3.0.6",
+    "semver": "^5.1.0",
+    "shelljs": "^0.6.0",
+    "strip-json-comments": "^2.0.1",
+    "wordwrap": "^1.0.0",
+    "grunt-postcss": "^0.8.0",
+    "grunt-css-url-embed": "^1.6.1",
+    "doiuse": "^2.4.1",
+    "cssnano": "^3.7.3",
+    "grunt-critical": "^0.2.1",
+    "main-bower-files": "^2.13.1",
+    "grunt-eslint": "^19.0.0",
+    "grunt-real-favicon": "^0.1.7",
+    "load-grunt-config": "^0.19.2"
   },
   "description": "Grunt plugin used to check and build FCOO packages and applications",
   "devDependencies": {},
@@ -103,8 +100,8 @@
     "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-0.4.1.tgz"
   },
   "engines": {
-    "node"  : ">= 0.10.0",
-    "npm"   : ">= 3.10.7"
+    "node": ">= 0.10.0",
+    "npm": ">= 3.10.7"
   },
   "gitHead": "0fd5763c4b0bb16cab1c604996a75ea44bab55ca",
   "homepage": "https://github.com/FCOO/fcoo-grunt-plugin",
@@ -133,5 +130,5 @@
   "scripts": {
     "test": "grunt test"
   },
-  "version": "0.4.1"
+  "version": "1.0.0"
 }
