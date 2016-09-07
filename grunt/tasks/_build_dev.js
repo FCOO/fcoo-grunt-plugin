@@ -41,14 +41,15 @@ module.exports = function (grunt, isBuildTasks) {
         _runACmd( isBuildTasks ? options.beforeProdCmd : options.beforeDevCmd);  
     });
 
-    //ALWAYS CLEAN /temp, AND /temp_dist AND CHECK SYNTAX
+    //ALWAYS clean /temp, and /temp_dist and update bower and check syntax
     taskList.push(
         'clean:Temp',
         'clean:TempDist',
+        'bower_update',
         'check'
     );
 
-
+    
     //BUILD JS (AND CSS) FROM SRC
     if (isBuildTasks){
         taskList.push(
@@ -76,12 +77,6 @@ module.exports = function (grunt, isBuildTasks) {
             taskList.push( 'clean:Temp' ); //clean /temp
 
     } //end of if (isBuildTasks){...
-
-
-    //UPDATE BOWER COMPONENTS
-    if (isDevTasks || options.isApplication){
-        taskList.push('bower_update');
-    }
 
 
     //MODIFY (RENAME AND/OR MOVE) FILES IN DEV OR IN TEMP_DIST BEFORE THEY ARE MOVED TO DIST
@@ -244,7 +239,10 @@ module.exports = function (grunt, isBuildTasks) {
 
 
     if (options.notDEBUG)
-      taskList.push( 'clean:TempDist');
+        taskList.push( 
+            'clean:Temp',
+            'clean:TempDist'
+       );
 
     //Run "after-commands" (if any)
     taskList.push( function(){
