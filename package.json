@@ -22,7 +22,7 @@
         "spec": ">=1.0.0 <2.0.0",
         "type": "range"
       },
-      "C:\\web-dev\\TEST-gruntfile.js"
+      "C:\\web-dev\\test-application"
     ]
   ],
   "_from": "grunt-fcoo-grunt-plugin@^1.0.0",
@@ -59,7 +59,7 @@
   "_shasum": "3ae11240dcab0e705888ddb4949805f270358573",
   "_shrinkwrap": null,
   "_spec": "grunt-fcoo-grunt-plugin@^1.0.0",
-  "_where": "C:\\web-dev\\TEST-gruntfile.js",
+  "_where": "C:\\web-dev\\test-application",
   "author": {
     "name": "Niels Holt",
     "email": "nho@fcoo.dk"
@@ -102,7 +102,8 @@
     "semver": "^5.1.0",
     "shelljs": "^0.6.0",
     "strip-json-comments": "^2.0.1",
-    "wordwrap": "^1.0.0"
+    "wordwrap": "^1.0.0",
+    "grunt-css-purge": "0.0.4"
   },
   "description": "Grunt plugin used to check and build FCOO packages and applications",
   "devDependencies": {},

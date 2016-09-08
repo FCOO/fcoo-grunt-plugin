@@ -45,16 +45,11 @@ module.exports = function (grunt, isBuildTasks) {
     taskList.push(
         'clean:Temp',
         'clean:TempDist',
-        'exec:bower_update',
+        'bower_update',
         'check'
     );
 
-
-    //Run full bower update if it is an application or dev-task for package
-    if (options.isApplication || isDevTasks)
-        taskList.push('bower_update');
-
-
+    
     //BUILD JS (AND CSS) FROM SRC
     if (isBuildTasks){
         taskList.push(
@@ -110,6 +105,7 @@ module.exports = function (grunt, isBuildTasks) {
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.css -> APPLICATIONNAME_TIMPSTAMP.min.css
                 'cssUrlEmbed:encode', //Replace url( PATH ) with url('data:image/png;base64,... ). Both images and fonts
                 'postcss:optimize',   //optimize using cssnano but no minimizing
+                'css_purge',          //Remove unused styles
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css 
 
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
