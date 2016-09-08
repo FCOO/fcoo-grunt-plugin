@@ -2,7 +2,7 @@
  * exec.js - config for grunt-exec
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     return {
         bower_update       : 'bower update',

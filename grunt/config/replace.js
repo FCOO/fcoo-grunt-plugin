@@ -3,7 +3,7 @@
  * If replacement[..].to is a variable that is changed by another tast a function is used to get the current value
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var paths   = grunt.fcoo.paths,
         common  = grunt.fcoo.common,

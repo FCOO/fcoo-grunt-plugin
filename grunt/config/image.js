@@ -2,7 +2,8 @@
  * image.js - config for grunt-image
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
+
     var paths = grunt.fcoo.paths;
 
     return {

@@ -2,7 +2,7 @@
  * critical.js - config for grunt-critical
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var paths   = grunt.fcoo.paths,
         options = grunt.fcoo.options;

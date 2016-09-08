@@ -7,8 +7,8 @@ module.exports = function (grunt) {
     var common   = grunt.fcoo.common,
         options  = grunt.fcoo.options,
         paths    = grunt.fcoo.paths,
-        _console = grunt.fcoo._console;
-
+        _console = grunt.fcoo._console,
+        semver   = require('semver');
 
     
     //**************************************************
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
             //Create tagMessage
             userName   = grunt.config('gitinfo').userName || grunt.fcoo.bowerJson.authors; //grunt.fcoo.bowerJson.authors is fall-back
             tagMessage = ' -m "Version '  + newVersion + '"'  +
-                         ' -m "Released by '+ userName +' (https://github.com/'+userName+') ' +grunt.fcoo.todayStr +'"' +
+                         ' -m "Released '+ grunt.fcoo.todayStr +' by '+ userName +' (https://github.com/orgs/FCOO/people)"' +
                          (tagMessage ? ' -m "' + tagMessage + '"' : '');
 
             //Update grunt.fcoo.bowerJson

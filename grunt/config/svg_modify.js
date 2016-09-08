@@ -2,7 +2,7 @@
  * svg_modify.js - config for grunt-svg_modify
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var paths  = grunt.fcoo.paths;
 

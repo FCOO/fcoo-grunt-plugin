@@ -2,7 +2,7 @@
  * cssUrlEmbed.js - config for grunt-css-url-embed
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var paths  = grunt.fcoo.paths;
 

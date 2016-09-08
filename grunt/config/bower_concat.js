@@ -2,7 +2,7 @@
  * bower_concat.js - config for grunt-bower-concat
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var paths   = grunt.fcoo.paths;
 

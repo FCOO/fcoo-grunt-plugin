@@ -2,7 +2,7 @@
  * rename.js - config for grunt-contrib-rename
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var options = grunt.fcoo.options,
         paths   = grunt.fcoo.paths;

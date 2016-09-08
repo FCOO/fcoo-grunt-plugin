@@ -2,12 +2,11 @@
  * prompt.js - config for grunt-prompt
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
-    var options = options,
+    var options = grunt.fcoo.options,
         semver  = require('semver');
 
-    
     return {
         github_build_version: {
             options: {

@@ -2,7 +2,7 @@
  * copy.js - config for grunt-contrib-copy
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var common = grunt.fcoo.common,
         paths  = grunt.fcoo.paths,

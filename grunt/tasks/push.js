@@ -8,7 +8,7 @@ module.exports = function (grunt) {
     var common   = grunt.fcoo.common,
         options  = grunt.fcoo.options,
         paths    = grunt.fcoo.paths,
-        LogFile  = grunt.fcoo.LogFile,
+        _console = grunt.fcoo._console,
         _github  = require(__dirname + '/_github.js' )( grunt ),
         taskList = [];
 

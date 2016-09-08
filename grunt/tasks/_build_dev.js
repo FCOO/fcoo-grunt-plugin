@@ -45,11 +45,16 @@ module.exports = function (grunt, isBuildTasks) {
     taskList.push(
         'clean:Temp',
         'clean:TempDist',
-        'bower_update',
+        'exec:bower_update',
         'check'
     );
 
-    
+
+    //Run full bower update if it is an application or dev-task for package
+    if (options.isApplication || isDevTasks)
+        taskList.push('bower_update');
+
+
     //BUILD JS (AND CSS) FROM SRC
     if (isBuildTasks){
         taskList.push(

@@ -11,6 +11,10 @@ module.exports = function (grunt) {
         LogFile  = grunt.fcoo.LogFile,
         taskList = [];
 
+    //Save bower.fcoo.bowerJson in 'bower.json'
+    function write_bower_json(){
+        common.writeJSONFile('bower.json', grunt.fcoo.bowerJson);    
+    };    
 
     //Save original bower.json in _ORIGINAL_bower.json
     taskList.push ( function(){
@@ -26,7 +30,7 @@ module.exports = function (grunt) {
 
 
     //Save grunt.fcoo.bowerJson in bower.json to overwrite any updates done by >bower update --force-latest
-    taskList.push( 'write_bower.json' );
+    taskList.push( write_bower_json );
 
     //Find overrides and resolutions from all dependencies
     taskList.push( function(){
@@ -111,9 +115,8 @@ module.exports = function (grunt) {
     }); //end of grunt.registerTask('_read_overrides_and_resolutions', function(){
 
 
-
     //Save update grunt.fcoo.bowerJson in bower.json
-    taskList.push( 'write_bower.json' );
+    taskList.push( write_bower_json );
 
     //>bower update - Update dependencies bower components with new overrides and resolutions
     taskList.push( 'exec:bower_update' );

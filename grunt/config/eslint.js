@@ -2,7 +2,7 @@
  * eslint.js - config for grunt-eslint
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var options = grunt.fcoo.options,
         common  = grunt.fcoo.common,

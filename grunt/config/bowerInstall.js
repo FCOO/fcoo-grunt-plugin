@@ -2,7 +2,7 @@
  * bowerInstall.js - config for grunt-bowerInstall
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
  
     return {
         dev: {

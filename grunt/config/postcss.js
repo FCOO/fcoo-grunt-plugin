@@ -2,7 +2,7 @@
  * postcss.js - config for grunt-postcss
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var common = grunt.fcoo.common,
         paths  = grunt.fcoo.paths,

@@ -13,12 +13,7 @@ module.exports = function(grunt) {
     //Create fcoo-namespace to share data between tasks
     grunt.fcoo = {};
 
-    var semver = require('semver'),
-        path   = require('path'),
-        lodash = require('lodash');
-
-        //Adjusting path
-        //path.sep = '/';
+    var path = require('path');
 
     //Load modules from ../lib
     var _console  = grunt.fcoo._console  = require('../lib/console')( grunt ),
@@ -91,14 +86,6 @@ module.exports = function(grunt) {
 
     //Check if _ORIGINAL_bower.json exists => probably an error in last run => copy it back;
     bower.copyORIGINALToBowerJson();
-
-
-    //*********************************************************
-    //CREATE THE TASKS TO WRITE JSON-FILES
-    //*********************************************************
-    grunt.registerTask('write_bower.json', function(){
-        common.writeJSONFile('bower.json', grunt.fcoo.bowerJson);    
-    });    
 
 };
 

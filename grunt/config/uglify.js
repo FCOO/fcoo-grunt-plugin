@@ -2,7 +2,7 @@
  * uglify.js - config for grunt-contrib-uglify
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var options = grunt.fcoo.options,
         common  = grunt.fcoo.common,

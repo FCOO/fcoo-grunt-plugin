@@ -2,7 +2,7 @@
  * curl-dir.js - config for grunt-curl
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var paths   = grunt.fcoo.paths,
         options = grunt.fcoo.options;

@@ -2,7 +2,7 @@
  * sass.js - config for grunt-sass
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var common = grunt.fcoo.common,
         paths  = grunt.fcoo.paths,

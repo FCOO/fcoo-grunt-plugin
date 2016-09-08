@@ -2,7 +2,7 @@
  * concat.js - config for grunt-contrib-concat
  */
 
-module.exports = function (grunt, options) {
+module.exports = function ( grunt ) {
 
     var paths = grunt.fcoo.paths;
         
