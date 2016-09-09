@@ -64,8 +64,9 @@ module.exports = function (grunt, isBuildTasks) {
  
        if (options.haveStyleSheet)
             taskList.push(
-                'sass:build',                       //compile all sass
-                'concat:Temp_css_2_TempDist_srcCss' //Concat all *.css files from temp into temp_dist/_src.css
+                'sass:build',                        //compile all sass
+                'concat:Temp_css_2_TempDist_srcCss', //Concat all *.css files from temp into temp_dist/_src.css
+                'copy:AppStyleImagesFonts_2_Temp'    //Copy all fonts/* and images/* from app.styles to temp/ 
             );
 
         taskList.push(
