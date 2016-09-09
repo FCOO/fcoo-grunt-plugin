@@ -6,7 +6,7 @@ module.exports = function ( grunt ) {
 
     return {
         bower_update       : 'bower update',
-        bower_update_latest: 'bower update --force-latest',
+        bower_update_latest: 'bower update -f -F',
         npm_install        : 'npm install'
     }
 }
