@@ -7,7 +7,6 @@ module.exports = function ( grunt ) {
         'node_modules/grunt-fcoo-grunt-plugin/grunt/tasks', 
         function (abspath, rootdir, subdir, filename) {
             var taskName = filename.split('.')[0],
-                internalTaskNr = 0,
                 internalTaskName,
                 taskList;
 
@@ -17,10 +16,9 @@ module.exports = function ( grunt ) {
                 for (var i=0; i<taskList.length; i++ )
                     if (typeof taskList[i] == 'function'){
                         //Convert function-task to internal task
-                        internalTaskName = taskName+'_'+internalTaskNr;
+                        internalTaskName = taskName+'_'+i;
                         grunt.registerTask(internalTaskName, taskList[i]);
                         taskList[i] = internalTaskName;
-                        internalTaskNr++;
                 }
                 tasks[taskName] = taskList;
             }
