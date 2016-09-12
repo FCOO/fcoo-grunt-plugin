@@ -15,13 +15,13 @@ module.exports = function (grunt) {
    
 
     //********************************************************************************
-    //1: Check APPLICATIONNAME_TIMPSTAMP.css against the caniuse.com DB, and...
+    //0: Check APPLICATIONNAME_TIMPSTAMP.css against the caniuse.com DB, and...
     //********************************************************************************
     taskList.push( 'postcss:caniuse' );
 
         
     //********************************************************************************
-    //2: write the result to dist/log/caniuse.md and log/caniuse.txt
+    //1: write the result to dist/log/caniuse.md and log/caniuse.txt
     //********************************************************************************
     taskList.push( function(){
         var logFile = new LogFile();;
@@ -84,14 +84,14 @@ module.exports = function (grunt) {
 
     
     //********************************************************************************
-    //3: Run "bower list" and save output in dist/log/bower_list.txt
+    //2: Run "bower list" and save output in dist/log/bower_list.txt
     //********************************************************************************
     taskList.push( function(){ 
         common.runCmd('bower list >'+paths.dist_log+'bower_list.txt', true) 
     });
         
     //********************************************************************************
-    //4:Create list of all packages used by the application in dist/log/packages.md and dist/log/packages.txt
+    //3:Create list of all packages used by the application in dist/log/packages.md and dist/log/packages.txt
     //********************************************************************************
     function _addPackage( pname, bowerJson, options, firstLevel, dotBowerJson ){
         if (!firstLevel)
@@ -160,7 +160,7 @@ module.exports = function (grunt) {
     });
 
 
-    //5:Write debug-version of bower.json to dist/log/bower_debug.json
+    //4:Write debug-version of bower.json to dist/log/bower_debug.json
 //        'write_bower_debug.json'
 
 

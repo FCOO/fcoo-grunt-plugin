@@ -107,9 +107,9 @@ module.exports = function (grunt, isBuildTasks) {
                 'create_favicon', 
            
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.css -> APPLICATIONNAME_TIMPSTAMP.min.css
-                'cssUrlEmbed:encode', //Replace url( PATH ) with url('data:image/png;base64,... ). Both images and fonts
-                'postcss:optimize',   //optimize using cssnano but no minimizing
                 'css_purge',          //Remove unused styles
+                'postcss:optimize',   //optimize using cssnano but no minimizing
+                'cssUrlEmbed:encode', //Replace url( PATH ) with url('data:image/png;base64,... ). Both images and fonts
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css 
 
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js

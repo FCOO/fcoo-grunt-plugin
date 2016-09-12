@@ -100,19 +100,19 @@ module.exports = function (grunt) {
 
         //Converts grunt.fcoo.bowerJson.overrides to options for bower-concat
         var bower_concat_options = grunt.config('bower_concat');
-        bower_concat_options.mainFiles = {};
+        bower_concat_options.all.mainFiles = {};
 
         for (packageName in overrides)
             if ( overrides.hasOwnProperty(packageName) ){
                 var p_overrides = overrides[packageName];
                 if (p_overrides.main){
-                    grunt.fcoo.bower_concat_options.mainFiles[packageName] = p_overrides.main;
-                    bower_concat_options.mainFiles[packageName] = p_overrides.main;
+                    bower_concat_options.all.mainFiles[packageName] = p_overrides.main;
                 }
             }
 
         grunt.config('bower_concat', bower_concat_options);
     }); //end of grunt.registerTask('_read_overrides_and_resolutions', function(){
+
 
 
     //Save update grunt.fcoo.bowerJson in bower.json

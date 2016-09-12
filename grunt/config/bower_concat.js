@@ -6,13 +6,6 @@ module.exports = function ( grunt ) {
 
     var paths   = grunt.fcoo.paths;
 
-    //grunt.fcoo.grunt.fcoo.bower_concat_options = options for the task bower_concat:all. 
-    grunt.fcoo.bower_concat_options = {
-        dependencies: {},
-        exclude     : {},
-        mainFiles   : {}
-    };
-    
     return {
         options: {
             separator : grunt.util.linefeed + ';' + grunt.util.linefeed
