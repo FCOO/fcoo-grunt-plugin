@@ -8,7 +8,7 @@ module.exports = function ( grunt ) {
         paths  = grunt.fcoo.paths,
         lodash = require('lodash')
         
-        Temp_2_TempDist = { expand: true, cwd: paths.temp, dest: paths.temp_dist }; //temp/**/*.* => temp_dist/**/*.*
+        Temp_2_TempDist = { expand: true, cwd: paths.temp, dest: paths.temp_dist }; 
 
     return {
 
@@ -70,9 +70,9 @@ module.exports = function ( grunt ) {
 
         
         
-        //Copies alle files in app to dev, or dist, excl. '_*.*' and 'scripts/*.*' and 'styles/*.*'
-        App_2_Dev : { cwd: paths.app, dest: paths.dev,  src: common.srcExclude_(['**/*.*', '!**/'+paths.scripts+'*.*', '!**/'+paths.styles+'*.*']), expand: true },
-        App_2_Dist: { cwd: paths.app, dest: paths.dist, src: common.srcExclude_(['**/*.*', '!**/'+paths.scripts+'*.*', '!**/'+paths.styles+'*.*']), expand: true },
+        //Copies alle files in app to dev, or dist, excl. '_*.*' and 'scripts/**' and 'styles/**'
+        App_2_Dist: { cwd: paths.app, dest: paths.dist, src: common.srcExclude_(['**/*.*', '!**/'+paths.scripts+'**', '!**/'+paths.styles +'**']), expand: true },
+        App_2_Dist: { cwd: paths.app, dest: paths.dist, src: common.srcExclude_(['**/*.*', '!**/'+paths.styles +'**', '!**/'+paths.scripts+'**']), expand: true },
 
     }
 }
