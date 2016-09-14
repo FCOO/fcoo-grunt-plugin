@@ -37,7 +37,6 @@ module.exports = function ( grunt ) {
     );
     var browserslist = browserslistJSON.browserslist.join(',');
 
-    
     //Variables and function used to create caniuse-log using caniuse.com DB
     grunt.fcoo.caniuseFeatures = [];
     function caniuse_onFeatureUsage ( usageInfo ) { 
@@ -53,6 +52,15 @@ module.exports = function ( grunt ) {
             options: {
                 map: false,
                 processors: [
+                    //PostCSS plugin that generates pixel fallbacks for rem units.                    
+                    require('pixrem')({
+                        rootValue    : 16,           //Default=16     rootValue the root element font size. Can be px, rem, em, %, or unitless pixel value. Pixrem also tries to get the root font-size from CSS (html or :root) and overrides this option. Use html option to disable this behaviour.
+                        replace      : false,        //Default=false  replace replaces rules containing rems instead of adding fallbacks.
+                        atrules      : false,        //Default=false  atrules generates fallback in at-rules too (media-queries)
+                        html         : true,         //Default=true   html overrides root font-size from CSS html {} or :root {}
+                        browsers     : browserslist, //               browsers sets browser's range you want to target, based on browserslist
+                        unitPrecision: 3             //Default=3      unitPrecision control the significant digits after the decimal point                    
+                    }),
                     require('cssnano')({ 
                         autoprefixer   : { browsers: browserslist },
                         discardComments: false, //Leave comments
@@ -62,7 +70,7 @@ module.exports = function ( grunt ) {
                 ]
             },
             src : paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_css,
-            dest: paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_css
+            dest: paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_css+'NY'
         },
 
         //minimize: Minimize into APPLICATIONNAME_TIMPSTAMP.min.css and create source map file
@@ -92,6 +100,7 @@ module.exports = function ( grunt ) {
                 processors: [
                     require('doiuse')({
                         browsers      : browserslist,
+                        ignore        : ['rem'], //Is fixed in postcss:optimize by pixrem
                         onFeatureUsage: caniuse_onFeatureUsage
                     })
                 ]

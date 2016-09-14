@@ -23,17 +23,29 @@
         "type": "range"
       },
       "C:\\web-dev\\test-application"
+    ],
+    [
+      {
+        "raw": "grunt-fcoo-grunt-plugin@2.2.0",
+        "scope": null,
+        "escapedName": "grunt-fcoo-grunt-plugin",
+        "name": "grunt-fcoo-grunt-plugin",
+        "rawSpec": "2.2.0",
+        "spec": "2.2.0",
+        "type": "version"
+      },
+      "C:\\web-dev\\ifm-maps"
     ]
   ],
-  "_from": "grunt-fcoo-grunt-plugin@^1.0.0",
-  "_id": "grunt-fcoo-grunt-plugin@1.0.1",
+  "_from": "grunt-fcoo-grunt-plugin@2.2.0",
+  "_id": "grunt-fcoo-grunt-plugin@2.2.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/grunt-fcoo-grunt-plugin",
   "_nodeVersion": "4.4.7",
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/grunt-fcoo-grunt-plugin-1.0.1.tgz_1473255101001_0.48585241264663637"
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/grunt-fcoo-grunt-plugin-2.2.0.tgz_1473437462418_0.35770763154141605"
   },
   "_npmUser": {
     "name": "nielsholt",
@@ -41,25 +53,37 @@
   },
   "_npmVersion": "3.10.6",
   "_phantomChildren": {
-    "abbrev": "1.0.9"
+    "abbrev": "1.0.9",
+    "amdefine": "1.0.0",
+    "browserslist": "1.3.6",
+    "caniuse-db": "1.0.30000528",
+    "css-rule-stream": "1.1.0",
+    "duplexer2": "0.0.2",
+    "jsonfilter": "1.1.2",
+    "ldjson-stream": "1.2.1",
+    "multimatch": "2.1.0",
+    "postcss": "5.2.0",
+    "through2": "0.6.5",
+    "yargs": "3.32.0"
   },
   "_requested": {
-    "raw": "grunt-fcoo-grunt-plugin@^1.0.0",
+    "raw": "grunt-fcoo-grunt-plugin@2.2.0",
     "scope": null,
     "escapedName": "grunt-fcoo-grunt-plugin",
     "name": "grunt-fcoo-grunt-plugin",
-    "rawSpec": "^1.0.0",
-    "spec": ">=1.0.0 <2.0.0",
-    "type": "range"
+    "rawSpec": "2.2.0",
+    "spec": "2.2.0",
+    "type": "version"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-1.0.1.tgz",
-  "_shasum": "3ae11240dcab0e705888ddb4949805f270358573",
+  "_resolved": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.2.0.tgz",
+  "_shasum": "756cca8613a889a290f9252b0a60734305bc690d",
   "_shrinkwrap": null,
-  "_spec": "grunt-fcoo-grunt-plugin@^1.0.0",
-  "_where": "C:\\web-dev\\test-application",
+  "_spec": "grunt-fcoo-grunt-plugin@2.2.0",
+  "_where": "C:\\web-dev\\ifm-maps",
   "author": {
     "name": "Niels Holt",
     "email": "nho@fcoo.dk"
@@ -70,6 +94,7 @@
   "dependencies": {
     "cssnano": "^3.7.3",
     "doiuse": "^2.4.1",
+    "pixrem": "^3.0.2",
     "getobject": "^0.1.0",
     "grunt-auto-install": "^0.3.0",
     "grunt-bower": "^0.21.2",
@@ -82,6 +107,7 @@
     "grunt-contrib-rename": "^0.0.3",
     "grunt-contrib-uglify": "^2.0.0",
     "grunt-critical": "^0.2.1",
+    "grunt-css-purge": "0.0.4",
     "grunt-css-url-embed": "^1.6.1",
     "grunt-curl": "^2.2.0",
     "grunt-eslint": "^19.0.0",
@@ -102,15 +128,14 @@
     "semver": "^5.1.0",
     "shelljs": "^0.6.0",
     "strip-json-comments": "^2.0.1",
-    "wordwrap": "^1.0.0",
-    "grunt-css-purge": "0.0.4"
+    "wordwrap": "^1.0.0"
   },
   "description": "Grunt plugin used to check and build FCOO packages and applications",
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "3ae11240dcab0e705888ddb4949805f270358573",
-    "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-1.0.1.tgz"
+    "shasum": "756cca8613a889a290f9252b0a60734305bc690d",
+    "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.2.0.tgz"
   },
   "engines": {
     "node": ">= 0.10.0",
@@ -143,5 +168,15 @@
   "scripts": {
     "test": "grunt test"
   },
-  "version": "2.2.0"
+  "version": "2.2.0",
+  "warnings": [
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": ">= 0.10.0",
+        "npm": ">= 3.10.7"
+      },
+      "pkgid": "grunt-fcoo-grunt-plugin@2.2.0"
+    }
+  ]
 }
