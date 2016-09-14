@@ -93,9 +93,9 @@ module.exports = function (grunt) {
     //********************************************************************************
     //3:Create list of all packages used by the application in dist/log/packages.md and dist/log/packages.txt
     //********************************************************************************
-    function _addPackage( pname, bowerJson, options, firstLevel, dotBowerJson ){
+    function _addPackage( pname, bowerJson, depOptions, firstLevel, dotBowerJson ){
         if (!firstLevel)
-            options.list.push({
+            depOptions.list.push({
                 name    : bowerJson.name     || dotBowerJson.name     || pname,
                 homepage: bowerJson.homepage || dotBowerJson.homepage || '',
                 version : bowerJson.version  || dotBowerJson.version  || ''
@@ -103,10 +103,10 @@ module.exports = function (grunt) {
     };
 
     taskList.push( function(){
-        var options = {list:[]};
-        bower.eachDependencies( _addPackage, options);
+        var depOptions = {list:[]};
+        bower.eachDependencies( _addPackage, depOptions);
 
-        options.list.sort(function(a, b){
+        depOptions.list.sort(function(a, b){
             var aName = a.name.toLowerCase(),
                 bName = b.name.toLowerCase();
             if (aName < bName) return -1;
@@ -125,12 +125,12 @@ module.exports = function (grunt) {
             .writeMd('## Packages');
 
 
-        for (var i=0; i<options.list.length; i++ ){
+        for (var i=0; i<depOptions.list.length; i++ ){
             logFile
-                .writeMd('#### ['+options.list[i].name+']('+options.list[i].homepage+') - Version ' + options.list[i].version )
-                .writeTxt(options.list[i].name + ':' )
-                .writeTxt('    Version : '+options.list[i].version )
-                .writeTxt('    Homepage: ' + options.list[i].homepage )
+                .writeMd('#### ['+depOptions.list[i].name+']('+depOptions.list[i].homepage+') - Version ' + depOptions.list[i].version )
+                .writeTxt(depOptions.list[i].name + ':' )
+                .writeTxt('    Version : '+depOptions.list[i].version )
+                .writeTxt('    Homepage: ' + depOptions.list[i].homepage )
                 .writeTxt('');
         }
         logFile
@@ -148,8 +148,8 @@ module.exports = function (grunt) {
         grunt.fcoo.bowerDebugJson.dependencies = {};
         grunt.fcoo.bowerDebugJson.resolutions = {};
 
-        for (var i=0; i<options.list.length; i++ ){
-            var id = options.list[i].name, version = options.list[i].version;
+        for (var i=0; i<depOptions.list.length; i++ ){
+            var id = depOptions.list[i].name, version = depOptions.list[i].version;
             grunt.fcoo.bowerDebugJson.dependencies[id] = version;
             grunt.fcoo.bowerDebugJson.resolutions[id] = version;
         }
@@ -158,16 +158,6 @@ module.exports = function (grunt) {
         common.writeJSONFile( paths.dist_log + 'bower_debug.json', grunt.fcoo.bowerDebugJson );
     
     });
-
-
-    //4:Write debug-version of bower.json to dist/log/bower_debug.json
-//        'write_bower_debug.json'
-
-
-
-
-
-
 
     return taskList;
 }
