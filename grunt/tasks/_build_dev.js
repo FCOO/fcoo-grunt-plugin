@@ -44,11 +44,8 @@ module.exports = function (grunt, isBuildTasks) {
     //ALWAYS clean /temp, and /temp_dist and update bower and check syntax
     taskList.push('clean:Temp', 'clean:TempDist' );
 
-    //Update bower-components
-    if (options.isApplication)
-        taskList.push('bower_update'); //Full update with dependencies etc.
-    else
-      taskList.push('exec:bower_update_latest');
+    //ALWAYS update bower-components
+    taskList.push('shell:bower_update'); 
         
     //ALWAYS check syntax
     taskList.push( 'check' );

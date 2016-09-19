@@ -24,12 +24,16 @@ module.exports = function (grunt) {
     // All tasks after this point will be run with the force option so that grunt will continue after failures 
     taskList.push( 'continue:on' );
 
+taskList = [];
     //>bower update - Update dependencies bower components AND force latest version (for now)
     taskList.push( 
         'clean:Bower_components',
         'shell:bower_cache_clean',
         'shell:bower_update_latest' 
+//        'shell:bower_update' 
     );
+
+return taskList;
 
     //Save grunt.fcoo.bowerJson in bower.json to overwrite any updates done by >bower update --force-latest
     taskList.push( write_bower_json );
@@ -121,11 +125,7 @@ module.exports = function (grunt) {
     taskList.push( write_bower_json );
 
     //>bower update - Update dependencies bower components with new overrides and resolutions
-    taskList.push( 
-        'clean:Bower_components',
-        'shell:bower_cache_clean',
-        'shell:bower_update' 
-     );
+    taskList.push( 'shell:bower_update' );
 
     //Tasks after this point will be run without the force option so that grunt exits if they fail 
     taskList.push( 'continue:off' );
