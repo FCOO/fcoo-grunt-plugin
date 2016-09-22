@@ -59,12 +59,13 @@ module.exports = function ( grunt ) {
             expand: true
         },
 
-        //Copy  temp/_favicon/result/source/**/favicon_fcoo.svg to temp_dist/images/favicon.svg. The extra 'undefined' is due to an bug in grunt-svg-modify
+        //Copy  temp/_favicon/result/source/**/favicon.svg to temp_dist/images/favicon.svg.
         TempFaviconResultSourceFaviconSvg_2_TempDist_Images: {
-            cwd   : paths.temp__favicon_result + 'undefined/',
-            //cwd   : paths.temp__favicon_result + paths.source,
-            src   : paths.faviconSvg, 
+            cwd   : paths.temp__favicon_result,
+            src   : '**/' + paths.faviconSvg, 
             dest  : paths.temp_dist_images, 
+            flatten: true,
+            isFile: true,
             expand: true
         },
 
