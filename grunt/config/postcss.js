@@ -70,7 +70,7 @@ module.exports = function ( grunt ) {
                 ]
             },
             src : paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_css,
-            dest: paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_css+'NY'
+            dest: paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_css
         },
 
         //minimize: Minimize into APPLICATIONNAME_TIMPSTAMP.min.css and create source map file
