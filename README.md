@@ -243,13 +243,44 @@ Contains inclusion of the grunt-plugin and the different options to define the t
 	  }
 	});//end of grunt.initConfig({...
 
+### Embedding options into html-, js-, and css-files
+When running the task `>grunt build` for an application the options in `options.application` will be embedded into all html-, js-, and css-files
+The position for the options are marked with `{APPLICATION_ID` where `ID` is the upper case of the name name in `options.application`
+
+	//In gruntfile.js
+	...
+	options: {
+	    application: {
+	         "id"      : 248,
+             "name"    : "The name of the application",
+	         "myOption": true
+	    }
+	}
+
+	//In a js-file
+	var applicationId = "{APPLICATION_ID}",
+		applicationName = "{APPLICATION_NAME}",
+		myOptions = "{APPLICATION_MYOPTION}";
+	
+	//After >grunt build
+	var applicationId = "248",
+		applicationName = "The name of the application",
+		myOptions = "true";
+
+NOTE that all embedded options will be as strings.
+
+It is possible to get the options converted to other types. Eq.
+
+	myOption = ("{APPLICATION_MYOPTION}" == "true"); //boolean
+
+The packages [fcoo-application](https://github.com/FCOO/fcoo-application) contains methods to get, check, and convert application-options
 
 <a name="tools"></a>
 
 ---
 ## Tools
 
-###ESLint
+### ESLint
 [ESLint][eslint] is used to check the JavaScript code.
 
 [Configuring ESLint](http://eslint.org/docs/user-guide/configuring) is set in file `/.eslintrc`
@@ -262,7 +293,7 @@ To change a rule setting (ee [Configuring Rules](http://eslint.org/docs/user-gui
 - `"warn"` or `1` - turn the rule on as a warning (doesn’t affect exit code)
 - `"error"` or `2` - turn the rule on as an error (exit code is 1 when triggered)
 
-###UglifyJS
+### UglifyJS
 
 [UglifyJS][uglify] is used to optimize and minimize the combined JavaScript-code in [Application tasks](#application-task) `grunt build`
 
@@ -275,7 +306,7 @@ That are `true` when `fcoo_grunt_plugin.DEBUG: false` in `gruntfile.js` and vice
 
 In `.uglifyrc` you can change the compressior options individual 
 
-###browserslist 
+### browserslist 
 [browserslist](https://github.com/ai/browserslist) is a syntax used to descript witch browsers and witch version(s). It is used when checking the syntax of Style Sheets in [Application tasks](#application-task) `grunt build`
 
 The file `.browserslistrc` contains current *browserslist*
