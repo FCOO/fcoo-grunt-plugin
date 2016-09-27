@@ -7,7 +7,7 @@ module.exports = function ( grunt ) {
 
     return {
         options: {
-            stdout      : false,          //Default: true. Show stdout in the terminal.
+            stdout      : options.DEBUG,  //Default: true. Show stdout in the terminal.
             stderr      : options.DEBUG,  //Default: true. Show stderr in the terminal.
             stdin       : true,           //Default: true. Forward the terminal's stdin to the command.
             failOnError : true            //Default: true. Fail task if it encounters an error. Doesn't apply if you specify a callback.
