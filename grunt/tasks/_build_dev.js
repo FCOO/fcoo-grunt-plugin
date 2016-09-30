@@ -100,6 +100,11 @@ module.exports = function (grunt, isBuildTasks) {
                 'concat:TempDist_js_2_TempDist_appnameJs',  //Combine the _src.js and _bower_components.js => APPLICATIONNAME_TIMPSTAMP.js in temp_dist/
                 'concat:TempDist_css_2_TempDist_appnameJs', //Combine the _src.css and _bower_components.css => APPLICATIONNAME_TIMPSTAMP.css in temp_dist/
 
+                //Create index.html in temp_dist/
+                'copy:App_indexHtmlTmpl_2_TempDist_indexHtml', //Copy _index.html.tmpl from app => temp_dist/index.html
+                'replace:TempDist_html',                       //Insert meta-data and links to .js and .css in temp_dist/index.html
+            
+                
                 //Replace {APPLICATION_XXX} with current values from application-options gruntfile.js in *.html, *.js and *.css in temp_dist
                 'replace:dist_temp_ALL_application_options',
                     
@@ -114,10 +119,6 @@ module.exports = function (grunt, isBuildTasks) {
 
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
                 'uglify:build',
-
-                //Create index.html in temp_dist/
-                'copy:App_indexHtmlTmpl_2_TempDist_indexHtml', //Copy _index.html.tmpl from app => temp_dist/index.html
-                'replace:TempDist_html',                       //Insert meta-data and links to .js and .css in temp_dist/index.html
 
                 //Update index.html using critical css
                 'critical:build',
