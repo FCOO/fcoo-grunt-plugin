@@ -33,8 +33,8 @@ module.exports = function (grunt) {
         //Copy the new icon to temp_dist/images
         taskList.push('copy:TempFaviconResultSourceFaviconSvg_2_TempDist_Images');
 
-        //Run realFavicon:favicon to create all the favicons
-        taskList.push('realFavicon:favicon');
+        //Run realFavicon:all to create all the favicons
+        taskList.push('realFavicon:all');
 
         /*
         Copy a png-version of the favicon to temp_dist/images. 
@@ -73,7 +73,12 @@ module.exports = function (grunt) {
             }
         });
     
-    
+        //Creaste all files "favicons*.*" in temp/ by using the png-version as input
+        taskList.push('realFavicon:favicon');
+
+        //Copy "favicon*.*" from temp/ to temp_dist/
+        taskList.push('copy:TempFavicon_2_TempDist');
+
     }
 
     return taskList;

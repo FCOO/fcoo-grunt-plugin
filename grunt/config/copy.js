@@ -69,6 +69,16 @@ module.exports = function ( grunt ) {
             expand: true
         },
 
+        //Copy  temp/favicon*.* to temp_dist/
+        TempFavicon_2_TempDist: {
+            cwd   : paths.temp,
+            src   : 'favicon*.*', 
+            dest  : paths.temp_dist, 
+            flatten: true,
+            isFile: true,
+            expand: true
+        },
+
         
         
         //Copies alle files in app to dev, or dist, excl. '_*.*' and 'scripts/**' and 'styles/**'
