@@ -20,7 +20,6 @@ module.exports = function ( grunt ) {
                 iconsPath: './', 
                 html     : paths.temp_dist + 'index.html', //List of the HTML files where to inject favicon markups
                 design   : {
-/*
                     ios: {
                         pictureAspect  : 'backgroundAndMargin',
                         backgroundColor: options.application.color,
@@ -33,7 +32,6 @@ module.exports = function ( grunt ) {
                         },
                         appName: options.application.name
                     },
-*/
                     desktopBrowser: {},
                     windows: {
                         pictureAspect  : 'noChange',
