@@ -10,7 +10,10 @@ module.exports = function ( grunt ) {
             stdout      : options.DEBUG,  //Default: true. Show stdout in the terminal.
             stderr      : options.DEBUG,  //Default: true. Show stderr in the terminal.
             stdin       : true,           //Default: true. Forward the terminal's stdin to the command.
-            failOnError : true            //Default: true. Fail task if it encounters an error. Doesn't apply if you specify a callback.
+            failOnError : true,           //Default: true. Fail task if it encounters an error. Doesn't apply if you specify a callback.
+            execOptions: {
+                maxBuffer: Infinity
+            }
         },
         bower_update        : { command: 'bower update'      },
         bower_update_latest : { command: 'bower update -F'   },
