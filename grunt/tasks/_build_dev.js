@@ -48,7 +48,7 @@ module.exports = function (grunt, isBuildTasks) {
     taskList.push( 'check' );
 
     //Update bower-components
-    if (options.isPackage)
+    if (options.isPackage && isBuildTasks)
         taskList.push('shell:bower_update'); //Simple >bower update
     else
         taskList.push('bower_update'); //Full update
