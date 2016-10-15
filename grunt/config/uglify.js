@@ -15,16 +15,16 @@ module.exports = function ( grunt ) {
         properties      : true,             //-- rewrite property access using the dot notation, for example foo["bar"] → foo.bar
         dead_code       : true,             //-- remove unreachable code
         drop_debugger   : options.notDEBUG, //-- remove debugger; statements
-        unsafe          : true,             //(default: false) -- apply "unsafe" transformations (discussion below)
-        unsafe_comps    : true,             //(default: false) -- Reverse < and <= to > and >= to allow improved compression. This might be unsafe when an at least one of two operands is an object with computed values due the use of methods like get, or valueOf. This could cause change in execution order after operands in the comparison are switching. Compression only works if both comparisons and unsafe_comps are both set to true.
+        unsafe          : false,            //(default: false) -- apply "unsafe" transformations (discussion below)
+        unsafe_comps    : false,            //(default: false) -- Reverse < and <= to > and >= to allow improved compression. This might be unsafe when an at least one of two operands is an object with computed values due the use of methods like get, or valueOf. This could cause change in execution order after operands in the comparison are switching. Compression only works if both comparisons and unsafe_comps are both set to true.
         conditionals    : true,             //-- apply optimizations for if-s and conditional expressions
         comparisons     : true,             //-- apply certain optimizations to binary nodes, for example: !(a <= b) → a > b (only when unsafe_comps), attempts to negate binary nodes, e.g. a = !b && !c && !d && !e → a=!(b||c||d||e) etc.
         evaluate        : true,             //-- attempt to evaluate constant expressions
-        booleans        : true,             //-- various optimizations for boolean context, for example !!a ? b : c → a ? b : c
+        booleans        : false,            //-- various optimizations for boolean context, for example !!a ? b : c → a ? b : c
         loops           : true,             //-- optimizations for do, while and for loops when we can statically determine the condition
         unused          : true,             //-- drop unreferenced functions and variables
         hoist_funs      : true,             //-- hoist function declarations
-        hoist_vars      : true,             //(default: false) -- hoist var declarations (this is false by default because it seems to increase the size of the output in general)
+        hoist_vars      : false,            //(default: false) -- hoist var declarations (this is false by default because it seems to increase the size of the output in general)
         if_return       : true,             //-- optimizations for if/return and if/continue
         join_vars       : true,             //-- join consecutive var statements
         cascade         : true,             //-- small optimization for sequences, transform x, x into x and x = something(), x into x = something()
