@@ -194,7 +194,7 @@ module.exports = function (grunt, isBuildTasks) {
                 'replace:Dev_indexHtml',
 
                 //Insert <script> and <link> for bower-components in dev/index.html
-                'bowerInstall:dev',
+                'wiredep:dev',
 
                 //Copies alle files in app\ to dev, excl. '_*.*' and 'scripts' and 'styles'
                 'copy:App_2_Dev',

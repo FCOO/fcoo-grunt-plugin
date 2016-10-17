@@ -9,6 +9,7 @@ module.exports = function (grunt) {
         paths    = grunt.fcoo.paths,
         bower    = grunt.fcoo.bower,
         LogFile  = grunt.fcoo.LogFile,
+        lodash   = require('lodash'),
         taskList = [];
 
     //Save bower.fcoo.bowerJson in 'bower.json'
@@ -111,8 +112,14 @@ module.exports = function (grunt) {
                     bower_concat_options.all.mainFiles[packageName] = p_overrides.main;
                 }
             }
-
         grunt.config('bower_concat', bower_concat_options);
+
+        //Update options for wiredep with overrides and resolutions
+        var wiredep_options = grunt.config('wiredep');
+        wiredep_options.dev.overrides = lodash.merge({}, overrides );
+console.log(wiredep_options.dev.overrides, overrides );
+        grunt.config('wiredep', wiredep_options);
+    
     }); //end of grunt.registerTask('_read_overrides_and_resolutions', function(){
 
 

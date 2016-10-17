@@ -47,17 +47,29 @@
         "type": "range"
       },
       "C:\\web-dev\\ifm-maps"
+    ],
+    [
+      {
+        "raw": "grunt-fcoo-grunt-plugin@^2.0.0",
+        "scope": null,
+        "escapedName": "grunt-fcoo-grunt-plugin",
+        "name": "grunt-fcoo-grunt-plugin",
+        "rawSpec": "^2.0.0",
+        "spec": ">=2.0.0 <3.0.0",
+        "type": "range"
+      },
+      "C:\\web-dev\\ifm-maps"
     ]
   ],
   "_from": "grunt-fcoo-grunt-plugin@^2.0.0",
-  "_id": "grunt-fcoo-grunt-plugin@2.3.3",
+  "_id": "grunt-fcoo-grunt-plugin@2.5.0",
   "_inCache": true,
   "_installable": true,
   "_location": "/grunt-fcoo-grunt-plugin",
   "_nodeVersion": "4.4.7",
   "_npmOperationalInternal": {
     "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/grunt-fcoo-grunt-plugin-2.3.3.tgz_1474291089794_0.7743857172317803"
+    "tmp": "tmp/grunt-fcoo-grunt-plugin-2.5.0.tgz_1476546159044_0.032849282724782825"
   },
   "_npmUser": {
     "name": "nielsholt",
@@ -77,8 +89,8 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.3.3.tgz",
-  "_shasum": "1433183572aa6c61651daac1362601860439eb6d",
+  "_resolved": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.5.0.tgz",
+  "_shasum": "982c4bfca12addb0cc5648bf4c076b4ab1e10592",
   "_shrinkwrap": null,
   "_spec": "grunt-fcoo-grunt-plugin@^2.0.0",
   "_where": "C:\\web-dev\\ifm-maps",
@@ -96,7 +108,7 @@
     "grunt-auto-install": "^0.3.0",
     "grunt-bower": "^0.21.2",
     "grunt-bower-concat": "^1.0.0",
-    "grunt-bower-install": "^1.6.0",
+    "grunt-wiredep": "^3.0.1",
     "grunt-continue": "^0.1.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.0",
@@ -133,8 +145,8 @@
   "devDependencies": {},
   "directories": {},
   "dist": {
-    "shasum": "1433183572aa6c61651daac1362601860439eb6d",
-    "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.3.3.tgz"
+    "shasum": "982c4bfca12addb0cc5648bf4c076b4ab1e10592",
+    "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.5.0.tgz"
   },
   "engines": {
     "node": ">= 0.10.0",
