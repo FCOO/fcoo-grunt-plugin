@@ -117,7 +117,6 @@ module.exports = function (grunt) {
         //Update options for wiredep with overrides and resolutions
         var wiredep_options = grunt.config('wiredep');
         wiredep_options.dev.overrides = lodash.merge({}, overrides );
-console.log(wiredep_options.dev.overrides, overrides );
         grunt.config('wiredep', wiredep_options);
     
     }); //end of grunt.registerTask('_read_overrides_and_resolutions', function(){
