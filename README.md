@@ -244,8 +244,18 @@ Contains inclusion of the grunt-plugin and the different options to define the t
 	});//end of grunt.initConfig({...
 
 ### Embedding options into html-, js-, and css-files
-When running the task `>grunt build` for an application the options in `options.application` will be embedded into all html-, js-, and css-files
-The position for the options are marked with `{APPLICATION_ID` where `ID` is the upper case of the name name in `options.application`
+When running the task `>grunt build` for an application some default options and the options in `options.application` will be embedded into all html-, js-, and css-files
+The position for the options are marked with `{APPLICATION_ID}` where `ID` is the upper case of the default name OR name in `options.application`
+
+#### Default options
+`APPLICATION_VERSION`: The version number of the application. Taken from `bower.json`
+`APPLICATION_BUILD`: The date and time when the application was build
+
+
+#### Example
+	//In bower.json
+	...
+	version: "1.2.3",
 
 	//In gruntfile.js
 	...
@@ -258,12 +268,14 @@ The position for the options are marked with `{APPLICATION_ID` where `ID` is the
 	}
 
 	//In a js-file
-	var applicationId = "{APPLICATION_ID}",
+	var version = "{APPLICATION_VERSION}",
+		applicationId = "{APPLICATION_ID}",
 		applicationName = "{APPLICATION_NAME}",
 		myOptions = "{APPLICATION_MYOPTION}";
 	
 	//After >grunt build
-	var applicationId = "248",
+	var version = "1.2.3",
+		applicationId = "248",
 		applicationName = "The name of the application",
 		myOptions = "true";
 
