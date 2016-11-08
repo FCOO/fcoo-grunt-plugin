@@ -179,7 +179,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "version": "2.6.1",
+  "version": "2.7.0",
   "warnings": [
     {
       "code": "ENOTSUP",
