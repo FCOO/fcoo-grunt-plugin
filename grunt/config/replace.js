@@ -52,8 +52,16 @@ module.exports = function ( grunt ) {
         dist_temp_ALL_application_options: {
             src         : common.srcExclude_([paths.temp_dist+'*.html', paths.temp_dist+'*.js', paths.temp_dist+'*.css']), overwrite: true,
             replacements: options.applicationOptionsReplacements
-//                function(){ return options.applicationOptionsReplacements; }
-        
+        },
+
+        temp_deploy_staging: {
+            src: [paths.temp + '*.js'], 
+            overwrite: true, 
+            replacements: [{ 
+                from: '{s}.fcoo.dk/webmap/{dataset}.wms', 
+                to  : '{s}.fcoo.dk/webmap-staging/{dataset}.wms'
+            }]
         }
+        
     }
 }

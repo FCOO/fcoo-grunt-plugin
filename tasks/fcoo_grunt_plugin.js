@@ -29,6 +29,10 @@ module.exports = function(grunt) {
 
     grunt.fcoo.bowerJson      = common.readJSONFile('bower.json');
     grunt.fcoo.bowerDebugJson = common.readJSONFile('bower.json');
+
+    //Special json-file with login 
+    grunt.fcoo.secretJson = common.readJSONFile('secret.json');
+
         
     grunt.fcoo.script_js  = ''; //string with <script>..</script> for all *.js in app/scripts
     grunt.fcoo.link_css   = ''; //string with <link>..</link> for all *.css in app/styles

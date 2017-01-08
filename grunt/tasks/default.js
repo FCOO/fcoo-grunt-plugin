@@ -5,7 +5,8 @@
 module.exports = function (grunt) {
 
     var _console  = grunt.fcoo._console,
-        options   = grunt.fcoo.options
+        options   = grunt.fcoo.options,
+
         taskList = [];
 
 
@@ -17,7 +18,7 @@ module.exports = function (grunt) {
     }
 
     taskList.push( function(){
-        _console.writelnYellow('*************************************************************************');
+        _console.writelnYellow('****************************************************************************');
         _console.writelnYellow('Run one of the following commands:');
         if (tastAvaliable('check'))
             _console.writelnColor('>grunt check ', 'white', '=> Check the syntax of all .js and .scss files', 'yellow');
@@ -29,7 +30,17 @@ module.exports = function (grunt) {
             _console.writelnColor('>grunt push  ', 'white', '=> Create a new Github release incl. new version and tag - same as >grunt github', 'yellow');
         if (tastAvaliable('push-cli'))
             _console.writelnColor('>grunt push-cli {OPTIONS} ', 'white', '=> Create a new Github release incl. new version and tag - same as >grunt github-cli {OPTIONS}', 'yellow');
-        _console.writelnYellow('*************************************************************************');
+
+        if (options.haveDeplomentTasks){
+            _console.writelnYellow('----------------------------------------------------------------------------');
+            _console.writelnColor('>grunt deploy_staging    ', 'white', '=> Deploy application to staging server',    'yellow');
+            _console.writelnColor('>grunt deploy_beta       ', 'white', '=> Deploy application to beta server',       'yellow');
+            _console.writelnColor('>grunt deploy_production ', 'white', '=> Deploy application to production server', 'yellow');
+            _console.writelnColor('>grunt deploy_restricted ', 'white', '=> Deploy application to restricted server', 'yellow');
+
+          
+        }
+        _console.writelnYellow('****************************************************************************');
     });
 
     return taskList;

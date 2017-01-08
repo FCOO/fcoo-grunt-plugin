@@ -85,5 +85,8 @@ module.exports = function ( grunt ) {
         App_2_Dev : { cwd: paths.app, dest: paths.dev,  src: common.srcExclude_(['**/*.*', '!**/'+paths.scripts+'**', '!**/'+paths.styles +'**']), expand: true },
         App_2_Dist: { cwd: paths.app, dest: paths.dist, src: common.srcExclude_(['**/*.*', '!**/'+paths.styles +'**', '!**/'+paths.scripts+'**']), expand: true },
 
+        //Copies alle files in dist to temp
+        Dist_2_Temp : { cwd: paths.dist, dest: paths.temp,  src: '**/*.*', expand: true },
+
     }
 }
