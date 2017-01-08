@@ -140,10 +140,8 @@
     "shelljs": "^0.6.0",
     "strip-json-comments": "^2.0.1",
     "wordwrap": "^1.0.0",
-
     "curl": "^0.1.4",
     "grunt-ssh-deploy": "^0.4.1"
-
   },
   "description": "Grunt plugin used to check and build FCOO packages and applications",
   "devDependencies": {},
@@ -183,7 +181,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "version": "2.7.1",
+  "version": "2.8.0",
   "warnings": [
     {
       "code": "ENOTSUP",
