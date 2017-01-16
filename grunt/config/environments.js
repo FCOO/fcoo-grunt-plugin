@@ -9,6 +9,8 @@ module.exports = function ( grunt ) {
         options = grunt.fcoo.options,
         secret  = grunt.fcoo.secretJson;
 
+    if (!secret)
+        return {};      
 
     return {
         // do not store credentials in the git repo, store them separately and read from a secret file
