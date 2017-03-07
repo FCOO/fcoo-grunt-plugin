@@ -55,7 +55,7 @@ module.exports = function (grunt) {
                         //Check if the package is already in options.overridesList
                         if (options.overridesList[packageName]){
                             if (!options.overridesList[packageName].firstLevel)
-                                _console.writelnYellow('WARNING - The package "' + packageName + '" has overrides in both "' + bowerPackageName + '" and "' + options.overridesList[packageName].overridesInPackage + '"' );
+                                grunt.fcoo._console.writelnYellow('WARNING - The package "' + packageName + '" has overrides in both "' + bowerPackageName + '" and "' + options.overridesList[packageName].overridesInPackage + '"' );
                         }
                         else
                             options.overridesList[packageName] = {
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
                         //Check if the package is already in options.resolutionsList
                         if (options.resolutionsList[packageName]){
                             if (!options.resolutionsList[packageName].firstLevel)
-                                _console.writelnYellow('WARNING - The package "' + packageName + '" has resolutions in both "' + bowerPackageName + '" and "' + options.resolutionsList[packageName].resolutionsInPackage + '"' );
+                                grunt.fcoo._console.writelnYellow('WARNING - The package "' + packageName + '" has resolutions in both "' + bowerPackageName + '" and "' + options.resolutionsList[packageName].resolutionsInPackage + '"' );
                         }
                         else
                             options.resolutionsList[packageName] = {
