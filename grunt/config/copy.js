@@ -12,15 +12,16 @@ module.exports = function ( grunt ) {
 
     return {
 
-        //BowerComponentsImagesFonts_2_Temp: Copy all files from images/ and fonts/ found in bower_components to temp/ - options.src is set by task "create__bower_components_js_css_in_temp"
-        BowerComponentsImagesFonts_2_Temp: { cwd: paths.bower_components, src: [], dest: paths.temp, expand: true, filter: 'isFile'},
+        //BowerComponentsDataFontsImages_2_Temp: Copy all files from images/ and fonts/ found in bower_components to temp/ - options.src is set by task "create__bower_components_js_css_in_temp"
+        BowerComponentsDataFontsImages_2_Temp: { cwd: paths.bower_components, src: [], dest: paths.temp, expand: true, filter: 'isFile'},
 
-        //AppStyleImagesFonts_2_Temp: Copy all files from images/ and fonts/ found in app/style/ to temp/
-        AppStyleImagesFonts_2_Temp: { cwd: paths.app_styles, src: [paths.images+'*', paths.fonts+'*'], dest: paths.temp, expand: true, filter: 'isFile'},
+        //AppStyleDataFontsImages_2_Temp: Copy all files from data/ and fonts/ and images/ found in app/style/ to temp/
+        AppStyleDataFontsImages_2_Temp: { cwd: paths.app_styles, src: [paths.data+'*', paths.fonts+'*', paths.images+'*'], dest: paths.temp, expand: true, filter: 'isFile'},
 
         
-        Temp_images_2_TempDist: lodash.merge( {}, Temp_2_TempDist,  { flatten: true, src: common.srcExclude_(['**/' + paths.images + '*.*']), dest: paths.temp_dist_images } ),
+        Temp_data_2_TempDist  : lodash.merge( {}, Temp_2_TempDist,  { flatten: true, src: common.srcExclude_(['**/' + paths.data   + '*.*']), dest: paths.temp_dist_data   } ),
         Temp_fonts_2_TempDist : lodash.merge( {}, Temp_2_TempDist,  { flatten: true, src: common.srcExclude_(['**/' + paths.fonts  + '*.*']), dest: paths.temp_dist_fonts  } ),
+        Temp_images_2_TempDist: lodash.merge( {}, Temp_2_TempDist,  { flatten: true, src: common.srcExclude_(['**/' + paths.images + '*.*']), dest: paths.temp_dist_images } ),
 
         TempDist_2_Dist: { cwd: paths.temp_dist, dest: paths.dist, src: common.srcExclude_(['**/*.*']), expand: true},
         TempDist_2_Dev : { cwd: paths.temp_dist, dest: paths.dev , src: common.srcExclude_(['**/*.*']), expand: true},
