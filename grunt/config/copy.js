@@ -12,6 +12,20 @@ module.exports = function ( grunt ) {
 
     return {
 
+        //BowerComponentsData_2_Dev: Copy all files from data/ found in bower_components to dev/ - options.src is set by task "copy_BowerComponentsData_2_Dev" (in grunt\tasks\_build_dev.js)
+//        BowerComponentsData_2_Dev: { cwd: paths.bower_components, src: [], dest: paths.dev, expand: true, filter: 'isFile'},
+//        BowerComponentsData_2_Dev: { cwd: paths.bower_components, src: [], dest: '', expand: false, filter: 'isFile'},
+        BowerComponentsData_2_Dev: { cwd: paths.bower_components, src: [], dest: paths.dev_data, expand: true, flatten: true, filter: 'isFile' },        
+ /*       
+        BowerComponentsData_2_Dev: { cwd: 'bower_components/',
+    src: [ 'fcoo-i18next-phrases/dist/data/**' ],
+    dest: 'dev/data/',
+    expand: true, //true, //false, 
+    flatten: true, 
+    filter: 'isFile' },        
+*/
+//{expand: true, cwd: 'path/', src: ['**'], dest: 'dest/'},
+
         //BowerComponentsDataFontsImages_2_Temp: Copy all files from images/ and fonts/ found in bower_components to temp/ - options.src is set by task "create__bower_components_js_css_in_temp"
         BowerComponentsDataFontsImages_2_Temp: { cwd: paths.bower_components, src: [], dest: paths.temp, expand: true, filter: 'isFile'},
 

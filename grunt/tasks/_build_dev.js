@@ -137,8 +137,12 @@ module.exports = function (grunt, isBuildTasks) {
 
         else {
 
-            //APPLICATION_DEV: Copy app/_index-dev.html.tmpl to \dev and insert meta-data AND create links for all js- and css-files in app/scripts and app/styles and in bower-components
-
+            /*
+            APPLICATION_DEV: 
+                - Copy app/_index-dev.html.tmpl to \dev and insert meta-data
+                - Create links for all js- and css-files in app/scripts and app/styles and in bower-components
+                - Copy all files in bower_components/../dist/data to dev/data
+            */
             //Copy app/_index-dev.html.tmpl to dev/index.html
             taskList.push( 'copy:App_indexDevHtmlTmpl_2_Dev_indexHtml' );
 
@@ -205,6 +209,40 @@ module.exports = function (grunt, isBuildTasks) {
             );
 
         
+
+            //Find and copy alle data\* from bower-components to dev\data
+            //= tast "copy_BowerComponentsData_2_Dev"
+            taskList.push( function(){
+                var bowerComponentsDataDir = [],  
+                    files = require('main-bower-files')(), 
+                    file, lastFile;
+
+                for (var i=0; i<files.length; i++ ){
+                    file = files[i];
+                    file = file.replace(/\\/g, "/");
+
+                    //Remove file-name
+                    file = file.split('/');
+                    file.pop();
+                    file = file.join('/');
+
+                    if (grunt.file.isDir( file + '/' + paths.data )) {
+                        file = file.split( paths.bower_components )[1]; //Make file-path relative
+                        if (file != lastFile){
+                            bowerComponentsDataDir.push( file + '/' + paths.data   + '**' );
+                            lastFile = file;
+                       }    
+                    }    
+                }
+
+                //Update config for 'copy:BowerComponentsData_2_Dev'
+                var copyOptions = grunt.config('copy');
+                copyOptions['BowerComponentsData_2_Dev'].src = bowerComponentsDataDir;
+                grunt.config('copy', copyOptions);
+            });
+
+            taskList.push('copy:BowerComponentsData_2_Dev');
+
         } //end of APPLICATION-DEV
 
     } //end of if (options.isApplication){
