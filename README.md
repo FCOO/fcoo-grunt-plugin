@@ -383,7 +383,8 @@ It can **not** be used to *add* or *alter* dependencies and there are no options
 	- If the application/package **don't** have `resolutions` or `overrides` for the a packages => using the `resolutions` or `overrides` from the first dependences package with `resolutions` or `overrides` for the packages
 	- A warning will be displayed if two or more packages in `dependencies` has `resolutions` or `overrides` for the same packages.
 - `grunt-fcoo-grunt-plugin` will read and convert the `overrides.PACKAGENAME.`**`main`** in `bower.json` to the correct options format for [grunt-bower-concat][]
-- The `grunt-fcoo-grunt-plugin` will **not** read or convert the `overrides.PACKAGENAME.`**`dependencies`** in `bower.json` and any missing dependencies in included packages must be solved in an other way, e.g. by forking the package and correcting the `bower.json` file
+- The `grunt-fcoo-grunt-plugin` will read or convert the `overrides.PACKAGENAME.`**`dependencies`** in `bower.json` **BUT** no version-info is transferred and there are no conflict handling
+- **WARNING** The use of `overrides: { PACKAGENAME: { dependencies: {...} }}` in `bower.json` should be limited and any problems should be solved in an other way, e.g. by forking the package and correcting the `bower.json` file
 
 
 
