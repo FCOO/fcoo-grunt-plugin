@@ -55,7 +55,7 @@ module.exports = function (grunt) {
                         //Check if the package is already in options.overridesList
                         if (options.overridesList[packageName]){
                             if (!options.overridesList[packageName].firstLevel)
-                                grunt.fcoo._console.writelnYellow('WARNING - The package "' + packageName + '" has overrides in both "' + bowerPackageName + '" and "' + options.overridesList[packageName].overridesInPackage + '"' );
+                                _console.writelnYellow('WARNING - The package "' + packageName + '" has overrides in both "' + bowerPackageName + '" and "' + options.overridesList[packageName].overridesInPackage + '"' );
                         }
                         else
                             options.overridesList[packageName] = {
@@ -73,7 +73,7 @@ module.exports = function (grunt) {
                         //Check if the package is already in options.resolutionsList
                         if (options.resolutionsList[packageName]){
                             if (!options.resolutionsList[packageName].firstLevel)
-                                grunt.fcoo._console.writelnYellow('WARNING - The package "' + packageName + '" has resolutions in both "' + bowerPackageName + '" and "' + options.resolutionsList[packageName].resolutionsInPackage + '"' );
+                                _console.writelnYellow('WARNING - The package "' + packageName + '" has resolutions in both "' + bowerPackageName + '" and "' + options.resolutionsList[packageName].resolutionsInPackage + '"' );
                         }
                         else
                             options.resolutionsList[packageName] = {
@@ -86,6 +86,14 @@ module.exports = function (grunt) {
             },
             options
         );
+
+/*
+dependencies: {
+  'underscore': 'jquery',
+  'mygallery': ['jquery', 'fotorama']
+}
+
+*/
 
         //Convert options.overridesList and options.resolutionsList to new overrides and resolutions for bower.json
         var packageName,
@@ -101,16 +109,40 @@ module.exports = function (grunt) {
         grunt.fcoo.bowerJson.overrides = overrides;
         grunt.fcoo.bowerJson.resolutions = resolutions;
 
+
+
+
         //Converts grunt.fcoo.bowerJson.overrides to options for bower-concat
+        //Note: 
+        //The format for overrides.dependencies in bower.json is the same as normal dependencies: 
+        //dependencies: { "packageName": "version", "packageName2": "version2"} 
+        //BUT in bower-concat the format is 
+        //options.dependencies: {"thePackage": "packageName",..} or {"thePackage": ["packageName", "packageName2"],..}
         var bower_concat_options = grunt.config('bower_concat');
         bower_concat_options.all.mainFiles = {};
+        bower_concat_options.all.dependencies = {};
 
         for (packageName in overrides)
             if ( overrides.hasOwnProperty(packageName) ){
                 var p_overrides = overrides[packageName];
-                if (p_overrides.main){
+
+                if (p_overrides.main)
                     bower_concat_options.all.mainFiles[packageName] = p_overrides.main;
+
+                if (p_overrides.dependencies){
+                    //Add packageName to bower-concat options (if not already there)
+                    bower_concat_options.all.dependencies[packageName] = 
+                        bower_concat_options.all.dependencies[packageName] || [];
+  
+                    for(var packageId in p_overrides.dependencies) {
+                        if ( !p_overrides.dependencies.hasOwnProperty(packageId) ) 
+                            continue;
+                        //Add packageId if it isn't allready in the list
+                        if (bower_concat_options.all.dependencies[packageName].indexOf(packageId) == -1)
+                            bower_concat_options.all.dependencies[packageName].push(packageId);
+                    }
                 }
+                
             }
         grunt.config('bower_concat', bower_concat_options);
 
