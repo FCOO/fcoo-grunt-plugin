@@ -182,7 +182,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "version": "2.10.0",
+  "version": "2.11.1",
   "warnings": [
     {
       "code": "ENOTSUP",
