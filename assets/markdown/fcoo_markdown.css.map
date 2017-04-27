@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,EAAG;EAIC,gBAAgB,EAAE,gCAAgC",
+"sources": ["fcoo_markdown.scss"],
+"names": [],
+"file": "fcoo_markdown.css"
+}

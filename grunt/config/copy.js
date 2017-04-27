@@ -66,9 +66,9 @@ module.exports = function ( grunt ) {
             filter: 'isFile' 
         },
 
-        //Copy favicon_fcoo.svg from node_modules/grunt-fcoo-grunt-plugin/assets to temp/_favicon/source
-        AssetsSvg_2_Temp_FaviconSource: { 
-            cwd   : process.cwd() + '/node_modules/grunt-fcoo-grunt-plugin/assets/', 
+        //Copy favicon_fcoo.svg from node_modules/grunt-fcoo-grunt-plugin/assets/favicon to temp/_favicon/source
+        AssetsFaviconSvg_2_Temp_FaviconSource: { 
+            cwd   : paths.node_modules_fcoo_assets_favicon, 
             src   : paths.faviconSvg, 
             dest  : paths.temp__favicon_source, 
             expand: true
@@ -94,7 +94,34 @@ module.exports = function ( grunt ) {
             expand: true
         },
 
+
+        //create_markdown: Copy markdown-files from app/markdown to temp_dist or dev
+        AppMarkdown_2_TempDist: { 
+            cwd   : paths.app_markdown,
+            src   : [], //Is set by create_markdown
+            dest  : paths.temp_dist,  
+            expand: true, 
+            filter: 'isFile'
+        },
+
+        //Copy all files in node_modules/grunt-fcoo-grunt-plugin/assets/markdown to each of the markdown-diretries in temp
+        AssetsMarkdown_2_Temp: {
+            cwd   : paths.node_modules_fcoo_assets_markdown,
+            src   : common.srcExclude_('**/*.*'),
+            dest  : paths.temp_dist,  
+            expand: true, 
+            filter: 'isFile'
+        },
         
+        //Copy da.md to en.md for the markdown-directories where there are no en.md
+        daMd_2_enMd: {
+            cwd   : '',
+            src   : [paths.temp_dist + 'ANY_MARKDOWN_DIR/da.md'],
+            dest  : paths.temp_dist +  'ANY_MARKDOWN_DIR/en.md',  
+            expand: false, 
+            filter: 'isFile'
+        },
+
         
         //Copies alle files in app to dev, or dist, excl. '_*.*' and 'scripts/**' and 'styles/**'
         App_2_Dev : { cwd: paths.app, dest: paths.dev,  src: common.srcExclude_(['**/*.*', '!**/'+paths.scripts+'**', '!**/'+paths.styles +'**']), expand: true },

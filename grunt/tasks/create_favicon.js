@@ -15,8 +15,8 @@ module.exports = function (grunt) {
         taskList.push('cur-dir:favicon');
     }
     else {
-        //Copy favicon_fcoo.svg from node_modules/grunt-fcoo-grunt-plugin/assets to temp/_favicon/source
-        taskList.push( 'copy:AssetsSvg_2_Temp_FaviconSource' ); 
+        //Copy favicon_fcoo.svg from node_modules/grunt-fcoo-grunt-plugin/assets/favicon to temp/_favicon/source
+        taskList.push( 'copy:AssetsFaviconSvg_2_Temp_FaviconSource' ); 
         
         //Create the config.json for svg_modify
         taskList.push( function(){
@@ -35,6 +35,9 @@ module.exports = function (grunt) {
 
         //Run realFavicon:all to create all the favicons
         taskList.push('realFavicon:all');
+
+        //Run realFavicon:markdown to create all the favicons for the html-files created in tast create_markdown
+        taskList.push('realFavicon:markdown');
 
         /*
         Copy a png-version of the favicon to temp_dist/images. 

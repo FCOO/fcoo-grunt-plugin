@@ -1,0 +1,10 @@
+$app-favicon-color       : "{APPLICATION_FAVICONCOLOR}"; 
+$app-background-color    : "{APPLICATION_COLOR}"; 
+
+
+h1 {
+    //color           : "{APPLICATION_FAVICONCOLOR}; 
+    
+    //background-color: #{$app-background-color} !important;
+    background-color: "{APPLICATION_COLOR}" !important;
+}

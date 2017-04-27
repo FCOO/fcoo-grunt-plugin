@@ -19,6 +19,7 @@ module.exports = function (grunt) {
 
     taskList.push( function(){
         _console.writelnYellow('****************************************************************************');
+
         _console.writelnYellow('Run one of the following commands:');
         if (tastAvaliable('check'))
             _console.writelnColor('>grunt check ', 'white', '=> Check the syntax of all .js and .scss files', 'yellow');
@@ -37,9 +38,17 @@ module.exports = function (grunt) {
             _console.writelnColor('>grunt deploy_beta       ', 'white', '=> Deploy application to beta server',       'yellow');
             _console.writelnColor('>grunt deploy_production ', 'white', '=> Deploy application to production server', 'yellow');
             _console.writelnColor('>grunt deploy_restricted ', 'white', '=> Deploy application to restricted server', 'yellow');
+        }
 
+        if (options.isApplication){
+            _console.writelnYellow('----------------------------------------------------------------------------');
+            _console.writelnColor('>grunt md ', 'white', '=> Create all md-files in app/NAME as dev/NAME/index.html',    'yellow');
           
         }
+
+        
+        
+        
         _console.writelnYellow('****************************************************************************');
     });
 

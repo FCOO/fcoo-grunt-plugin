@@ -1,0 +1,18 @@
+h1 {
+  color           : {APPLICATION_FAVICONCOLOR} !important;
+  background-color: {APPLICATION_COLOR} !important;
+}
+
+
+table {
+    width: auto !important;  
+    max-width: 100%;
+    white-space: nowrap;
+}
+table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+

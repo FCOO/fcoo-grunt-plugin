@@ -29,7 +29,11 @@ module.exports = function (grunt, isBuildTasks) {
             _console.writelnYellow('************************************');
         });
 
-
+    //Set options.isBuild
+    taskList.push( function(){
+        grunt.fcoo.options.isBuild = isBuildTasks;
+    });
+    
     //Set process.env
     taskList.push( function(){
         process.env.NODE_ENV = (isBuildTasks ? 'prod' : 'dev');  
@@ -48,6 +52,7 @@ module.exports = function (grunt, isBuildTasks) {
     taskList.push( 'check' );
 
     //Update bower-components
+
     if (options.isPackage && isBuildTasks)
         taskList.push('shell:bower_update'); //Simple >bower update
     else
@@ -103,8 +108,13 @@ module.exports = function (grunt, isBuildTasks) {
 
                 //Create index.html in temp_dist/
                 'copy:App_indexHtmlTmpl_2_TempDist_indexHtml', //Copy _index.html.tmpl from app => temp_dist/index.html
-                'replace:TempDist_html',                       //Insert meta-data and links to .js and .css in temp_dist/index.html
             
+                //Create html-files from app/markdown/**/*.md
+                'create_markdown', 
+                
+                //Insert meta-data and links to .js and .css in temp_dist/index.html
+                'replace:TempDist_html', 
+
                 
                 //Replace {APPLICATION_XXX} with current values from application-options gruntfile.js in *.html, *.js and *.css in temp_dist
                 'replace:dist_temp_ALL_application_options',
@@ -195,17 +205,22 @@ module.exports = function (grunt, isBuildTasks) {
 
             
             taskList.push( 
-                //Insert meta-data and <script..> and <link...> in dev/index.html
-                'replace:Dev_indexHtml',
-
-                //Insert <script> and <link> for bower-components in dev/index.html
-                'wiredep:dev',
 
                 //Copies alle files in app\ to dev, excl. '_*.*' and 'scripts' and 'styles'
                 'copy:App_2_Dev',
 
+                //Create html-files from app/markdown/**/*.md
+                'create_markdown',
+
                 //Copy all files from temp_dist to dev
-                'copy:TempDist_2_Dev'
+                'copy:TempDist_2_Dev',
+
+                //Insert meta-data and <script..> and <link...> in dev/index.html
+                'replace:Dev_indexHtml',
+
+                //Insert <script> and <link> for bower-components in dev/index.html
+                'wiredep:dev'
+
             );
 
         

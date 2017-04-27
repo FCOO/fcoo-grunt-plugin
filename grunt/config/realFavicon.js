@@ -104,7 +104,7 @@ module.exports = function ( grunt ) {
         //********************************************************************************
         favicon = lodash.merge({}, all, {
             src : paths.temp_dist_images_faviconPng, //Path to your master picture
-            dest: paths.temp +'/'                    //Path to the directory where to store the icons
+            dest: paths.temp                         //Path to the directory where to store the icons
         });
 
         //Remove the parts not needed for creating "favicon*.*" files
@@ -120,8 +120,9 @@ module.exports = function ( grunt ) {
 
     
     return {
-        all    : all,
-        favicon: favicon
+        all     : all,
+        markdown: all,
+        favicon : favicon
     }
 }
 

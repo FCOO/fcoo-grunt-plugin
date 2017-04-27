@@ -14,7 +14,8 @@ module.exports = function ( grunt ) {
     }
     return {
         TempDist_html: {
-            src: paths.temp_dist + 'index.html', overwrite: true,
+            src      : paths.temp_dist + '**/*.html', 
+            overwrite: true,
             replacements: [
                 { from: '{APPLICATION_NAME}', to: grunt.fcoo.bowerJson.name               },
                 { from: '{BUILD}',            to: grunt.fcoo.todayStr                     },
@@ -26,7 +27,8 @@ module.exports = function ( grunt ) {
         },
 
         Dev_indexHtml: {
-            src: paths.dev + 'index.html', overwrite: true,
+            src      : paths.dev + '**/*.html', 
+            overwrite: true,
             replacements: [
                 {from: '{APPLICATION_NAME}', to: grunt.fcoo.bowerJson.name                },
                 {from: '{TITLE}',            to: options.title                            },
@@ -50,7 +52,7 @@ module.exports = function ( grunt ) {
         },
 
         dist_temp_ALL_application_options: {
-            src         : common.srcExclude_([paths.temp_dist+'*.html', paths.temp_dist+'*.js', paths.temp_dist+'*.css']), overwrite: true,
+            src         : common.srcExclude_([paths.temp_dist+'**/*.html', paths.temp_dist+'**/*.js', paths.temp_dist+'**/*.css']), overwrite: true,
             replacements: options.applicationOptionsReplacements
         },
 
