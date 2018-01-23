@@ -33,16 +33,16 @@ module.exports = function (grunt, isBuildTasks) {
     taskList.push( function(){
         grunt.fcoo.options.isBuild = isBuildTasks;
     });
-    
+
     //Set process.env
     taskList.push( function(){
-        process.env.NODE_ENV = (isBuildTasks ? 'prod' : 'dev');  
+        process.env.NODE_ENV = (isBuildTasks ? 'prod' : 'dev');
      });
-       
+
 
     //Run "before-commands" (if any)
     taskList.push( function(){
-        _runACmd( isBuildTasks ? options.beforeProdCmd : options.beforeDevCmd);  
+        _runACmd( isBuildTasks ? options.beforeProdCmd : options.beforeDevCmd);
     });
 
     //ALWAYS clean /temp, and /temp_dist and update bower and check syntax
@@ -57,7 +57,7 @@ module.exports = function (grunt, isBuildTasks) {
         taskList.push('shell:bower_update'); //Simple >bower update
     else
         taskList.push('bower_update'); //Full update
-        
+
     //BUILD JS (AND CSS) FROM SRC
     if (isBuildTasks){
         taskList.push(
@@ -69,12 +69,12 @@ module.exports = function (grunt, isBuildTasks) {
             taskList.push(
                 'concat:Temp_js_2_TempDist_srcJs' //Concat all *.js files from temp into temp_dist/_src.js
             );
- 
+
        if (options.haveStyleSheet)
             taskList.push(
                 'sass:build',                          //compile all sass
                 'concat:Temp_css_2_TempDist_srcCss',   //Concat all *.css files from temp into temp_dist/_src.css
-                'copy:AppStyleDataFontsImages_2_Temp'  //Copy all data/* and fonts/* and images/* from app.styles to temp/ 
+                'copy:AppStyleDataFontsImages_2_Temp'  //Copy all data/* and fonts/* and images/* from app.styles to temp/
             );
 
         taskList.push(
@@ -108,25 +108,25 @@ module.exports = function (grunt, isBuildTasks) {
 
                 //Create index.html in temp_dist/
                 'copy:App_indexHtmlTmpl_2_TempDist_indexHtml', //Copy _index.html.tmpl from app => temp_dist/index.html
-            
-                //Create html-files from app/markdown/**/*.md
-                'create_markdown', 
-                
-                //Insert meta-data and links to .js and .css in temp_dist/index.html
-                'replace:TempDist_html', 
 
-                
+                //Create html-files from app/markdown/**/*.md
+                'create_markdown',
+
+                //Insert meta-data and links to .js and .css in temp_dist/index.html
+                'replace:TempDist_html',
+
+
                 //Replace {APPLICATION_XXX} with current values from application-options gruntfile.js in *.html, *.js and *.css in temp_dist
                 'replace:dist_temp_ALL_application_options',
-                    
+
                 //Create all favicon etc.
-                'create_favicon', 
-           
+                'create_favicon',
+
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.css -> APPLICATIONNAME_TIMPSTAMP.min.css
-                'css_purge',          //Remove unused styles
+//HER                'css_purge',          //Remove unused styles
                 'postcss:optimize',   //optimize using cssnano but no minimizing
                 'cssUrlEmbed:encode', //Replace url( PATH ) with url('data:image/png;base64,... ). Both images and fonts
-                'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css 
+                'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css
 
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
                 'uglify:build',
@@ -148,7 +148,7 @@ module.exports = function (grunt, isBuildTasks) {
         else {
 
             /*
-            APPLICATION_DEV: 
+            APPLICATION_DEV:
                 - Copy app/_index-dev.html.tmpl to \dev and insert meta-data
                 - Create links for all js- and css-files in app/scripts and app/styles and in bower-components
                 - Copy all files in bower_components/../dist/data to dev/data
@@ -203,8 +203,8 @@ module.exports = function (grunt, isBuildTasks) {
 
             });
 
-            
-            taskList.push( 
+
+            taskList.push(
 
                 //Copies alle files in app\ to dev, excl. '_*.*' and 'scripts' and 'styles'
                 'copy:App_2_Dev',
@@ -223,13 +223,13 @@ module.exports = function (grunt, isBuildTasks) {
 
             );
 
-        
+
 
             //Find and copy alle data\* from bower-components to dev\data
             //= tast "copy_BowerComponentsData_2_Dev"
             taskList.push( function(){
-                var bowerComponentsDataDir = [],  
-                    files = require('main-bower-files')(), 
+                var bowerComponentsDataDir = [],
+                    files = require('main-bower-files')(),
                     file, lastFile;
 
                 for (var i=0; i<files.length; i++ ){
@@ -246,8 +246,8 @@ module.exports = function (grunt, isBuildTasks) {
                         if (file != lastFile){
                             bowerComponentsDataDir.push( file + '/' + paths.data   + '**' );
                             lastFile = file;
-                       }    
-                    }    
+                       }
+                    }
                 }
 
                 //Update config for 'copy:BowerComponentsData_2_Dev'
@@ -264,7 +264,7 @@ module.exports = function (grunt, isBuildTasks) {
 
     //PACKAGE
     if (options.isPackage){
-        
+
         if (isBuildTasks){
             //PACKAGE-BUILD
 
@@ -275,7 +275,7 @@ module.exports = function (grunt, isBuildTasks) {
                 taskList.push('rename:TempDist_srcCss_2_nameCss');
 
             //Copy all files from temp_dist to dist
-            taskList.push( 'copy:TempDist_2_Dist' ); 
+            taskList.push( 'copy:TempDist_2_Dist' );
         }
 
         else {
@@ -290,8 +290,8 @@ module.exports = function (grunt, isBuildTasks) {
                 'rename:TempDist__bower_components_2_TempDist_bower_components',
 
                 //Copy all files from temp_dist to demo
-                'copy:TempDist_2_Demo' 
-            ); 
+                'copy:TempDist_2_Demo'
+            );
         }
 
 
@@ -299,7 +299,7 @@ module.exports = function (grunt, isBuildTasks) {
 
 
     if (options.notDEBUG)
-        taskList.push( 
+        taskList.push(
             'clean:Temp',
             'clean:TempDist'
        );
