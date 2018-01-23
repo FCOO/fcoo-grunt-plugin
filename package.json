@@ -103,7 +103,7 @@
   },
   "dependencies": {
     "cssnano": "^3.7.3",
-"doiuse": "^4.0.0",
+    "doiuse": "^4.0.0",
     "getobject": "^0.1.0",
     "grunt-auto-install": "^0.3.0",
     "grunt-bower": "^0.21.2",
@@ -142,12 +142,11 @@
     "grunt-ssh-deploy": "^0.4.1",
     "grunt-markdown": "^0.7.0"
   },
-"resolutions": {
-    "grunt"      : "^1.0.1",
+  "resolutions": {
+    "grunt": "^1.0.1",
     "graceful-fs": "^4.0.0",
-    "minimatch"  : "^3.0.4"
-},
-
+    "minimatch": "^3.0.4"
+  },
   "description": "Grunt plugin used to check and build FCOO packages and applications",
   "devDependencies": {},
   "directories": {},
@@ -186,7 +185,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "version": "2.12.1",
+  "version": "3.0.0",
   "warnings": [
     {
       "code": "ENOTSUP",
