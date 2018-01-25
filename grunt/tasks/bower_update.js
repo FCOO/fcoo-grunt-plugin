@@ -14,22 +14,22 @@ module.exports = function (grunt) {
 
     //Save bower.fcoo.bowerJson in 'bower.json'
     function write_bower_json(){
-        common.writeJSONFile('bower.json', grunt.fcoo.bowerJson);    
-    };    
+        common.writeJSONFile('bower.json', grunt.fcoo.bowerJson);
+    };
 
     //Save original bower.json in _ORIGINAL_bower.json
     taskList.push ( function(){
-        common.writeJSONFile(bower.ORIGINALFileName, grunt.fcoo.bowerJson);    
-    });    
+        common.writeJSONFile(bower.ORIGINALFileName, grunt.fcoo.bowerJson);
+    });
 
-    // All tasks after this point will be run with the force option so that grunt will continue after failures 
+    // All tasks after this point will be run with the force option so that grunt will continue after failures
     taskList.push( 'continue:on' );
 
     //>bower update - Update dependencies bower components AND force latest version (for now)
-    taskList.push( 
+    taskList.push(
         'clean:Bower_components',
         'shell:bower_cache_clean',
-        'shell:bower_update_latest' 
+        'shell:bower_update_latest'
     );
 
     //Save grunt.fcoo.bowerJson in bower.json to overwrite any updates done by >bower update --force-latest
@@ -54,7 +54,10 @@ module.exports = function (grunt) {
                     if ( overrides.hasOwnProperty(packageName) ){
                         //Check if the package is already in options.overridesList
                         if (options.overridesList[packageName]){
-                            if (!options.overridesList[packageName].firstLevel)
+                            //Write warning if not first level and the overrides are different
+                            if (    !options.overridesList[packageName].firstLevel &&
+                                    (JSON.stringify(overrides[packageName].main) != JSON.stringify(options.overridesList[packageName].overrides.main))
+                                )
                                 grunt.fcoo._console.writelnYellow('WARNING - The package "' + packageName + '" has overrides in both "' + bowerPackageName + '" and "' + options.overridesList[packageName].overridesInPackage + '"' );
                         }
                         else
@@ -118,7 +121,7 @@ module.exports = function (grunt) {
         var wiredep_options = grunt.config('wiredep');
         wiredep_options.dev.overrides = lodash.merge({}, overrides );
         grunt.config('wiredep', wiredep_options);
-    
+
     }); //end of grunt.registerTask('_read_overrides_and_resolutions', function(){
 
 
@@ -127,17 +130,17 @@ module.exports = function (grunt) {
     taskList.push( write_bower_json );
 
     //>bower update - Update dependencies bower components with new overrides and resolutions
-    taskList.push( 
+    taskList.push(
         'clean:Bower_components',
         'shell:bower_cache_clean',
-        'shell:bower_update' 
+        'shell:bower_update'
      );
 
-    //Tasks after this point will be run without the force option so that grunt exits if they fail 
+    //Tasks after this point will be run without the force option so that grunt exits if they fail
     taskList.push( 'continue:off' );
 
     //Restore original bower.json
-    taskList.push( bower.copyORIGINALToBowerJson ); 
+    taskList.push( bower.copyORIGINALToBowerJson );
 
     return taskList;
 }
