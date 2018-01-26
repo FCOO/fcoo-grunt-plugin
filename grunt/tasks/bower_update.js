@@ -105,16 +105,39 @@ module.exports = function (grunt) {
         grunt.fcoo.bowerJson.resolutions = resolutions;
 
         //Converts grunt.fcoo.bowerJson.overrides to options for bower-concat
+        //Note:
+        //The format for overrides.dependencies in bower.json is the same as normal dependencies:
+        //dependencies: { "packageName": "version", "packageName2": "version2"}
+        //BUT in bower-concat the format is
+        //options.dependencies: {"thePackage": "packageName",..} or {"thePackage": ["packageName", "packageName2"],..}
         var bower_concat_options = grunt.config('bower_concat');
         bower_concat_options.all.mainFiles = {};
+        bower_concat_options.all.dependencies = {};
 
         for (packageName in overrides)
             if ( overrides.hasOwnProperty(packageName) ){
                 var p_overrides = overrides[packageName];
-                if (p_overrides.main){
+
+                //Update options.mainFiles
+                if (p_overrides.main)
                     bower_concat_options.all.mainFiles[packageName] = p_overrides.main;
+
+                //Update options.dependencies
+                if (p_overrides.dependencies){
+                    //Add packageName to bower-concat options (if not already there)
+                    bower_concat_options.all.dependencies[packageName] =
+                        bower_concat_options.all.dependencies[packageName] || [];
+
+                    for(var packageId in p_overrides.dependencies) {
+                        if ( !p_overrides.dependencies.hasOwnProperty(packageId) )
+                            continue;
+                        //Add packageId if it isn't allready in the list
+                        if (bower_concat_options.all.dependencies[packageName].indexOf(packageId) == -1)
+                            bower_concat_options.all.dependencies[packageName].push(packageId);
+                    }
                 }
             }
+
         grunt.config('bower_concat', bower_concat_options);
 
         //Update options for wiredep with overrides and resolutions
