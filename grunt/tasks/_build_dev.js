@@ -129,6 +129,7 @@ module.exports = function (grunt, isBuildTasks) {
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css
 
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
+                'babel',
                 'uglify:build',
 
                 //Update index.html using critical css

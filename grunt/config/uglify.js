@@ -27,7 +27,7 @@ module.exports = function ( grunt ) {
         hoist_vars      : false,            //(default: false) -- hoist var declarations (this is false by default because it seems to increase the size of the output in general)
         if_return       : true,             //-- optimizations for if/return and if/continue
         join_vars       : true,             //-- join consecutive var statements
-        cascade         : true,             //-- small optimization for sequences, transform x, x into x and x = something(), x into x = something()
+//DEPRECATED        cascade         : true,            //-- small optimization for sequences, transform x, x into x and x = something(), x into x = something()
         collapse_vars   : true,             //-- default false. Collapse single-use var and const definitions when possible.
         warnings        : options.DEBUG,    //-- display warnings when dropping unreachable code or unused declarations etc.
         negate_iife     : true,             //-- negate "Immediately-Called Function Expressions" where the return value is discarded, to avoid the parens that the code generator would insert.
@@ -40,7 +40,7 @@ module.exports = function ( grunt ) {
     });
 
 
-    
+
     return {
         build: {
             options: {
@@ -53,6 +53,6 @@ module.exports = function ( grunt ) {
             dest: paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_min_js,
             }
 
-    
+
     }
 }

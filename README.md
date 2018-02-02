@@ -295,15 +295,15 @@ The position for the options are marked with `{APPLICATION_ID}` where `ID` is th
 
 	//In a js-file
 	var version = "{APPLICATION_VERSION}",
-		applicationId = "{APPLICATION_ID}",
-		applicationName = "{APPLICATION_NAME}",
-		myOptions = "{APPLICATION_MYOPTION}";
+	    applicationId = "{APPLICATION_ID}",
+	    applicationName = "{APPLICATION_NAME}",
+	    myOptions = "{APPLICATION_MYOPTION}";
 	
 	//After >grunt build
 	var version = "1.2.3",
-		applicationId = "248",
-		applicationName = "The name of the application",
-		myOptions = "true";
+	    applicationId = "248",
+	    applicationName = "The name of the application",
+	    myOptions = "true";
 
 NOTE that all embedded options will be as strings.
 
