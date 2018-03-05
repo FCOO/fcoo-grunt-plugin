@@ -133,7 +133,7 @@ module.exports = function (grunt, isBuildTasks) {
                 'uglify:build',
 
                 //Update index.html using critical css
-                'critical:build',
+//Removed in version 4   'critical:build',
 
                 //Copies alle files in app\ to dist, excl. '_*.*' and 'scripts' and 'styles'
                 'copy:App_2_Dist',

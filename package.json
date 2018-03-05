@@ -115,7 +115,6 @@
     "grunt-contrib-copy": "^1.0.0",
     "grunt-rename-util": "^1.0.0",
     "grunt-contrib-uglify": "git://github.com/gruntjs/grunt-contrib-uglify.git#harmony",
-    "grunt-critical": "^1.0.0",
     "grunt-css-url-embed": "^1.6.1",
     "grunt-curl": "^2.2.0",
     "grunt-eslint": "^20.1.0",
