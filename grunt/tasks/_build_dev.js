@@ -128,8 +128,10 @@ module.exports = function (grunt, isBuildTasks) {
                 'cssUrlEmbed:encode', //Replace url( PATH ) with url('data:image/png;base64,... ). Both images and fonts
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css
 
+
+//Removed in version 4   'babel',
+
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
-                'babel',
                 'uglify:build',
 
                 //Update index.html using critical css
