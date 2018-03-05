@@ -139,9 +139,7 @@
     "wordwrap": "^1.0.0",
     "curl": "^0.1.4",
     "grunt-ssh-deploy": "^0.4.1",
-    "grunt-markdown": "^0.7.0",
-    "grunt-babel": "^7.0.0",
-    "babel-preset-env": "^1.6.1"
+    "grunt-markdown": "^0.7.0"
   },
   "resolutions": {
     "grunt": "^1.0.1",
