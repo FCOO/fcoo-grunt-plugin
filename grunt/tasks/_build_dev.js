@@ -110,7 +110,7 @@ module.exports = function (grunt, isBuildTasks) {
                 'copy:App_indexHtmlTmpl_2_TempDist_indexHtml', //Copy _index.html.tmpl from app => temp_dist/index.html
 
                 //Create html-files from app/markdown/**/*.md
-                'create_markdown',
+//REMOVED                'create_markdown',
 
                 //Insert meta-data and links to .js and .css in temp_dist/index.html
                 'replace:TempDist_html',
@@ -135,7 +135,7 @@ module.exports = function (grunt, isBuildTasks) {
                 'uglify:build',
 
                 //Update index.html using critical css
-//Removed in version 4   'critical:build',
+                'critical:build',
 
                 //Copies alle files in app\ to dist, excl. '_*.*' and 'scripts' and 'styles'
                 'copy:App_2_Dist',
