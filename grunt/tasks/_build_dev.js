@@ -122,10 +122,10 @@ module.exports = function (grunt, isBuildTasks) {
                 //Create all favicon etc.
                 'create_favicon',
 
+
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.css -> APPLICATIONNAME_TIMPSTAMP.min.css
-//HER                'css_purge',          //Remove unused styles
+//NO WORKING YET                'css_purge',          //Remove unused styles
                 'postcss:optimize',   //optimize using cssnano but no minimizing
-                'cssUrlEmbed:encode', //Replace url( PATH ) with url('data:image/png;base64,... ). Both images and fonts
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css
 
 
@@ -136,6 +136,10 @@ module.exports = function (grunt, isBuildTasks) {
 
                 //Update index.html using critical css
                 'critical:build',
+
+
+                //Replace url( PATH ) with url('data:image/png;base64,... ) in APPLICATIONNAME_TIMPSTAMP.min.css. Both images and fonts
+                'cssUrlEmbed:encode',
 
                 //Copies alle files in app\ to dist, excl. '_*.*' and 'scripts' and 'styles'
                 'copy:App_2_Dist',

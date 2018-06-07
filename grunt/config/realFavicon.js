@@ -17,7 +17,7 @@ module.exports = function ( grunt ) {
             src : paths.temp_dist_images_faviconSvg, //Path to your master picture
             dest: paths.temp_dist,                   //Path to the directory where to store the icons
             options: {
-                iconsPath: '', 
+                iconsPath: '',
                 html     : paths.temp_dist + 'index.html', //List of the HTML files where to inject favicon markups
                 design   : {
                     ios: {
@@ -30,7 +30,7 @@ module.exports = function ( grunt ) {
                             precomposedIcons      : true,
                             declareOnlyDefaultIcon: true
                         },
-                        appName: options.application.name
+                        appName: options.application.name_da
                     },
                     desktopBrowser: {},
                     windows: {
@@ -46,7 +46,7 @@ module.exports = function ( grunt ) {
                                 rectangle: true
                             }
                         },
-                        appName: options.application.name
+                        appName: options.application.name_da
                     },
                     androidChrome: {
                         pictureAspect: 'backgroundAndMargin',
@@ -54,10 +54,11 @@ module.exports = function ( grunt ) {
                         backgroundColor: options.application.color,
                         themeColor     : options.application.color,
                         manifest: {
-                            name       : options.application.name,
+                            name       : options.application.name_da,
                             display    : 'standalone',
                             orientation: 'notSet',
                             onConflict : 'override',
+                            start_url  : './',
                             declared   : true
                         },
                         assets: {
@@ -118,7 +119,7 @@ module.exports = function ( grunt ) {
 
 
 
-    
+
     return {
         all     : all,
         markdown: all,

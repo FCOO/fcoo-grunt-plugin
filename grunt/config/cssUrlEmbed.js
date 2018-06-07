@@ -9,11 +9,11 @@ module.exports = function ( grunt ) {
     return {
         options: {
             failOnMissingUrl  : false,
-            //skipUrlsLargerThan: '100 kb'
+            skipUrlsLargerThan: '50 kb'
         },
         encode: {
-            src : paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_css, 
-            dest: paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_css
-        }           
+            src : paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_min_css,
+            dest: paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_min_css
+        }
     }
 }
