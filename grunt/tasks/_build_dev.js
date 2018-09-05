@@ -115,6 +115,10 @@ module.exports = function (grunt, isBuildTasks) {
                 //Insert meta-data and links to .js and .css in temp_dist/index.html
                 'replace:TempDist_html',
 
+                //Update index.html using critical css
+                'critical:build',
+
+
 
                 //Replace {APPLICATION_XXX} with current values from application-options gruntfile.js in *.html, *.js and *.css in temp_dist
                 'replace:dist_temp_ALL_application_options',
@@ -133,10 +137,6 @@ module.exports = function (grunt, isBuildTasks) {
 
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
                 'uglify:build',
-
-                //Update index.html using critical css
-                'critical:build',
-
 
                 //Replace url( PATH ) with url('data:image/png;base64,... ) in APPLICATIONNAME_TIMPSTAMP.min.css. Both images and fonts
                 'cssUrlEmbed:encode',
