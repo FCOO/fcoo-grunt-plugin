@@ -9,19 +9,19 @@ module.exports = function (grunt) {
         paths    = grunt.fcoo.paths,
         taskList = [];
 
-   
-    //If an individuel favicon as given => use it as it is 
+
+    //If an individuel favicon as given => use it as it is
     if (options.application.faviconFileName){
         taskList.push('cur-dir:favicon');
     }
     else {
         //Copy favicon_fcoo.svg from node_modules/grunt-fcoo-grunt-plugin/assets/favicon to temp/_favicon/source
-        taskList.push( 'copy:AssetsFaviconSvg_2_Temp_FaviconSource' ); 
-        
+        taskList.push( 'copy:AssetsFaviconSvg_2_Temp_FaviconSource' );
+
         //Create the config.json for svg_modify
         taskList.push( function(){
             common.writeJSONFile(
-                paths.temp__favicon_source + 'config.json', 
+                paths.temp__favicon_source + 'config.json',
                 { "variations": { "favicon":{ /*"width":"384", */"color":options.application.faviconColor  } } }
             );
         });
@@ -36,12 +36,9 @@ module.exports = function (grunt) {
         //Run realFavicon:all to create all the favicons
         taskList.push('realFavicon:all');
 
-        //Run realFavicon:markdown to create all the favicons for the html-files created in tast create_markdown
-        taskList.push('realFavicon:markdown');
-
         /*
-        Copy a png-version of the favicon to temp_dist/images. 
-        A 'ugly' workaround since none of the tested grunt-plugins was able 
+        Copy a png-version of the favicon to temp_dist/images.
+        A 'ugly' workaround since none of the tested grunt-plugins was able
         to convert the svg-file after svg_modify had changed its color. Aming for 384x384px
         */
         var fileNameList = [
@@ -75,7 +72,7 @@ module.exports = function (grunt) {
                 }
             }
         });
-    
+
         //Creaste all files "favicons*.*" in temp/ by using the png-version as input
         taskList.push('realFavicon:favicon');
 

@@ -122,7 +122,6 @@ module.exports = function ( grunt ) {
 
     return {
         all     : all,
-        markdown: all,
         favicon : favicon
     }
 }

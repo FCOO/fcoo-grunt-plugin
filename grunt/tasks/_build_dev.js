@@ -109,16 +109,8 @@ module.exports = function (grunt, isBuildTasks) {
                 //Create index.html in temp_dist/
                 'copy:App_indexHtmlTmpl_2_TempDist_indexHtml', //Copy _index.html.tmpl from app => temp_dist/index.html
 
-                //Create html-files from app/markdown/**/*.md
-//REMOVED                'create_markdown',
-
                 //Insert meta-data and links to .js and .css in temp_dist/index.html
                 'replace:TempDist_html',
-
-                //Update index.html using critical css
-                'critical:build',
-
-
 
                 //Replace {APPLICATION_XXX} with current values from application-options gruntfile.js in *.html, *.js and *.css in temp_dist
                 'replace:dist_temp_ALL_application_options',
@@ -132,9 +124,6 @@ module.exports = function (grunt, isBuildTasks) {
                 'postcss:optimize',   //optimize using cssnano but no minimizing
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css
 
-
-//Removed in version 4   'babel',
-
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
                 'uglify:build',
 
@@ -147,8 +136,6 @@ module.exports = function (grunt, isBuildTasks) {
                 //Copy all files from temp_dist to dist
                 'copy:TempDist_2_Dist',
 
-                //Create log-files in dest/log
-                'create_logfiles'
             );
         } //end of APPLICATION-BUILD
 
@@ -215,9 +202,6 @@ module.exports = function (grunt, isBuildTasks) {
 
                 //Copies alle files in app\ to dev, excl. '_*.*' and 'scripts' and 'styles'
                 'copy:App_2_Dev',
-
-                //Create html-files from app/markdown/**/*.md
-                'create_markdown',
 
                 //Copy all files from temp_dist to dev
                 'copy:TempDist_2_Dev',

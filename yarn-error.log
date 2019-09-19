@@ -1,0 +1,231 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files\ImageMagick-7.0.3-Q16;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;c:\Program Files (x86)\HP\HP Performance Advisor;C:\Program Files\nodejs\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\GitExtensions\;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Yarn\bin\;C:\Ruby24\bin;C:\Ruby24-x64\bin;C:\Ruby23-x64\bin;C:\Users\nho\AppData\Local\Microsoft\WindowsApps;C:\Users\nho\AppData\Roaming\npm;C:\Users\nho\AppData\Local\GitHubDesktop\bin;C:\Users\nho\AppData\Local\Microsoft\WindowsApps;C:\Users\nho\AppData\Local\Yarn\bin;
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  10.16.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: C:\web-dev\fcoo-grunt-plugin\package.json: Unexpected token ' in JSON at position 4207
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:304:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:315:13
+
+npm manifest: 
+  {
+    "_args": [
+      [
+        {
+          "raw": "grunt-fcoo-grunt-plugin@^0.4.0",
+          "scope": null,
+          "escapedName": "grunt-fcoo-grunt-plugin",
+          "name": "grunt-fcoo-grunt-plugin",
+          "rawSpec": "^0.4.0",
+          "spec": ">=0.4.0 <0.5.0",
+          "type": "range"
+        },
+        "C:\\web-dev\\TEST-gruntfile.js-APPLICATION"
+      ],
+      [
+        {
+          "raw": "grunt-fcoo-grunt-plugin@^1.0.0",
+          "scope": null,
+          "escapedName": "grunt-fcoo-grunt-plugin",
+          "name": "grunt-fcoo-grunt-plugin",
+          "rawSpec": "^1.0.0",
+          "spec": ">=1.0.0 <2.0.0",
+          "type": "range"
+        },
+        "C:\\web-dev\\test-application"
+      ],
+      [
+        {
+          "raw": "grunt-fcoo-grunt-plugin@2.2.0",
+          "scope": null,
+          "escapedName": "grunt-fcoo-grunt-plugin",
+          "name": "grunt-fcoo-grunt-plugin",
+          "rawSpec": "2.2.0",
+          "spec": "2.2.0",
+          "type": "version"
+        },
+        "C:\\web-dev\\ifm-maps"
+      ],
+      [
+        {
+          "raw": "grunt-fcoo-grunt-plugin@^2.0.0",
+          "scope": null,
+          "escapedName": "grunt-fcoo-grunt-plugin",
+          "name": "grunt-fcoo-grunt-plugin",
+          "rawSpec": "^2.0.0",
+          "spec": ">=2.0.0 <3.0.0",
+          "type": "range"
+        },
+        "C:\\web-dev\\ifm-maps"
+      ],
+      [
+        {
+          "raw": "grunt-fcoo-grunt-plugin@^2.0.0",
+          "scope": null,
+          "escapedName": "grunt-fcoo-grunt-plugin",
+          "name": "grunt-fcoo-grunt-plugin",
+          "rawSpec": "^2.0.0",
+          "spec": ">=2.0.0 <3.0.0",
+          "type": "range"
+        },
+        "C:\\web-dev\\ifm-maps"
+      ]
+    ],
+    "_from": "grunt-fcoo-grunt-plugin@^2.0.0",
+    "_id": "grunt-fcoo-grunt-plugin@2.5.0",
+    "_inCache": true,
+    "_installable": true,
+    "_location": "/grunt-fcoo-grunt-plugin",
+    "_nodeVersion": "4.4.7",
+    "_npmOperationalInternal": {
+      "host": "packages-16-east.internal.npmjs.com",
+      "tmp": "tmp/grunt-fcoo-grunt-plugin-2.5.0.tgz_1476546159044_0.032849282724782825"
+    },
+    "_npmUser": {
+      "name": "nielsholt",
+      "email": "niels@steenbuchholt.dk"
+    },
+    "_npmVersion": "3.10.5",
+    "_phantomChildren": {},
+    "_requested": {
+      "raw": "grunt-fcoo-grunt-plugin@^2.0.0",
+      "scope": null,
+      "escapedName": "grunt-fcoo-grunt-plugin",
+      "name": "grunt-fcoo-grunt-plugin",
+      "rawSpec": "^2.0.0",
+      "spec": ">=2.0.0 <3.0.0",
+      "type": "range"
+    },
+    "_requiredBy": [
+      "/"
+    ],
+    "_resolved": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.5.0.tgz",
+    "_shasum": "982c4bfca12addb0cc5648bf4c076b4ab1e10592",
+    "_shrinkwrap": null,
+    "_spec": "grunt-fcoo-grunt-plugin@^2.0.0",
+    "_where": "C:\\web-dev\\ifm-maps",
+    "author": {
+      "name": "Niels Holt",
+      "email": "nho@fcoo.dk"
+    },
+    "bugs": {
+      "url": "https://github.com/FCOO/fcoo-grunt-plugin/issues"
+    },
+    "dependencies": {
+      "@hapi/hawk": "^7.1.2",
+      "cssnano": "^4.1.10",
+      "curl": "^0.1.4",
+      "doiuse": "^4.0.0",
+      "getobject": "^0.1.0",
+      "grunt-auto-install": "^0.3.0",
+      "grunt-bower": "^0.21.2",
+      "grunt-bower-concat": "^1.0.0",
+      "grunt-continue": "^0.1.0",
+      "grunt-contrib-clean": "^2.0.0",
+      "grunt-contrib-concat": "^1.0.0",
+      "grunt-contrib-copy": "^1.0.0",
+      "grunt-contrib-uglify": "^4.0.0",
+      "grunt-css-url-embed": "^1.6.1",
+      "grunt-curl": "^2.2.0",
+      "grunt-eslint": "^22.0.0",
+      "grunt-gitinfo": "^0.1.7",
+      "grunt-image": "^5.0.0",
+      "grunt-postcss": "^0.9.0",
+      "grunt-prompt": "^1.3.3",
+      "grunt-real-favicon": "^0.2.3",
+      "grunt-rename-util": "^1.0.0",
+      "grunt-sass": "^3.1.0",
+      "grunt-shell": "^3.0.1",
+      "grunt-ssh-deploy": "^0.4.1",
+      "grunt-svg-modify": "^0.0.7",
+      "grunt-text-replace": "^0.4.0",
+      "grunt-wiredep": "^3.0.1",
+      "load-grunt-config": "^3.0.0",
+      "load-grunt-tasks": "^5.1.0",
+      "main-bower-files": "^2.13.1",
+      "nopt": "^4.0.1",
+      "npm": "^6.1.0",
+      "pixrem": "^5.0.0",
+      "rfg-api": "^0.5.0",
+      "semver": "^6.3.0",
+      "shelljs": "^0.8.1",
+      "strip-json-comments": "^3.0.1",
+      "wordwrap": "^1.0.0"
+    },
+    "resolutions": {
+      "bower": "^1.8.8",
+      "grunt": "^1.0.1",
+      "graceful-fs": "^4.0.0",
+      "minimatch": "^3.0.4",
+  "hawk": "file:https://github.com/hapijs/hawk.git"        '
+    },
+    "description": "Grunt plugin used to check and build FCOO packages and applications",
+    "devDependencies": {},
+    "directories": {},
+    "dist": {
+      "shasum": "982c4bfca12addb0cc5648bf4c076b4ab1e10592",
+      "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.5.0.tgz"
+    },
+    "engines": {
+      "node": ">= 0.10.0",
+      "npm": ">= 3.10.7"
+    },
+    "gitHead": "0fd5763c4b0bb16cab1c604996a75ea44bab55ca",
+    "homepage": "https://github.com/FCOO/fcoo-grunt-plugin",
+    "keywords": [
+      "gruntplugin"
+    ],
+    "licenses": [
+      {
+        "type": "MIT",
+        "url": "https://github.com/FCOO/fcoo-grunt-plugin/blob/master/LICENSE-MIT"
+      }
+    ],
+    "maintainers": [
+      {
+        "name": "nielsholt",
+        "email": "niels@steenbuchholt.dk"
+      }
+    ],
+    "name": "grunt-fcoo-grunt-plugin",
+    "optionalDependencies": {},
+    "readme": "ERROR: No README data found!",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/FCOO/fcoo-grunt-plugin.git"
+    },
+    "scripts": {
+      "test": "grunt test"
+    },
+    "version": "4.2.3",
+    "warnings": [
+      {
+        "code": "ENOTSUP",
+        "required": {
+          "node": ">= 0.10.0",
+          "npm": ">= 3.10.7"
+        },
+        "pkgid": "grunt-fcoo-grunt-plugin@2.2.0"
+      }
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

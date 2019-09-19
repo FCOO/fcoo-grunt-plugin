@@ -18,7 +18,6 @@ Used in the development environment described in [fcoo-web-dev][] and normally i
 1. [Install and basic use](#install)
 2. [Packages tasks](#package-task): List of and specifications for available tasks for *Packages*
 2. [Application tasks](#application-task): List of and specifications for available tasks for *Applications*
-3. [Conversion of Markdown-files](#markdown): Structure and format for converting markdown-files to html-pages
 2. [`gruntfile.js`](#gruntfile.js): Descriptions of the options for  `grunt-fcoo-grunt-plugin`
 3. [Tools](#tools): Descriptions and documentation for third-party tools (ESLint, UglifyJS, browserslist etc.)
 3. [Main files, dependencies overrides and resolutions](#dependencies): Note on difference between the `overrides` in `bower.json` and `options` in [grunt-bower-concat][]
@@ -149,7 +148,6 @@ Where there are the following task:
 - `grunt check` - Check the syntax of all `.js` files in `\app\scripts` and all `.scss` files in `\app\styles`
 - `grunt dev` - Building a development version in `\dev` 
 - `grunt build` - Building a production version in `\dist`
-- `grunt md` - Convert markdown-files to html-pages in `\dev` - See [Conversion of Markdown-files](#markdown)
 
 ### `>grunt check`
 - Check the syntax of all `.js` files in `\app\scripts` using [ESLint](eslint)
@@ -176,7 +174,6 @@ To test your application just browse
 - Restore original `bower.json`
 - Create `\dev\index.html` from `\app\_index-dev.html.tmpl`
 - Insert direct `<links>` or `<script>` for all js- and css/scss-files in `\app\scripts\`, `\app\styles\`, and `\bower_components\`
-- Convert markdown-files to html-pages in `\dev` - See [Conversion of Markdown-files](#markdown)
 
 ### `>grunt build`
 Building a production version in `\dist`
@@ -196,7 +193,6 @@ Building a production version in `\dist`
 - Replace text in all `*.html`, `*.js`, and `*.css` files where `{APPLICATION_[ID]}` is replaced with the value from `options.application.[id]`. Eq. `options.application.color:"#123456"` => `{APPLICATION_COLOR}` is replaced with `#123456` (see [`gruntfile.js`](#gruntfile.js))
 - Copy all files in `\app` to `\dist` (ext. `\scripts` and `\styles`)
 - Create different log-files in `\dist\log`
-- Convert markdown-files to html-pages in `\dist` - See [Conversion of Markdown-files](#markdown)
 
 
 ##### Example (application='*fcoo-app*')
@@ -212,27 +208,6 @@ Building a production version in `\dist`
       fcoo-app_2015-12-24-13_22_50.min.css.map
 
 
-
-<a name="markdown"></a>
-
----
-## Conversion of Markdown-files
-This feature allows for a simple methods to create simple sub-pages in Danish and English to an application.
-The contents of this pages are created and maintained as [markdown](https://en.wikipedia.org/wiki/Markdown) files.
-For a given sub-page names `SUBPAGE` the markdown-file(s) must be named `da.md` (Danish version) and (optional) `en.md` (English version) and saved in `app/markdown/SUBPAGE` 
-
-The task `grunt build` will build html-pages in `dist`
-The tasks `grunt dev` and `grunt md` will build html-pages in `dev`
-
-The Danish and English version can be combined in `da.md` when using pseudo-tags `<da>...</da>` and `<en>...</en>` to mark contents only included in the Danish or English version
-
-#### Example 
-If the source for the application `https://app.fcoo.dk` contains `app/markdown/info/da.md` a sub-page is created as `https://app.fcoo.dk/info/`
-
-##### da.md
-    <da># Dette er en dansk overskrift</da>
-    <en># This is a English title</en>
-    ...
 
 
 <a name="gruntfile.js"></a>
