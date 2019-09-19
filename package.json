@@ -126,6 +126,7 @@
     "grunt-real-favicon": "^0.2.3",
     "grunt-rename-util": "^1.0.0",
     "grunt-sass": "^3.1.0",
+    "node-sass": "^4.12.0",
     "grunt-shell": "^3.0.1",
     "grunt-ssh-deploy": "^0.4.1",
     "grunt-svg-modify": "^0.0.7",
@@ -137,6 +138,7 @@
     "nopt": "^4.0.1",
     "npm": "^6.1.0",
     "pixrem": "^5.0.0",
+    "postcss": "^7.0.0",
     "rfg-api": "^0.5.0",
     "semver": "^6.3.0",
     "shelljs": "^0.8.1",
@@ -147,7 +149,8 @@
     "bower": "^1.8.8",
     "grunt": "^1.0.1",
     "graceful-fs": "^4.0.0",
-    "minimatch": "^3.0.4"
+    "minimatch": "^3.0.4",
+    "postcss": "^7.0.0"
   },
   "description": "Grunt plugin used to check and build FCOO packages and applications",
   "devDependencies": {},
