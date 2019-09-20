@@ -29,7 +29,7 @@ module.exports = function ( grunt ) {
         join_vars       : true,             //-- join consecutive var statements
 //DEPRECATED        cascade         : true,            //-- small optimization for sequences, transform x, x into x and x = something(), x into x = something()
         collapse_vars   : true,             //-- default false. Collapse single-use var and const definitions when possible.
-        warnings        : options.DEBUG,    //-- display warnings when dropping unreachable code or unused declarations etc.
+//DEPRECATED        warnings        : options.DEBUG,    //-- display warnings when dropping unreachable code or unused declarations etc.
         negate_iife     : true,             //-- negate "Immediately-Called Function Expressions" where the return value is discarded, to avoid the parens that the code generator would insert.
         pure_getters    : false,            //-- the default is false. If you pass true for this, UglifyJS will assume that object property access (e.g. foo.bar or foo["bar"]) doesn't have any side effects.
         pure_funcs      : null,             //-- default null. You can pass an array of names and UglifyJS will assume that those functions do not produce side effects. DANGER: will not check if the name is redefined in scope. An example case here, for instance var q = Math.floor(a/b). If variable q is not used elsewhere, UglifyJS will drop it, but will still keep the Math.floor(a/b), not knowing what it does. You can pass pure_funcs: [ 'Math.floor' ] to let it know that this function won't produce any side effect, in which case the whole statement would get discarded. The current implementation adds some overhead (compression will be slower).
