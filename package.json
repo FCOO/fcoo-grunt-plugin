@@ -117,7 +117,7 @@
     "grunt-contrib-uglify": "^4.0.0",
     "grunt-css-url-embed": "^1.6.1",
     "grunt-image-embed": "^0.3.3",
-    "grunt-curl": "^2.2.0",
+    "grunt-curl": "fcoo/grunt-curl#^2.6.0",
     "grunt-eslint": "^22.0.0",
     "grunt-gitinfo": "^0.1.7",
     "grunt-image": "^5.0.0",
