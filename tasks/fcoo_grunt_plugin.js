@@ -20,28 +20,27 @@ module.exports = function(grunt) {
         common    = grunt.fcoo.common    = require('../lib/common' )( grunt ),
         options   = grunt.fcoo.options   = require('../lib/options')( grunt ),
         paths     = grunt.fcoo.paths     = require('../lib/paths'  )( grunt ),
-        LogFile   = grunt.fcoo.LogFile   = require('../lib/LogFile')( grunt ),
         bower     = grunt.fcoo.bower     = require('../lib/bower'  )( grunt );
 
-    
+
     //Defile common/"global" variables and objects
     grunt.fcoo.todayStr  = grunt.template.today("dd-mmm-yyyy HH:MM");
 
     grunt.fcoo.bowerJson      = common.readJSONFile('bower.json');
     grunt.fcoo.bowerDebugJson = common.readJSONFile('bower.json');
 
-    //Special json-file with login 
+    //Special json-file with login
     grunt.fcoo.secretJson = common.readJSONFile('secret.json');
 
-        
+
     grunt.fcoo.script_js  = ''; //string with <script>..</script> for all *.js in app/scripts
     grunt.fcoo.link_css   = ''; //string with <link>..</link> for all *.css in app/styles
 
     //Capture the log.header function to remove the 'Running tast SOMETHING" message
     grunt.log.header = function(txt){
         if (options.DEBUG){
-            grunt.log.writeln('>'+txt);          
-        }        
+            grunt.log.writeln('>'+txt);
+        }
     };
 
     /**************************************************************************************
@@ -52,7 +51,7 @@ module.exports = function(grunt) {
     The js-file grunt/config/aliases.js is not a config-file but is used by load-grunt-config to
     define the different tasks.
     grunt/config/aliases.js will read all the tasks files in grunt/tasks and create tasks with the
-    same name as the files. 
+    same name as the files.
     Each task-file will return a array of string = name of tasks or functions to be called.
     A mix of task-names (string) and task-functions is allowed since aliases.js will convert
     any functions to internal tasks
@@ -69,7 +68,7 @@ module.exports = function(grunt) {
         configPath    : path.join(process.cwd(), 'node_modules/grunt-fcoo-grunt-plugin/grunt/config'),
         init          : true,
         loadGruntTasks: false
-    }); 
+    });
 
     /**************************************************************************************
     Load grunt-packages

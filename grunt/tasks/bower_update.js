@@ -8,7 +8,6 @@ module.exports = function (grunt) {
         options  = grunt.fcoo.options,
         paths    = grunt.fcoo.paths,
         bower    = grunt.fcoo.bower,
-        LogFile  = grunt.fcoo.LogFile,
         lodash   = require('lodash'),
         taskList = [];
 

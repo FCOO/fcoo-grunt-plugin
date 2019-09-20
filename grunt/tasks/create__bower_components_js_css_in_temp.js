@@ -8,7 +8,6 @@ module.exports = function (grunt) {
         options  = grunt.fcoo.options,
         paths    = grunt.fcoo.paths,
         bower    = grunt.fcoo.bower,
-        LogFile  = grunt.fcoo.LogFile,
         taskList = [];
 
 
@@ -21,8 +20,8 @@ module.exports = function (grunt) {
 
     //Finds all paths to possible /images/ and fonts/ directories from bower-components. Ensure that all data and fonts and images are in temp/. Used by task 'copy:BowerComponentsDataFontsImages_2_Temp'
     taskList.push( function(){
-        var bowerComponentsDataAndFontsAndImagesDir = [],  
-            files = require('main-bower-files')(), 
+        var bowerComponentsDataAndFontsAndImagesDir = [],
+            files = require('main-bower-files')(),
             file, lastFile;
 
         for (var i=0; i<files.length; i++ ){
@@ -43,15 +42,15 @@ module.exports = function (grunt) {
                     file + '/' + paths.images + '*'
                 );
                 lastFile = file;
-            }    
+            }
         }
         //Update config for 'copy:BowerComponentsDataFontsImages_2_Temp'
         var copyOptions = grunt.config('copy');
         copyOptions['BowerComponentsDataFontsImages_2_Temp'].src = bowerComponentsDataAndFontsAndImagesDir;
         grunt.config('copy', copyOptions);
     });
-    
-    
+
+
     //Copy all files from data/ and fonts/ and images/ found in bower-components subdir /images and /fonts
     taskList.push( 'copy:BowerComponentsDataFontsImages_2_Temp' );
 
@@ -71,7 +70,7 @@ module.exports = function (grunt) {
     if (options.notDEBUG)
         taskList.push( 'clean:Temp' ); //clean /temp
 
-  
-    
+
+
     return taskList;
 }
