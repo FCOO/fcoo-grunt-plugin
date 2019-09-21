@@ -128,9 +128,7 @@ module.exports = function (grunt, isBuildTasks) {
                 'uglify:build',
 
                 //Replace url( PATH ) with url('data:image/png;base64,... ) in APPLICATIONNAME_TIMPSTAMP.min.css. Both images and fonts
-//TEST                'cssUrlEmbed:encode',
-'imageEmbed:niels',
-
+                'cssUrlEmbed:encode',
 
                 //Copies alle files in app\ to dist, excl. '_*.*' and 'scripts' and 'styles'
                 'copy:App_2_Dist',
