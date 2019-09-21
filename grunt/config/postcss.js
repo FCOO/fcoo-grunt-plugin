@@ -7,15 +7,16 @@ module.exports = function ( grunt ) {
     var paths  = grunt.fcoo.paths;
 
     return {
-        //optimize: optimize using cssnano but no minimizing
         optimize: {
             options: {
                 map: false,
                 processors: [
                     require('cssnano')({
-                        discardComments: false, //Leave comments
-                        core           : false, //Leave NL
-                        safe           : true
+                        preset: ['default', {
+                            discardComments    : false, //Leave comments
+                            normalizeWhitespace: false, //Leave NL
+                            safe               : true
+                        }]
                     })
                 ]
             },
@@ -32,9 +33,11 @@ module.exports = function ( grunt ) {
                 },
                 processors: [
                     require('cssnano')({
-                        discardComments: { removeAll: true },
-                        core           : true,
-                        safe           : true,
+                        preset: ['default', {
+                            discardComments: {
+                                removeAll: true,
+                            }
+                        }]
                     })
                 ]
             },
