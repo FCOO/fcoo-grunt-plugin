@@ -31,7 +31,7 @@ Used in the development environment described in [fcoo-web-dev][] and normally i
 
 ### Install the plugin
 1. Is automatic installed when running `grunt-init` with one of [FCOO templates](https://github.com/FCOO/fcoo-web-dev#fcoo_template) (recommended), or
-2. Clone `gruntfile.js` and `package.json` from [fcoo-gruntdile.js](https://github.com/FCOO/fcoo-gruntfile.js) and manually adjust the files
+2. Clone `gruntfile.js` and `package.json` from [fcoo-gruntfile.js](https://github.com/FCOO/fcoo-gruntfile.js) and manually adjust the files
 
 ### gruntfile.js
 The [gruntfile.js](`gruntfile.js`) in the repository contains the different options to be used in different tasks. 

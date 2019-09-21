@@ -40,15 +40,6 @@ module.exports = function (grunt) {
             _console.writelnColor('>grunt deploy_restricted ', 'white', '=> Deploy application to restricted server', 'yellow');
         }
 
-        if (options.isApplication){
-            _console.writelnYellow('----------------------------------------------------------------------------');
-            _console.writelnColor('>grunt md ', 'white', '=> Create all md-files in app/NAME as dev/NAME/index.html',    'yellow');
-          
-        }
-
-        
-        
-        
         _console.writelnYellow('****************************************************************************');
     });
 

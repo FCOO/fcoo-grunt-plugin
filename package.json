@@ -101,12 +101,13 @@
   "bugs": {
     "url": "https://github.com/FCOO/fcoo-grunt-plugin/issues"
   },
-  "dependencies": {
+  "devDependencies": {
     "@hapi/hawk": "^7.1.2",
     "cssnano": "^4.1.10",
     "curl": "^0.1.4",
     "doiuse": "^4.0.0",
     "getobject": "^0.1.0",
+    "grunt": "^1.0.1",
     "grunt-auto-install": "^0.3.0",
     "grunt-bower": "^0.21.2",
     "grunt-bower-concat": "^1.0.0",
@@ -152,15 +153,15 @@
     "postcss": "^7.0.0"
   },
   "description": "Grunt plugin used to check and build FCOO packages and applications",
-  "devDependencies": {},
+  "dependencies": {},
   "directories": {},
   "dist": {
     "shasum": "982c4bfca12addb0cc5648bf4c076b4ab1e10592",
     "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.5.0.tgz"
   },
   "engines": {
-    "node": ">= 0.10.0",
-    "npm": ">= 3.10.7"
+    "node": ">= 12.3",
+    "npm": ">= 6.9"
   },
   "gitHead": "0fd5763c4b0bb16cab1c604996a75ea44bab55ca",
   "homepage": "https://github.com/FCOO/fcoo-grunt-plugin",
