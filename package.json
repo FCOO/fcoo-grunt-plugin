@@ -101,7 +101,7 @@
   "bugs": {
     "url": "https://github.com/FCOO/fcoo-grunt-plugin/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "@hapi/hawk": "^7.1.2",
     "cssnano": "^4.1.10",
     "curl": "^0.1.4",
@@ -153,7 +153,7 @@
     "postcss": "^7.0.0"
   },
   "description": "Grunt plugin used to check and build FCOO packages and applications",
-  "dependencies": {},
+  "devDependencies": {},
   "directories": {},
   "dist": {
     "shasum": "982c4bfca12addb0cc5648bf4c076b4ab1e10592",
