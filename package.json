@@ -160,7 +160,7 @@
     "tarball": "https://registry.npmjs.org/grunt-fcoo-grunt-plugin/-/grunt-fcoo-grunt-plugin-2.5.0.tgz"
   },
   "engines": {
-    "node": ">= 12.3",
+    "node": ">= 10.16",
     "npm": ">= 6.9"
   },
   "gitHead": "0fd5763c4b0bb16cab1c604996a75ea44bab55ca",
