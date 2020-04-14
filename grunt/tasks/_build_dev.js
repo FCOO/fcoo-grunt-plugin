@@ -219,34 +219,41 @@ module.exports = function (grunt, isBuildTasks) {
             //= tast "copy_BowerComponentsData_2_Dev"
             taskList.push( function(){
                 var bowerComponentsDataDir = [],
+                    bowerComponentsImagesDir = [],
                     files = require('main-bower-files')(),
-                    file, lastFile;
+                    path, relativePath, lastDataPath, lastImagesPath;
 
                 for (var i=0; i<files.length; i++ ){
-                    file = files[i];
-                    file = file.replace(/\\/g, "/");
+                    path = files[i];
+                    path = path.replace(/\\/g, "/");
 
                     //Remove file-name
-                    file = file.split('/');
-                    file.pop();
-                    file = file.join('/');
+                    path = path.split('/');
+                    path.pop();
+                    path = path.join('/'),
+                    relativePath = path.split( paths.bower_components )[1]; //Make file-path relative
 
-                    if (grunt.file.isDir( file + '/' + paths.data )) {
-                        file = file.split( paths.bower_components )[1]; //Make file-path relative
-                        if (file != lastFile){
-                            bowerComponentsDataDir.push( file + '/' + paths.data   + '**' );
-                            lastFile = file;
-                       }
+                    if ( grunt.file.isDir( path + '/' + paths.data ) && (path != lastDataPath) ){
+                        bowerComponentsDataDir.push( relativePath + '/' + paths.data   + '**' );
+                        lastDataPath = relativePath;
+                    }
+
+                    if (grunt.file.isDir( path + '/' + paths.images ) && (path != lastImagesPath)){
+                        bowerComponentsImagesDir.push( relativePath + '/' + paths.images   + '**' );
+                        lastImagesPath = relativePath;
                     }
                 }
 
-                //Update config for 'copy:BowerComponentsData_2_Dev'
+                //Update config for 'copy:BowerComponentsData_2_Dev' and 'copy:BowerComponentsImages_2_Dev'
                 var copyOptions = grunt.config('copy');
                 copyOptions['BowerComponentsData_2_Dev'].src = bowerComponentsDataDir;
+                copyOptions['BowerComponentsImages_2_Dev'].src = bowerComponentsImagesDir;
+
                 grunt.config('copy', copyOptions);
             });
 
             taskList.push('copy:BowerComponentsData_2_Dev');
+            taskList.push('copy:BowerComponentsImages_2_Dev');
 
         } //end of APPLICATION-DEV
 
