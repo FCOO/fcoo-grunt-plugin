@@ -23,14 +23,17 @@ module.exports = function ( grunt ) {
         BowerComponentsDataFontsImages_2_Temp: { cwd: paths.bower_components, src: [], dest: paths.temp, expand: true, filter: 'isFile'},
 
         //AppStyleDataFontsImages_2_Temp: Copy all files from data/ and fonts/ and images/ found in app/style/ to temp/
-        AppStyleDataFontsImages_2_Temp: { cwd: paths.app_styles, src: [paths.data+'*', paths.fonts+'*', paths.images+'*'], dest: paths.temp, expand: true, filter: 'isFile'},
+        //Note: images is inclusive sub-dir
+        AppStyleDataFontsImages_2_Temp: { cwd: paths.app_styles, src: [paths.data+'*', paths.fonts+'*', paths.images+'**/*.*'], dest: paths.temp, expand: true, filter: 'isFile'},
 
 
         Temp_data_2_TempDist  : lodash.merge( {}, Temp_2_TempDist,  { flatten: true, src: common.srcExclude_(['**/' + paths.data   + '*.*']), dest: paths.temp_dist_data   } ),
         Temp_fonts_2_TempDist : lodash.merge( {}, Temp_2_TempDist,  { flatten: true, src: common.srcExclude_(['**/' + paths.fonts  + '*.*']), dest: paths.temp_dist_fonts  } ),
-        Temp_images_2_TempDist: lodash.merge( {}, Temp_2_TempDist,  { flatten: true, src: common.srcExclude_(['**/' + paths.images + '*.*']), dest: paths.temp_dist_images } ),
+        //Note: images is inclusive sub-dir
+        Temp_images_2_TempDist: lodash.merge( {}, Temp_2_TempDist,  { flatten: false/*true*/, src: common.srcExclude_(['**/' + paths.images + '**/*.*']), dest: paths.temp_dist/*_images*/ } ),
 
-        TempDist_2_Dist: { cwd: paths.temp_dist, dest: paths.dist, src: common.srcExclude_(['**/*.*']), expand: true},
+        //Note: images is inclusive sub-dir
+        TempDist_2_Dist: { cwd: paths.temp_dist, dest: paths.dist, src: common.srcExclude_(['**/*.*', '**/**/*.*']), expand: true},
         TempDist_2_Dev : { cwd: paths.temp_dist, dest: paths.dev , src: common.srcExclude_(['**/*.*']), expand: true},
         TempDist_2_Demo: { cwd: paths.temp_dist, dest: paths.demo, src: common.srcExclude_(['**/*.*']), expand: true},
 
