@@ -123,6 +123,9 @@ module.exports = function (grunt, isBuildTasks) {
                 'postcss:optimize',   //optimize using cssnano but no minimizing
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css
 
+                //babel: convert ES6 => ES5
+                'babel',
+
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
                 'uglify:build',
 

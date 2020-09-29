@@ -185,6 +185,7 @@ Building a production version in `\dist`
 - Check, modify, and optimize stylesheets `[[APPLICATIONNAME]_[TIMESTAMP].css`
     - Embed URLs as base64 data URIs inside the stylesheets ([grunt-css-url-embed](https://www.npmjs.com/package/grunt-css-url-embed))
     - Optimize and minimize using [cssnano](http://cssnano.co/) 
+- Using [Babel](https://babeljs.io/) to convert ES6-code to ES5-code
 - Minify `[[APPLICATIONNAME]_[TIMESTAMP].js` using [UglifyJS](uglify).<br>Default Compress options are used but individual compress options can be set in `\.uglifyrc` 
 - Create `\dist\index.html` from `\app\_index.html.tmpl`
 - Copy all images and font files used by bower components to `\dist\images` and `\dist\fonts`   
