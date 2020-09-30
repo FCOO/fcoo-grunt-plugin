@@ -145,6 +145,7 @@
     "wordwrap": "^1.0.0",
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
+    "@babel/runtime-corejs3": "^7.11.2",
     "grunt-babel": "^8.0.0",
     "grunt-terser": "^1.0.0"
   },

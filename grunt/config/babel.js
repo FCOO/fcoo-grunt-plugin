@@ -11,7 +11,9 @@ module.exports = function ( grunt ) {
     var result = {
             options: {
                 presets  :  [["@babel/preset-env", {
-                                modules: false
+                                modules: false,
+                                useBuiltIns: "entry", // or "usage"
+                                corejs: 3
                             }]],
                 sourceMap:  false,
                 compact  :  false,
