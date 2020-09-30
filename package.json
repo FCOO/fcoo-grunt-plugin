@@ -194,7 +194,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "version": "5.4.1",
+  "version": "5.5.0",
   "warnings": [
     {
       "code": "ENOTSUP",
