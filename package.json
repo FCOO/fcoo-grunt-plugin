@@ -115,7 +115,6 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-concat": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^4.0.0",
     "grunt-css-url-embed": "^1.6.1",
     "grunt-curl": "fcoo/grunt-curl#^2.6.0",
     "grunt-eslint": "^22.0.0",
