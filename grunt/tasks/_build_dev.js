@@ -123,11 +123,17 @@ module.exports = function (grunt, isBuildTasks) {
                 'postcss:optimize',   //optimize using cssnano but no minimizing
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css
 
+
                 //babel: convert ES6 => ES5
-                'babel',
+                'babel:build',
+
 
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
-                'uglify:build',
+                //'uglify:build', Removed in version 5.4
+                'terser:build',     //Added in in version 5.4
+
+
+
 
                 //Replace url( PATH ) with url('data:image/png;base64,... ) in APPLICATIONNAME_TIMPSTAMP.min.css. Both images and fonts
                 'cssUrlEmbed:encode',

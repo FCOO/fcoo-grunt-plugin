@@ -10,17 +10,20 @@ module.exports = function ( grunt ) {
 
     var result = {
             options: {
-                presets: ['@babel/preset-env'],
-                sourceMap: false,
-                compact  : false
+                presets  :  [["@babel/preset-env", {
+                                modules: false
+                            }]],
+                sourceMap:  false,
+                compact  :  false,
+                minified :  false,
             },
-            dist: {
+            build: {
                 files: {}
             }
         }
 
     //Not the right way to do it, but it works! :-)
-    result.dist.files[paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_js] = paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_js;
+    result.build.files[paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_js] = paths.temp_dist_APPLICATIONNAME_TIMPSTAMP_js;
 
     return result;
 }
