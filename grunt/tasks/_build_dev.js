@@ -59,10 +59,12 @@ module.exports = function (grunt, isBuildTasks) {
 
     //BUILD JS (AND CSS) FROM SRC
     if (isBuildTasks){
-        taskList.push(
-            'clean:Dist',                     //Clear the /dist directory
-            'copy:AppScriptsAppStyles_2_Temp' //Copy all *.js (ext. '.min.js) from app/scripts to temp and all *.css (ext. '.min.css) from app/styles to temp
-        );
+        taskList.push('clean:Dist'); //Clear the /dist directory
+
+        if (options.isApplication)
+            taskList.push('copy:AppScriptsAppStyles_2_Temp'); //Copy all *.js (ext. '.min.js) from app/scripts to temp and all *.css (ext. '.min.css) from app/styles to temp
+        else
+            taskList.push('SrcScriptsSrcStyles_2_Temp');     //Copy all *.js and *.css (ext. '.min.js/css) from src and sub-dir to temp
 
         if (options.haveJavaScript)
             taskList.push(
@@ -123,17 +125,8 @@ module.exports = function (grunt, isBuildTasks) {
                 'postcss:optimize',   //optimize using cssnano but no minimizing
                 'postcss:minimize',   //Minimize into APPLICATIONNAME_TIMPSTAMP.min.css
 
-
-                //babel: convert ES6 => ES5
-                'babel:build',
-
-
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.js -> APPLICATIONNAME_TIMPSTAMP.min.js
-                //'uglify:build', Removed in version 5.4
-                'terser:build',     //Added in in version 5.4
-
-
-
+                'uglify:build',
 
                 //Replace url( PATH ) with url('data:image/png;base64,... ) in APPLICATIONNAME_TIMPSTAMP.min.css. Both images and fonts
                 'cssUrlEmbed:encode',
