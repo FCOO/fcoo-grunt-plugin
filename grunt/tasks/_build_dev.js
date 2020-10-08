@@ -64,7 +64,7 @@ module.exports = function (grunt, isBuildTasks) {
         if (options.isApplication)
             taskList.push('copy:AppScriptsAppStyles_2_Temp'); //Copy all *.js (ext. '.min.js) from app/scripts to temp and all *.css (ext. '.min.css) from app/styles to temp
         else
-            taskList.push('SrcScriptsSrcStyles_2_Temp');     //Copy all *.js and *.css (ext. '.min.js/css) from src and sub-dir to temp
+            taskList.push('copy:Src_2_Temp');     //Copy all *.js and *.css (ext. '.min.js/css) from src and sub-dir to temp
 
         if (options.haveJavaScript)
             taskList.push(

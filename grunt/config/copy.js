@@ -42,7 +42,7 @@ module.exports = function ( grunt ) {
         },
 
         //Copies all files in src and sub-dirs to temp/src, excl. '_*.*' and *.min.js/css
-        SrcScriptsSrcStyles_2_Temp: {
+        Src_2_Temp: {
             cwd    : paths.app,
             src    : common.srcExclude_([paths.src +'**/*.js', paths.src +'*.js', paths.src + '*.css', '!**/*.min.*']),
             dest   : paths.temp + paths.src,
