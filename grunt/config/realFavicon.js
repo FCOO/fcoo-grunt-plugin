@@ -17,7 +17,7 @@ module.exports = function ( grunt ) {
             src : paths.temp_dist_images_faviconSvg, //Path to your master picture
             dest: paths.temp_dist,                   //Path to the directory where to store the icons
             options: {
-                iconsPath: '',
+                iconsPath: '/' + options.application.subpath,
                 html     : paths.temp_dist + 'index.html', //List of the HTML files where to inject favicon markups
                 design   : {
                     ios: {

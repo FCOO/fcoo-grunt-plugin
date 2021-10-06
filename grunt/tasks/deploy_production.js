@@ -1,5 +1,5 @@
 /**
- * deploy_production.js - Deploy application to production server
+ * deploy_production.js - Deploy application to production-version
  */
 
 module.exports = function (grunt) {

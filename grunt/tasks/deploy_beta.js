@@ -1,5 +1,5 @@
 /**
- * deploy_beta.js - Deploy application to beta server
+ * deploy_beta.js - Deploy application to beta-version
  */
 
 module.exports = function (grunt) {

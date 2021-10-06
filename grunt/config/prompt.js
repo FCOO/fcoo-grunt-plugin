@@ -50,7 +50,24 @@ module.exports = function ( grunt ) {
 
         github_commit_message: { options: { questions: [{ config: 'commitMessage', type: 'input',   message: 'Message/description for new commit:'  }] } },
         github_tag_message   : { options: { questions: [{ config: 'tagMessage',    type: 'input',   message: 'Message/description for tag/release:' }] } },
-        continue             : { options: { questions: [{ config: 'continue',      type: 'confirm', message: 'Continue?'                            }] } } 
+        continue             : { options: { questions: [{ config: 'continue',      type: 'confirm', message: 'Continue?'                            }] } },
+
+
+        deploy_default_or_protected: {
+            options: {
+                questions: [
+                    {
+                        config : 'application_access',
+                        type   : 'list',
+                        message: 'Select access to the application:',
+                        choices: [
+                            { value: 'normal',      name: 'Normal   : Normal access' },
+                            { value: 'protected',   name: 'Protected: Only password protected access' },
+                        ]
+                    }
+                ]
+            }
+        } //end of deploy_default_or_protected
 
     }
 }

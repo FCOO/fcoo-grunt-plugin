@@ -6,10 +6,52 @@ module.exports = function ( grunt ) {
 
     var paths   = grunt.fcoo.paths,
         common  = grunt.fcoo.common,
+        options = grunt.fcoo.options,
+        secret  = grunt.fcoo.secretJson;
+
+    if (!secret)
+        return {};
+
+    function deployOptions( subpathPostfix ){
+        return {
+            options     : {
+                host        : secret.host,
+                username    : secret.username,
+                password    : secret.password,
+                port        : secret.port,
+                releases_to_keep: '5',
+                deploy_path : '/home/prod/applications/' + options.application.subpath + (subpathPostfix ? '-'+subpathPostfix : '')
+            }
+        }
+    }
+
+    var result = {
+        // do not store credentials in the git repo, store them separately and read from a secret file
+        options: {
+            local_path      : paths.temp,
+            current_symlink : 'current'
+        },
+        devel01     : deployOptions('devel01'),
+        devel02     : deployOptions('devel02'),
+        devel03     : deployOptions('devel03'),
+        alpha       : deployOptions('alpha'),
+        beta        : deployOptions('beta'),
+        production  : deployOptions()
+    };
+    return result;
+}
+
+
+
+/*************************************
+module.exports = function ( grunt ) {
+
+    var paths   = grunt.fcoo.paths,
+        common  = grunt.fcoo.common,
         options = grunt.fcoo.options;
 
 
-    return {
+    var result = {
 
         // do not store credentials in the git repo, store them separately and read from a secret file
         secret: grunt.fcoo.secretJson, //grunt.file.readJSON('secret.json'),
@@ -60,7 +102,10 @@ module.exports = function ( grunt ) {
                 }
             }
         }
-   
+
     } //end of return {...
 
+console.log('>>>>>>>>', result);
+    return result;
 }
+***************************************/

@@ -9,6 +9,7 @@ module.exports = function (grunt) {
         paths    = grunt.fcoo.paths,
         taskList = [];
 
+//console.log(options);
 
     //If an individuel favicon as given => use it as it is
     if (options.application.faviconFileName){
