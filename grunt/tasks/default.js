@@ -34,17 +34,7 @@ module.exports = function (grunt) {
 
         if (options.haveDeplomentTasks){
             _console.writelnYellow('----------------------------------------------------------------------------');
-            _console.writelnColor('Deploy development-versions:',    'yellow');
-            _console.writelnColor('>grunt deploy_devel01   ', 'white', '=> Deploy application to devel01-version',    'yellow');
-            _console.writelnColor('>grunt deploy_devel02   ', 'white', '=> Deploy application to devel02-version',    'yellow');
-            _console.writelnColor('>grunt deploy_devel03   ', 'white', '=> Deploy application to devel03-version',    'yellow');
-            _console.writelnYellow('');
-            _console.writelnColor('Deploy alpha- or beta-version:',    'yellow');
-            _console.writelnColor('>grunt deploy_alpha     ', 'white', '=> Deploy application to alpha-version',    'yellow');
-            _console.writelnColor('>grunt deploy_beta      ', 'white', '=> Deploy application to beta-version',    'yellow');
-            _console.writelnYellow('');
-            _console.writelnColor('DEPLOY PRODUCTION-VERSION:',    'yellow');
-            _console.writelnColor('>grunt deploy_production ', 'white', '=> Deploy application to PRODUCTION-version',    'yellow');
+            _console.writelnColor('>grunt NEW_deploy', 'white', '=> Deploy new version of the application',    'yellow');
         }
 
         _console.writelnYellow('****************************************************************************');
