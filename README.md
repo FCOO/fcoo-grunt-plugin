@@ -208,7 +208,11 @@ Building a production version in `\dist`
 	  fcoo-app_2015-12-24-13_22_50.min.css
       fcoo-app_2015-12-24-13_22_50.min.css.map
 
+### `>grunt deploy`
+Deploy the build release in `\dist` up to a selected location on the web-server
 
+### `>grunt rollback`
+Rollback the current release of a selected version back to the previous release
 
 
 <a name="gruntfile.js"></a>
@@ -218,16 +222,26 @@ Building a production version in `\dist`
 
 Contains inclusion of the grunt-plugin and the different options to define the type of application, extra commands etc.
 
-	grunt.initConfig({
-	  fcoo_grunt_plugin: {
-	    options: {
-	     "application"   : {   //application = false or null for packages/plugins
-	       "id"             : 0,  //application id. Default=0
-	       "name"           : "", //application name. Default="FCOO.dk"
-	       "color"          : "", //background-color of favicons. Default="" => blue color of FCOO's logo. Must have format "#123456"
-	       "faviconColor"   : ""  //Color of the favicon. Default = "" => automatic set to highest contrast to "color" between 'white' and 'blue color of FCOO's logo'
-	       "faviconFileName": "", //Full path to alternative favicon. Will overwrite "color" and "faviconColor". NB: Almost never used
-	                              //..Individual id:value can be added for specific application
+    grunt.initConfig({
+        fcoo_grunt_plugin: {
+            options: {
+	            "application"   : {   //application = false or null for packages/plugins
+                    "id"             : "0",  //application id. Default=0
+                    "subpath"        : "MISSING",  //The sub-path where the application is located. Default="MISSING"
+                    "name"           : '{"da":"Sejladsudsigt", "en":"Marine Forecast"}', //application name. Default="FCOO.dk"
+                    "name_da"        : "Sejladsudsigt",   //application danish name.  Default=application.name
+                    "name_en"        : "Marine Forecast", //application english name. Default=application.name
+
+                    "color"          : "", //background-color of favicons. Default="" => blue color of FCOO's logo. Must have format "#123456"
+                    "faviconColor"   : "", //Color of the favicon. Default = "" => automatic set to highest contrast to "color" between 'white' and 'blue color of FCOO's logo'
+	                "faviconColor"   : ""  //Color of the favicon. Default = "" => automatic set to highest contrast to "color" between 'white' and 'blue color of FCOO's logo'
+	                "faviconFileName": "", //Full path to alternative favicon. Will overwrite "color" and "faviconColor". NB: Almost never used
+
+                    //..Individual id:value can be added for specific application. E.q.
+
+                    "sentryDSN"     : "", //DSN for Sentry
+                    "piwikSiteId"   : 1 //Application id for Piwik website analytics
+
 	      },
 	      "haveJavaScript": true,  //true if the application/packages have js-files
 	      "haveStyleSheet": true,  //true if the application/packages have css and/or scss-files

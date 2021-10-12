@@ -14,7 +14,7 @@ module.exports = function ( grunt ) {
     }
     return {
         TempDist_html: {
-            src      : paths.temp_dist + '**/*.html', 
+            src      : paths.temp_dist + '**/*.html',
             overwrite: true,
             replacements: [
                 { from: '{APPLICATION_NAME}', to: grunt.fcoo.bowerJson.name               },
@@ -27,25 +27,25 @@ module.exports = function ( grunt ) {
         },
 
         Dev_indexHtml: {
-            src      : paths.dev + '**/*.html', 
+            src      : paths.dev + '**/*.html',
             overwrite: true,
             replacements: [
                 {from: '{APPLICATION_NAME}', to: grunt.fcoo.bowerJson.name                },
                 {from: '{TITLE}',            to: options.title                            },
                 {from: '{LINK_CSS}',         to: function(){return grunt.fcoo.link_css;}  },
-                {from: '{SCRIPT_JS}',        to: function(){return grunt.fcoo.script_js;} } 
+                {from: '{SCRIPT_JS}',        to: function(){return grunt.fcoo.script_js;} }
             ]
         },
 
-        Dist_html_version: { 
-            src: [paths.dist + '*.html'], overwrite: true, 
+        Dist_html_version: {
+            src: [paths.dist + '*.html'], overwrite: true,
             replacements: [
                 { from: '{VERSION}', to: getBowerJsonVersion }
-            ]  
+            ]
         },
 
-        Dist_js_version  : { 
-            src: [paths.dist + '*.js'], overwrite: true, 
+        Dist_js_version  : {
+            src: [paths.dist + '*.js'], overwrite: true,
             replacements: [
                 { from: '{VERSION}', to: getBowerJsonVersion }
             ]
@@ -54,16 +54,7 @@ module.exports = function ( grunt ) {
         dist_temp_ALL_application_options: {
             src         : common.srcExclude_([paths.temp_dist+'**/*.html', paths.temp_dist+'**/*.js', paths.temp_dist+'**/*.css']), overwrite: true,
             replacements: options.applicationOptionsReplacements
-        },
-
-        temp_deploy_staging: {
-            src: [paths.temp + '*.js'], 
-            overwrite: true, 
-            replacements: [{ 
-                from: '{s}.fcoo.dk/webmap/{dataset}.wms', 
-                to  : '{s}.fcoo.dk/webmap-staging/{dataset}.wms'
-            }]
         }
-        
+
     }
 }

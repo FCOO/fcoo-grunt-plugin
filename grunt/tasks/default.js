@@ -18,7 +18,6 @@ module.exports = function (grunt) {
     }
 
     taskList.push( function(){
-        _console.writelnYellow('****************************************************************************');
 
         _console.writelnYellow('Run one of the following commands:');
         if (tastAvaliable('check'))
@@ -32,12 +31,13 @@ module.exports = function (grunt) {
         if (tastAvaliable('push-cli'))
             _console.writelnColor('>grunt push-cli {OPTIONS} ', 'white', '=> Create a new Github release incl. new version and tag - same as >grunt github-cli {OPTIONS}', 'yellow');
 
-        if (options.haveDeplomentTasks){
-            _console.writelnYellow('----------------------------------------------------------------------------');
-            _console.writelnColor('>grunt NEW_deploy', 'white', '=> Deploy new version of the application',    'yellow');
+        if (options.haveDeployTasks){
+            grunt.log.writeln('----------------------------------------------------------------------------');
+            _console.writelnColor('>grunt deploy   ', 'white', '=> Deploy new version of the application',    'yellow');
+            grunt.log.writeln('----------------------------------------------------------------------------');
+            _console.writelnColor('>grunt rollback ', 'white', '=> Rollback a version of the application to its pervious release',    'yellow');
         }
 
-        _console.writelnYellow('****************************************************************************');
     });
 
     return taskList;

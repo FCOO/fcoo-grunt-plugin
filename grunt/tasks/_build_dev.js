@@ -3,7 +3,6 @@
  */
 
 module.exports = function (grunt, isBuildTasks) {
-
     var common     = grunt.fcoo.common,
         options    = grunt.fcoo.options,
         paths      = grunt.fcoo.paths,
