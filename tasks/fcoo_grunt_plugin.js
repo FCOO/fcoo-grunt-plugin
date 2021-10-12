@@ -20,7 +20,8 @@ module.exports = function(grunt) {
         common    = grunt.fcoo.common    = require('../lib/common' )( grunt ),
         options   = grunt.fcoo.options   = require('../lib/options')( grunt ),
         paths     = grunt.fcoo.paths     = require('../lib/paths'  )( grunt ),
-        bower     = grunt.fcoo.bower     = require('../lib/bower'  )( grunt );
+        bower     = grunt.fcoo.bower     = require('../lib/bower'  )( grunt ),
+        deploy    = grunt.fcoo.deploy    = require('../lib/deploy' )( grunt );
 
 
     //Defile common/"global" variables and objects
