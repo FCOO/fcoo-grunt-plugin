@@ -63,7 +63,7 @@ module.exports = function(grunt) {
         previousSymlink     = path.posix.join(options.deployPath, options.previousSymlink),
         showLog             = options.debug,
 
-        isProtected         = grunt.config('deploy_access') != 'normal',
+        isProtected         = _deploy.getSelectedDeploy().protected,
         webPath             = _deploy.getWebPath(),
         webPathProtected    = _deploy.getWebPathProtected();
 
@@ -283,7 +283,7 @@ module.exports = function(grunt) {
                     //Set/update links to application
                     'rm -f ' + webPath,                                                             //Remove web-path
                     'rm -f ' + webPathProtected,                                                    //Remove protected web-path
-                    'ln -s ' + currentSymlink + ' ' + (isProtected ? webPathProtected : webPath)    //Sewt normal or protected web to current
+                    'ln -s ' + currentSymlink + ' ' + (isProtected ? webPathProtected : webPath)    //Set normal or protected web to current
                ];
 
             execRemote(list.join(' && '), callback, 'Updating sym link');

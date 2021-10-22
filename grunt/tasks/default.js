@@ -9,7 +9,6 @@ module.exports = function (grunt) {
 
         taskList = [];
 
-
     function tastAvaliable( taskName ) {
         for (var i=0; i<options.avaliableTasks.length; i++ )
             if (options.avaliableTasks[i] == taskName)
@@ -31,7 +30,7 @@ module.exports = function (grunt) {
         if (tastAvaliable('push-cli'))
             _console.writelnColor('>grunt push-cli {OPTIONS} ', 'white', '=> Create a new Github release incl. new version and tag - same as >grunt github-cli {OPTIONS}', 'yellow');
 
-        if (options.haveDeployTasks){
+        if (options.haveDeplomentTasks){
             grunt.log.writeln('----------------------------------------------------------------------------');
             _console.writelnColor('>grunt deploy   ', 'white', '=> Deploy new version of the application',    'yellow');
             grunt.log.writeln('----------------------------------------------------------------------------');

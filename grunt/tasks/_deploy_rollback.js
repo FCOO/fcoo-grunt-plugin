@@ -28,7 +28,7 @@ module.exports = function (grunt, isDeployTask) {
         for (var i=0; i<deployList.length; i++){
             if (deployList[i].newLine)
                 choices.push('---');
-            choices.push( {value: ''+i, name:  deployList[i].text} );
+            choices.push( {value: ''+i, name:  deployList[i].text + ' ('+ (deployList[i].protected ? 'protected access' : 'normal access') + ')'} );
         }
 
         prompt.deploy = promptOptions;
@@ -39,48 +39,21 @@ module.exports = function (grunt, isDeployTask) {
     //Ask for deploy
     taskList.push( 'prompt:deploy');
 
-
-    //Only deploy: Create prompt to select the NORMAL or PROTECTED access
-    if (isDeployTask){
-        taskList.push( function(){
-            var prompt = grunt.config('prompt'),
-                deploy = _deploy.getSelectedDeploy();
-
-            prompt.deploy_access = {
-                options: {
-                    questions: [{
-                        config : 'deploy_access',
-                        type   : 'list',
-                        message: 'Select access to ' + appNameAndVersion + ':',
-                        default: deploy.protected ? 'protected' : 'normal',
-                        choices: [
-                            { value: 'normal',      name: 'Normal   : Normal access',                },
-                            { value: 'protected',   name: 'Protected: Only password protected access'}
-                        ]
-                    }]
-                }
-            };
-            grunt.config('prompt', prompt);
-        });
-
-        //Ask for access (Normal or protected)
-        taskList.push( 'prompt:deploy_access');
-    }
-
     //Create info task
     if (isDeployTask)
         taskList.push( function(){
             var deployOptions = _deploy.getDeployOptions(),
-                deploy = _deploy.getSelectedDeploy(),
-                access = grunt.config('deploy_access');
+                deploy = _deploy.getSelectedDeploy();
+
+
 
             _console.writelnYellow('----------------------------------------------------------------------------');
             _console.writelnColor('Deploy ' + appNameAndVersion + ' => ' + '"' + _deploy.getDeployPath() + '"',    'yellow');
 
-            if (grunt.config('deploy_access') == 'normal')
-                _console.writelnColor('with NORMAL access via "' + _deploy.getWebPath() + '"',    'yellow');
-            else
+            if (_deploy.getSelectedDeploy().protected)
                 _console.writelnColor('with PROTECTED access via "' + _deploy.getWebPathProtected() + '"',    'yellow');
+            else
+                _console.writelnColor('with NORMAL access via "' + _deploy.getWebPath() + '"',    'yellow');
         });
     else
         taskList.push( function(){
