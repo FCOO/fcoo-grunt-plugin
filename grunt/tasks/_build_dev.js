@@ -48,13 +48,14 @@ module.exports = function (grunt, isBuildTasks) {
     taskList.push('clean:Temp', 'clean:TempDist' );
 
     //Update bower-components
-    if (options.isPackage && isBuildTasks)
+    if (options.isPackage && isBuildTasks && !options.build_bowerFullUpdate)
         taskList.push('shell:bower_update'); //Simple >bower update
     else
         taskList.push('bower_update'); //Full update
 
-    //ALWAYS check syntax
-    taskList.push( 'check' );
+    //Check syntax
+    if (!options.build_noCheck)
+        taskList.push( 'check' );
 
     //BUILD JS (AND CSS) FROM SRC
     if (isBuildTasks){
@@ -310,5 +311,17 @@ module.exports = function (grunt, isBuildTasks) {
         _runACmd( isBuildTasks ? options.afterProdCmd : options.afterDevCmd );
     });
 
-    return taskList;
+    var newTaskList = [];
+    for (var i= 0; i<taskList.length; i++){
+        var txt = '**** Task #'+i;
+        if (typeof taskList[i] == 'string')
+            txt = txt + ': ' + taskList[i];
+            txt = txt + ' ****';
+        var f = new Function('console.log("' + txt + '");');
+        newTaskList.push( f );
+        newTaskList.push( taskList[i] );
+    }
+
+
+    return newTaskList;
 }

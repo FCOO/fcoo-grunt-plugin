@@ -252,6 +252,9 @@ Contains inclusion of the grunt-plugin and the different options to define the t
 	      "afterProdCmd" : "",     //Cmd to be run at the end of prod-task
 	      "afterDevCmd"  : "",     //Cmd to be run at the end of dev-task
 
+        "build_noCheck"        : true,   //If true no syntax check when building package
+        "build_bowerFullUpdate": true,   //If true full bower update when building package
+
 	      "DEBUG"        : false   //if true different debugging is on and the tempoary files are not deleted
 
 
