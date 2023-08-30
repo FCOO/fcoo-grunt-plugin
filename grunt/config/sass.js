@@ -7,7 +7,7 @@ module.exports = function ( grunt ) {
     var common = grunt.fcoo.common,
         paths  = grunt.fcoo.paths,
         lodash = require('lodash'),
-        sass = require('node-sass');
+        sass = require('sass');
 
     var Temp_2_TempDist     = { expand: true, cwd: paths.temp, dest: paths.temp_dist },                     //temp/**/*.* => temp_dist/**/*.*
         sass_2_css          = { src: common.srcExclude_('**/*.scss'), ext: '.css', expand: true  },         //*.scss => *.css
