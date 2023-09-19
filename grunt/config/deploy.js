@@ -15,7 +15,7 @@ module.exports = function ( grunt ) {
         return {};
 
     var deployList = [
-            {postfix: 'devel01',    text: 'devel01',         protected: true},
+            {postfix: 'devel01',    text: 'devel01',         protected: true,  newLine: true},
             {postfix: 'devel02',    text: 'devel02',         protected: true},
             {postfix: 'devel03',    text: 'devel03',         protected: true},
             {postfix: 'alpha',      text: 'alpha',           protected: true,  newLine: true},
@@ -24,9 +24,7 @@ module.exports = function ( grunt ) {
             {postfix: 'pwa-beta',   text: 'PWA beta',        protected: false, newLine: true},
             {postfix: 'pwa',        text: 'PWA PRODUCTION',  protected: false               },
             {postfix: 'fiin-beta',  text: 'FIIN beta',       protected: true,  newLine: true},
-            {postfix: 'fiin',       text: 'FIIN PRODUCTION', protected: true,  newLine: true},
-
-
+            {postfix: 'fiin',       text: 'FIIN PRODUCTION', protected: true}
         ];
 
 
