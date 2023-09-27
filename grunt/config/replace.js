@@ -12,17 +12,19 @@ module.exports = function ( grunt ) {
     function getBowerJsonVersion(){
         return grunt.fcoo.bowerJson.version;
     }
+
     return {
         TempDist_html: {
             src      : paths.temp_dist + '**/*.html',
             overwrite: true,
             replacements: [
-                { from: '{APPLICATION_NAME}', to: grunt.fcoo.bowerJson.name               },
-                { from: '{BUILD}',            to: grunt.fcoo.todayStr                     },
-                { from: '{VERSION}',          to: getBowerJsonVersion                     },
-                { from: '{TITLE}',            to: options.title                           },
-                { from: '{CSS_FILE_NAME}',    to: paths.APPLICATIONNAME_TIMPSTAMP_min_css },
-                { from: '{JS_FILE_NAME}',     to: paths.APPLICATIONNAME_TIMPSTAMP_min_js  }
+                { from: '{APPLICATION_NAME}',       to: grunt.fcoo.bowerJson.name               },
+                { from: '{APPLICATION_BUILD}',      to: grunt.fcoo.todayStr                     },
+                { from: '{BUILD}',                  to: grunt.fcoo.todayStr                     },//Backwards combability
+                { from: '{APPLICATION_VERSION}',    to: getBowerJsonVersion                     },
+                { from: '{VERSION}',                to: getBowerJsonVersion                     },//Backwards combability
+                { from: '{CSS_FILE_NAME}',          to: paths.APPLICATIONNAME_TIMPSTAMP_min_css },
+                { from: '{JS_FILE_NAME}',           to: paths.APPLICATIONNAME_TIMPSTAMP_min_js  }
             ]
         },
 
@@ -31,7 +33,6 @@ module.exports = function ( grunt ) {
             overwrite: true,
             replacements: [
                 {from: '{APPLICATION_NAME}', to: grunt.fcoo.bowerJson.name                },
-                {from: '{TITLE}',            to: options.title                            },
                 {from: '{LINK_CSS}',         to: function(){return grunt.fcoo.link_css;}  },
                 {from: '{SCRIPT_JS}',        to: function(){return grunt.fcoo.script_js;} }
             ]

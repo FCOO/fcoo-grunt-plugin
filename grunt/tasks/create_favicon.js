@@ -9,15 +9,9 @@ module.exports = function (grunt) {
         paths    = grunt.fcoo.paths,
         taskList = [];
 
-//console.log(options);
-
-    //If an individuel favicon as given => use it as it is
-    if (options.application.faviconFileName){
-        taskList.push('cur-dir:favicon');
-    }
-    else {
-        //Copy favicon_fcoo.svg from node_modules/grunt-fcoo-grunt-plugin/assets/favicon to temp/_favicon/source
+        //Copy original favicon from node_modules/grunt-fcoo-grunt-plugin/assets/favicon to temp/_favicon/source
         taskList.push( 'copy:AssetsFaviconSvg_2_Temp_FaviconSource' );
+
 
         //Create the config.json for svg_modify
         taskList.push( function(){
@@ -26,7 +20,6 @@ module.exports = function (grunt) {
                 { "variations": { "favicon":{ /*"width":"384", */"color":options.application.faviconColor  } } }
             );
         });
-
 
         //Create new version of favicon.svg with new background-color and icon-color
         taskList.push('svg_modify:favicon');
@@ -80,7 +73,7 @@ module.exports = function (grunt) {
         //Copy "favicon*.*" from temp/ to temp_dist/
         taskList.push('copy:TempFavicon_2_TempDist');
 
-    }
+// HER>     }
 
     return taskList;
 }

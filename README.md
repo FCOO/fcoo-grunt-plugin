@@ -10,7 +10,7 @@
 
 # grunt-fcoo-grunt-plugin
 
-> Grunt plugin used to with a `gruntfile.js` and `packages.json` in repositories to run [grunt][] commands to  validate, check and build web packages and applications 
+> Grunt plugin used to with a `gruntfile.js` and `packages.json` in repositories to run [grunt][] commands to  validate, check and build web packages and applications
 
 Used in the development environment described in [fcoo-web-dev][] and normally installed via the FCOO [grunt-init][] templates (`grunt-init-fcoo-[NAME]`)
 
@@ -34,7 +34,7 @@ Used in the development environment described in [fcoo-web-dev][] and normally i
 2. Clone `gruntfile.js` and `package.json` from [fcoo-gruntfile.js](https://github.com/FCOO/fcoo-gruntfile.js) and manually adjust the files
 
 ### gruntfile.js
-The [gruntfile.js](`gruntfile.js`) in the repository contains the different options to be used in different tasks. 
+The [gruntfile.js](`gruntfile.js`) in the repository contains the different options to be used in different tasks.
 
 ### *Application* or *Package*
 The contents of a repository can either be a **web application** or a **packages/plugin** and is defined by setting the `isApplication` options in [gruntfile.js](#gruntfile.js) determine if it is an *`Application`* or a *`Package`*
@@ -49,7 +49,7 @@ To execute a command just run
 ---
 ## Package tasks
 - `grunt check` - Check the syntax of all `.js` files in `\app\scripts` and all `.scss` files in `\app\styles`
-- `grunt dev` - Building a development version in `\demo` 
+- `grunt dev` - Building a development version in `\demo`
 - `grunt build` - Building a production version in `\dist`. Same as`grunt prod`
 - `grunt push` - Create a complete new release and push it to GitHub. Same as `grunt github`
 - `grunt push-cli {OPTIONS}` - Same as `grunt push` but with options instead of prompt. Same as `grunt github-cli {OPTIONS}`
@@ -98,14 +98,14 @@ Building a production version in `\dist`
 ### `>grunt push`
 Create a complete new release and push it to [GitHub][]
 
-- Prompt for 
+- Prompt for
 	- new version (patch / minor / major)
 	- Commit or Amend (when both are possible)
 	- description of the release
 - Run `grunt build` *(optional)*
 - Update `version` in `bower.json` and `package.json`
 - Update `\dist\*.js` with new version
-- Add all files in [Git][]. Includes **all** files except those specified in `.gitignore` 
+- Add all files in [Git][]. Includes **all** files except those specified in `.gitignore`
 - Commit all files in [Git][]
 - Create a new `TAG` with message "*1.2.3*"
 - Merge branch `'master'` into branch `'gh-pages'` *(optional)*
@@ -120,7 +120,7 @@ Create a complete new release and push it to [GitHub][]
 	> Minor : 1.3.0 Add functionality in a backwards-compatible manner.
 	  Major : 2.0.0 Incompatible API changes.
 	  None  : No new version. Just commit and push.
-	
+
 	? Above is a list of changes to be commited. Select commit-action: (Use arrow keys)
 	> Commit : Committing staged changes to a new snapshot.
 	  Amend  : Combine staged changes with the previous commit.
@@ -146,7 +146,7 @@ Same as `grunt push` but with options
 ## Application tasks
 Where there are the following task:
 - `grunt check` - Check the syntax of all `.js` files in `\app\scripts` and all `.scss` files in `\app\styles`
-- `grunt dev` - Building a development version in `\dev` 
+- `grunt dev` - Building a development version in `\dev`
 - `grunt build` - Building a production version in `\dist`
 
 ### `>grunt check`
@@ -161,7 +161,7 @@ To test your application just browse
 
 #### NOTE!! - You only need to run `grunt dev` when you
 
-- add or delete a source file to/from `\app\scripts` or `\app\styles` 
+- add or delete a source file to/from `\app\scripts` or `\app\styles`
 - (un)install a bower-component
 - changes `\app\_index-dev.html.tmpl`
 
@@ -169,7 +169,7 @@ To test your application just browse
 - Check syntax of `\app\scripts\*.js` and `\app\styles\*.scss` files
 - Merge all `overrides` from dependences into `bower.json` temporary
 - Update all bower components
-- Copy all images and font files used by bower components to `\dev\images` and `\dev\fonts`   
+- Copy all images and font files used by bower components to `\dev\images` and `\dev\fonts`
 - Copy all files in `\app` to `\dev` (ext. `\scripts` and `\styles`)
 - Restore original `bower.json`
 - Create `\dev\index.html` from `\app\_index-dev.html.tmpl`
@@ -179,19 +179,21 @@ To test your application just browse
 Building a production version in `\dist`
 
 - Check syntax of `\app\scripts\*.js` and `\app\styles\*.scss` files
-- Update all bower components   
-- Concat and minify all `.js` files in bower components **AND** in `\app\scripts` into one file `[[APPLICATIONNAME]_[TIMESTAMP].js` and `[[APPLICATIONNAME]_[TIMESTAMP].min.js`      
+- Update all bower components
+- Concat and minify all `.js` files in bower components **AND** in `\app\scripts` into one file `[[APPLICATIONNAME]_[TIMESTAMP].js` and `[[APPLICATIONNAME]_[TIMESTAMP].min.js`
 - Compile all `.scss` files in `\app\styles` and concat them with all the `.css` files in bower components **AND** in `\app\styles` into one file `[[APPLICATIONNAME]_[TIMESTAMP].css`
 - Check, modify, and optimize stylesheets `[[APPLICATIONNAME]_[TIMESTAMP].css`
     - Embed URLs as base64 data URIs inside the stylesheets ([grunt-css-url-embed](https://www.npmjs.com/package/grunt-css-url-embed))
-    - Optimize and minimize using [cssnano](http://cssnano.co/) 
+    - Optimize and minimize using [cssnano](http://cssnano.co/)
 - Using [Babel](https://babeljs.io/) to convert ES6-code to ES5-code
-- Minify `[[APPLICATIONNAME]_[TIMESTAMP].js` using [UglifyJS](uglify).<br>Default Compress options are used but individual compress options can be set in `\.uglifyrc` 
+- Minify `[[APPLICATIONNAME]_[TIMESTAMP].js` using [UglifyJS](uglify).<br>Default Compress options are used but individual compress options can be set in `\.uglifyrc`
 - Create `\dist\index.html` from `\app\_index.html.tmpl`
-- Copy all images and font files used by bower components to `\dist\images` and `\dist\fonts`   
+- Copy all images and font files used by bower components to `\dist\images` and `\dist\fonts`
 - Copy all images and font files in `\app\styles` to `\dist\images` and `\dist\fonts`
-- Create all favicons using the options in `options.application` (see [`gruntfile.js`](#gruntfile.js))
-- Replace text in all `*.html`, `*.js`, and `*.css` files where `{APPLICATION_[ID]}` is replaced with the value from `options.application.[id]`. Eq. `options.application.color:"#123456"` => `{APPLICATION_COLOR}` is replaced with `#123456` (see [`gruntfile.js`](#gruntfile.js))
+- Replace text in all `*.html`, `*.js`, and `*.css` files where `{APPLICATION_[ID]}` is replaced with the value from `options.application.[id]`. Eq. `options.application.something:"This is a value"` => `{APPLICATION_SOMETHING}` is replaced with `This is a value` (see [`gruntfile.js`](#gruntfile.js)). The following replacement are default
+    - `{APPLICATION_NAME}` : The application name given in `bower.json`
+    - `{APPLICATION_VERSION}`: The version given in `bower.json` (after it is updated)
+    - `{APPLICATION_BUILD}`: Date and time string when the application was build
 - Copy all files in `\app` to `\dist` (ext. `\scripts` and `\styles`)
 - Create different log-files in `\dist\log`
 
@@ -228,17 +230,8 @@ Contains inclusion of the grunt-plugin and the different options to define the t
 	            "application"   : {   //application = false or null for packages/plugins
                     "id"             : "0",  //application id. Default=0
                     "subpath"        : "MISSING",  //The sub-path where the application is located. Default="MISSING"
-                    "name"           : '{"da":"Sejladsudsigt", "en":"Marine Forecast"}', //application name. Default="FCOO.dk"
-                    "name_da"        : "Sejladsudsigt",   //application danish name.  Default=application.name
-                    "name_en"        : "Marine Forecast", //application english name. Default=application.name
-
-                    "color"          : "", //background-color of favicons. Default="" => blue color of FCOO's logo. Must have format "#123456"
-                    "faviconColor"   : "", //Color of the favicon. Default = "" => automatic set to highest contrast to "color" between 'white' and 'blue color of FCOO's logo'
-	                "faviconColor"   : ""  //Color of the favicon. Default = "" => automatic set to highest contrast to "color" between 'white' and 'blue color of FCOO's logo'
-	                "faviconFileName": "", //Full path to alternative favicon. Will overwrite "color" and "faviconColor". NB: Almost never used
 
                     //..Individual id:value can be added for specific application. E.q.
-
                     "sentryDSN"     : "", //DSN for Sentry
                     "piwikSiteId"   : 1 //Application id for Piwik website analytics
 
@@ -281,7 +274,6 @@ The position for the options are marked with `{APPLICATION_ID}` where `ID` is th
 	options: {
 	    application: {
 	         "id"      : 248,
-             "name"    : "The name of the application",
 	         "myOption": true
 	    }
 	}
@@ -289,13 +281,11 @@ The position for the options are marked with `{APPLICATION_ID}` where `ID` is th
 	//In a js-file
 	var version = "{APPLICATION_VERSION}",
 	    applicationId = "{APPLICATION_ID}",
-	    applicationName = "{APPLICATION_NAME}",
 	    myOptions = "{APPLICATION_MYOPTION}";
-	
+
 	//After >grunt build
 	var version = "1.2.3",
 	    applicationId = "248",
-	    applicationName = "The name of the application",
 	    myOptions = "true";
 
 NOTE that all embedded options will be as strings.
@@ -328,16 +318,16 @@ To change a rule setting (ee [Configuring Rules](http://eslint.org/docs/user-gui
 
 [UglifyJS][uglify] is used to optimize and minimize the combined JavaScript-code in [Application tasks](#application-task) `grunt build`
 
-The Compressor Options used are the [Default Compressor Options](https://github.com/mishoo/UglifyJS2#compressor-options) except 
+The Compressor Options used are the [Default Compressor Options](https://github.com/mishoo/UglifyJS2#compressor-options) except
 
 - `drop_debugger` -- remove debugger; statements
 - `drop_console` -- default false. Pass true to discard calls to console.* functions.
 
 That are `true` when `fcoo_grunt_plugin.DEBUG: false` in `gruntfile.js` and vice versa
 
-In `.uglifyrc` you can change the compressior options individual 
+In `.uglifyrc` you can change the compressior options individual
 
-### browserslist 
+### browserslist
 [browserslist](https://github.com/ai/browserslist) is a syntax used to descript witch browsers and witch version(s). It is used when checking the syntax of Style Sheets in [Application tasks](#application-task) `grunt build`
 
 The file `.browserslistrc` contains current *browserslist*
@@ -350,7 +340,7 @@ The file `.browserslistrc` contains current *browserslist*
 The `grunt-fcoo-grunt-plugin` using [grunt-bower-concat][] to find the included packages and there dependencies and concat all the js- and css-files.
 
 ### Main files
-Some Bower components don’t list their main files or (more likely) don’t have `bower.json` file at all. 
+Some Bower components don’t list their main files or (more likely) don’t have `bower.json` file at all.
 In this case you can add an `overrides` section in the `bower.json` and add the missing main files
 
 	 "overrides": {
@@ -364,14 +354,14 @@ In this case you can add an `overrides` section in the `bower.json` and add the 
 
 The `grunt-fcoo-grunt-plugin` will find all the `overrides` from dependences and copy them temporary  into `bower.json`
 
-### Dependencies       
-Unfortunately `bower.json` and [grunt-bower-concat][] don't implement *dependencies* in there json-files the same way 
+### Dependencies
+Unfortunately `bower.json` and [grunt-bower-concat][] don't implement *dependencies* in there json-files the same way
 
 #### `bower.json`
 In `bower.json` you can specify that a package should use a specify version of another package
 
 Eq.: In the bower-file for *leaflet.locatecontrol* it is specify that *leaflet.locatecontrol* is using leaflet version 0.7.3, but in you project you are using leaflet version 0.7.7. To avoid conflicts you can override the dependencies for  *leaflet.locatecontrol*
-	
+
 	 "overrides": {
 		"leaflet.locatecontrol": {
       		"dependencies": {
@@ -381,7 +371,7 @@ Eq.: In the bower-file for *leaflet.locatecontrol* it is specify that *leaflet.l
 	}
 
 ##### grunt-bower-concat
-[grunt-bower-concat][] don't seem to read or use the `overrides` section in `bower.json`. 
+[grunt-bower-concat][] don't seem to read or use the `overrides` section in `bower.json`.
 Instead `options.dependencies` is used to fix that not all Bower components list their dependencies. If components concatenate in the wrong order, the `options.dependencies` can dependencies for those components.
 Eq:
 
@@ -391,14 +381,14 @@ Eq:
 	}
 
 **BUT** this only works if **all** dependencies is missing in `bower.json` (eq. for "*mygallery*")
-It can **not** be used to *add* or *alter* dependencies and there are no options for alter version dependencies.  
+It can **not** be used to *add* or *alter* dependencies and there are no options for alter version dependencies.
 
 #### Conclusion
 
 - `grunt-fcoo-grunt-plugin` will find all the `resolutions` from dependences and copy them temporary  into `bower.json`
 - `grunt-fcoo-grunt-plugin` will find all the `overrides` from dependences and copy them temporary  into `bower.json`
 - For both `resolutions` and `overrides`:
-	- If the application/package has `resolutions` or `overrides` for the a packages => this `resolutions` or `overrides` is used 
+	- If the application/package has `resolutions` or `overrides` for the a packages => this `resolutions` or `overrides` is used
 	- If the application/package **don't** have `resolutions` or `overrides` for the a packages => using the `resolutions` or `overrides` from the first dependences package with `resolutions` or `overrides` for the packages
 	- A warning will be displayed if two or more packages in `dependencies` has `resolutions` or `overrides` for the same packages.
 - `grunt-fcoo-grunt-plugin` will read and convert the `overrides.PACKAGENAME.`**`main`** in `bower.json` to the correct options format for [grunt-bower-concat][]

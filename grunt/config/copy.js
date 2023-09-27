@@ -67,12 +67,15 @@ module.exports = function ( grunt ) {
             filter: 'isFile'
         },
 
-        //Copy favicon_fcoo.svg from node_modules/grunt-fcoo-grunt-plugin/assets/favicon to temp/_favicon/source
+        //Copy favicon.svg from node_modules/grunt-fcoo-grunt-plugin/assets/favicon to temp/_favicon/source
         AssetsFaviconSvg_2_Temp_FaviconSource: {
             cwd   : paths.node_modules_fcoo_assets_favicon,
-            src   : paths.faviconSvg,
+            src   : paths.originalFaviconSvg,
             dest  : paths.temp__favicon_source,
-            expand: true
+            expand: true,
+            rename: function (dest, matchedSrcPath) {
+                return dest + paths.faviconSvg
+            }
         },
 
         //Copy  temp/_favicon/result/source/**/favicon.svg to temp_dist/images/favicon.svg.

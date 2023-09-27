@@ -117,7 +117,7 @@ module.exports = function (grunt, isBuildTasks) {
                 'replace:dist_temp_ALL_application_options',
 
                 //Create all favicon etc.
-                'create_favicon',
+//REMOVED                'create_favicon',
 
                 //Optimize and minimize APPLICATIONNAME_TIMPSTAMP.css -> APPLICATIONNAME_TIMPSTAMP.min.css
 //NO WORKING YET                'css_purge',          //Remove unused styles
