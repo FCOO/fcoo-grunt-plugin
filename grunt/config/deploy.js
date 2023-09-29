@@ -15,16 +15,16 @@ module.exports = function ( grunt ) {
         return {};
 
     var deployList = [
-            {postfix: 'devel01',    text: 'devel01',         protected: true,  newLine: true},
-            {postfix: 'devel02',    text: 'devel02',         protected: true},
-            {postfix: 'devel03',    text: 'devel03',         protected: true},
-            {postfix: 'alpha',      text: 'alpha',           protected: true,  newLine: true},
-            {postfix: 'beta',       text: 'beta',            protected: false, newLine: true},
-            {postfix: '',           text: 'PRODUCTION',      protected: false, newLine: true},
-            {postfix: 'pwa-beta',   text: 'PWA beta',        protected: false, newLine: true},
-            {postfix: 'pwa',        text: 'PWA PRODUCTION',  protected: false               },
-            {postfix: 'fiin-beta',  text: 'FIIN beta',       protected: true,  newLine: true},
-            {postfix: 'fiin',       text: 'FIIN PRODUCTION', protected: true}
+            {postfix: 'devel01',    text: 'devel01',         protected: true,                       newLine: true   },
+            {postfix: 'devel02',    text: 'devel02',         protected: true                                        },
+            {postfix: 'devel03',    text: 'devel03',         protected: true                                        },
+            {postfix: 'alpha',      text: 'alpha',           protected: true,                       newLine: true   },
+            {postfix: 'beta',       text: 'beta',            protected: false,                      newLine: true   },
+            {postfix: '',           text: 'PRODUCTION',      protected: false,                      newLine: true   },
+            {postfix: 'pwa-beta',   text: 'PWA beta',        protected: false,  owner: 'pwa',       newLine: true   },
+            {postfix: 'pwa',        text: 'PWA PRODUCTION',  protected: false,  owner: 'pwa'                        },
+            {postfix: 'fiin-beta',  text: 'FIIN beta',       protected: true,   owner: 'geometoc',  newLine: true   },
+            {postfix: 'fiin',       text: 'FIIN PRODUCTION', protected: true,   owner: 'geometoc'                   }
         ];
 
 

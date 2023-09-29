@@ -38,7 +38,6 @@ module.exports = function(grunt) {
         deployOptions = _deploy.getDeployOptions(),
         secret        = deployOptions.secret;
 
-
     var options = extend({},
             secret, {
             localPath       : paths.temp,
@@ -57,7 +56,6 @@ module.exports = function(grunt) {
             debug           : grunt.fcoo.options.DEBUG
         });
 
-
     var releasePath         = path.posix.join(options.deployPath, options.releaseRoot, '/', options.tag),
         currentSymlink      = path.posix.join(options.deployPath, options.currentSymlink),
         previousSymlink     = path.posix.join(options.deployPath, options.previousSymlink),
@@ -66,7 +64,6 @@ module.exports = function(grunt) {
         isProtected         = _deploy.getSelectedDeploy().protected,
         webPath             = _deploy.getWebPath(),
         webPathProtected    = _deploy.getWebPathProtected();
-
 
     if (isDeployTask){
         //Display info

@@ -45,8 +45,6 @@ module.exports = function (grunt, isDeployTask) {
             var deployOptions = _deploy.getDeployOptions(),
                 deploy = _deploy.getSelectedDeploy();
 
-
-
             _console.writelnYellow('----------------------------------------------------------------------------');
             _console.writelnColor('Deploy ' + appNameAndVersion + ' => ' + '"' + _deploy.getDeployPath() + '"',    'yellow');
 
@@ -84,11 +82,17 @@ module.exports = function (grunt, isDeployTask) {
 
             //Copy dist => temp
             grunt.task.run('copy:Dist_2_Temp');
+
+            var deployOptions = _deploy.getDeployOptions(),
+                deploy = _deploy.getSelectedDeploy();
+
+            //Replace <meta name="owner" content="..."> with current owner
+            options.html_meta_tag_owner = '<meta name="owner" content="' + (deploy.owner || 'fcoo.dk') + '">',
+            grunt.task.run('replace:metaTagOwner');
         }
 
         //SSH Deployment
         grunt.task.run('ssh_deploy');
-
 
         //Reset cache - NOT USED FOR NOW
         //taskList.push('curl-dir:' + subtask );

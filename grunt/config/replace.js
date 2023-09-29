@@ -55,6 +55,14 @@ module.exports = function ( grunt ) {
         dist_temp_ALL_application_options: {
             src         : common.srcExclude_([paths.temp_dist+'**/*.html', paths.temp_dist+'**/*.js', paths.temp_dist+'**/*.css']), overwrite: true,
             replacements: options.applicationOptionsReplacements
+        },
+
+        metaTagOwner: {
+            src: paths.temp + 'index.html', overwrite: true,
+            replacements: [{
+                from: /\<meta\s+name\s*=\s*"owner"\s+content\s*=\s*"\S*"\s*\/?\>/g,
+                to: function(){ return options.html_meta_tag_owner }
+            }]
         }
 
     }
